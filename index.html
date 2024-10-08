@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Declara o tipo de documento e define o idioma como português do Brasil -->
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 para suportar caracteres especiais -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a escala de exibição em dispositivos móveis -->
+    <title>loja word oficial</title> <!-- Define o título da página que aparece na aba do navegador -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Importa o ícone da biblioteca Font Awesome -->
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0; /* Remove a margem padrão de todos os elementos */
+            padding: 0; /* Remove o preenchimento padrão de todos os elementos */
+            box-sizing: border-box; /* Faz com que a largura e altura incluam bordas e padding */
+            font-family: 'Poppins', sans-serif; /* Define a fonte padrão como Poppins */
+        }
+
+        body {
+            background-color: #1a1a1a; /* Define a cor de fundo do corpo da página como cinza escuro */
+            color: #fff; /* Define a cor do texto como branco */
+        }
+
+        a {
+            text-decoration: none; /* Remove a sublinhado padrão de links */
+            color: inherit; /* Faz com que o link herde a cor do texto ao redor */
+        }
+
+        ul {
+            list-style: none; /* Remove os marcadores de lista para as listas não ordenadas */
+        }
+
+        header {
+            background-color: #0d0d0d; /* Define a cor de fundo do cabeçalho como preto */
+            padding: 15px 0; /* Adiciona preenchimento superior e inferior ao cabeçalho */
+            position: fixed; /* Fixa o cabeçalho no topo da página, mesmo quando o usuário rola */
+            width: 100%; /* Define o cabeçalho para ocupar toda a largura da tela */
+            top: 0; /* Posiciona o cabeçalho no topo da página */
+            z-index: 100; /* Define o índice de empilhamento para que o cabeçalho fique acima de outros elementos */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao cabeçalho para dar profundidade */
+        }
+
+        header nav {
+            display: flex; /* Usa flexbox para organizar os itens no nav */
+            justify-content: space-between; /* Distribui os itens no espaço disponível, com espaços entre eles */
+            align-items: center; /* Alinha os itens verticalmente no centro */
+            padding: 0 20px; /* Adiciona preenchimento à esquerda e à direita do menu */
+        }
+
+        header nav .logo {
+            font-size: 24px; /* Define o tamanho da fonte do logotipo */
+            font-weight: 600; /* Define a espessura da fonte do logotipo */
+            color: #02ff00; /* Define a cor do texto do logotipo como verde neon */
+            margin: 0 auto; /* Centraliza o logotipo horizontalmente */
+        }
+
+        header nav ul {
+            display: flex; /* Usa flexbox para organizar os itens da lista horizontalmente */
+            gap: 20px; /* Define um espaçamento entre os itens da lista */
+            margin: 0; /* Remove a margem da lista */
+            padding: 0; /* Remove o preenchimento da lista */
+        }
+
+        header nav ul li {
+            flex: 1; /* Faz com que cada item da lista ocupe o mesmo espaço */
+            text-align: center; /* Centraliza o texto de cada item da lista */
+        }
+
+        header nav ul li a {
+            color: #fff; /* Define a cor do texto dos links como branco */
+            font-size: 16px; /* Define o tamanho da fonte dos links */
+            font-weight: 600; /* Define a espessura da fonte dos links */
+            padding: 8px 12px; /* Adiciona preenchimento interno aos links */
+            transition: all 0.3s ease; /* Define uma transição suave para as mudanças de estilo */
+            display: block; /* Faz com que os links ocupem toda a área do item da lista */
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            background-color: #ff5200; /* Altera a cor de fundo dos links quando o usuário passa o mouse ou quando estão ativos */
+            border-radius: 5px; /* Adiciona bordas arredondadas aos links */
+            color: #fff; /* Mantém a cor do texto branca nos estados de hover ou ativo */
+        }
+
+        .menu-toggle {
+            display: none; /* Esconde o ícone de menu (usado em dispositivos móveis, pode ser exibido mais tarde) */
+            font-size: 24px; /* Define o tamanho do ícone de menu */
+            color: #fff; /* Define a cor do ícone de menu como branco */
+            cursor: pointer; /* Define o cursor como ponteiro ao passar sobre o ícone */
+        }
+
+@media (max-width: 768px) {
+    /* Aplica esses estilos apenas em telas com largura máxima de 768px, ou seja, dispositivos móveis ou tablets */
+    
+    header nav ul {
+        display: flex; /* Mantém o uso do flexbox para o layout */
+        flex-direction: column; /* Muda a direção dos itens do menu para uma coluna (em vez de uma linha horizontal) */
+        position: absolute; /* Posiciona a lista do menu de forma absoluta em relação ao seu container */
+        top: 60px; /* Posiciona o topo da lista a 60px do topo da tela, abaixo do cabeçalho */
+        left: 0; /* Posiciona a lista do menu à esquerda da tela */
+        width: 100%; /* Faz com que a lista do menu ocupe toda a largura da tela */
+        background-color: #0d0d0d; /* Define a cor de fundo da lista do menu como preto */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao menu para dar profundidade */
+        padding: 10px 0; /* Adiciona espaçamento interno na parte superior e inferior da lista */
+        margin: 0; /* Remove a margem externa */
+        transform: translateY(-100%); /* Inicialmente, move o menu para fora da tela (para cima) */
+        opacity: 0; /* Inicialmente, define a opacidade como 0 (invisível) */
+        transition: transform 0.5s ease, opacity 0.5s ease; /* Define uma transição suave para a animação de aparecimento do menu */
+        visibility: hidden; /* Inicialmente, torna o menu invisível */
+    }
+
+    header nav.nav-active ul {
+        /* Quando a classe "nav-active" é adicionada ao nav, o menu é exibido */
+        transform: translateY(0); /* Move o menu de volta à posição original */
+        opacity: 1; /* Torna o menu visível */
+        visibility: visible; /* Define a visibilidade como visível */
+    }
+
+    header nav ul li a {
+        padding: 15px; /* Aumenta o preenchimento dos links do menu para torná-los maiores em dispositivos móveis */
+        font-size: 18px; /* Aumenta o tamanho da fonte dos links do menu */
+        text-align: center; /* Centraliza o texto dos links */
+    }
+
+    .menu-toggle {
+        display: block; /* Exibe o botão de alternância (menu hamburger) em dispositivos móveis */
+    }
+}
+
+.hero {
+    height: 100vh; /* Define a altura da seção como 100% da altura da tela */
+    background: url('https://s12.gifyu.com/images/So7m2.jpg') no-repeat center center/cover; /* Define uma imagem de fundo que preenche toda a seção, centrada */
+    display: flex; /* Usa flexbox para alinhar o conteúdo da seção */
+    align-items: center; /* Alinha o conteúdo verticalmente ao centro */
+    justify-content: center; /* Alinha o conteúdo horizontalmente ao centro */
+    text-align: center; /* Centraliza o texto no interior da seção */
+    position: relative; /* Define a posição relativa para que o conteúdo possa ser posicionado em relação à seção */
+    overflow: hidden; /* Esconde o conteúdo que ultrapassa os limites da seção */
+}
+
+@media (max-width: 768px) {
+    /* Altera a imagem de fundo da seção hero em dispositivos com largura menor que 768px */
+    .hero {
+        background: url('https://s10.gifyu.com/images/So7QK.jpg') no-repeat center center/cover; /* Define uma nova imagem de fundo adaptada para dispositivos móveis */
+    }
+}
+
+.hero-content {
+    position: relative; /* Define a posição como relativa em relação ao seu container, permitindo um controle preciso da posição */
+    z-index: 2; /* Coloca o conteúdo da hero acima de outros elementos que possam estar em camadas abaixo */
+    color: #fff; /* Define a cor do texto como branco */
+}
+
+.hero h1 {
+    font-size: 50px; /* Define o tamanho da fonte do título H1 como 50 pixels */
+    margin-bottom: 20px; /* Adiciona um espaço de 20 pixels abaixo do título */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Aplica uma sombra ao texto com uma leve difusão, tornando-o mais destacado sobre fundos claros */
+}
+
+.hero p {
+    font-size: 20px; /* Define o tamanho da fonte dos parágrafos dentro da seção hero como 20 pixels */
+    margin-bottom: 30px; /* Adiciona um espaço de 30 pixels abaixo do parágrafo */
+}
+
+.hero a {
+    padding: 15px 30px; /* Adiciona preenchimento interno de 15px no topo/baixo e 30px nas laterais, criando um botão grande */
+    background-color: #ff5200; /* Define a cor de fundo do botão como laranja (#ff5200) */
+    color: #fff; /* Define a cor do texto do botão como branco */
+    font-size: 18px; /* Define o tamanho da fonte do botão como 18 pixels */
+    font-weight: 600; /* Define a espessura da fonte do botão como 600 (semi-negrito) */
+    border-radius: 30px; /* Arredonda os cantos do botão, criando uma aparência mais suave e amigável */
+    transition: all 0.3s ease; /* Define uma transição suave para qualquer alteração no estilo do botão, com duração de 0.3 segundos */
+}
+
+.hero a:hover {
+    background-color: #ff741a; /* Muda a cor de fundo do botão para um tom mais claro de laranja quando o usuário passa o mouse sobre ele */
+}
+
+.veja-planos-button {
+    /* Esse estilo é aplicado a um botão de chamada para ação "veja planos" */
+    padding: 15px 30px; /* Adiciona preenchimento de 15px no topo/baixo e 30px nas laterais, criando um botão grande */
+    background-color: #ff5200; /* Define a cor de fundo do botão como laranja (#ff5200) */
+    color: #fff; /* Define a cor do texto do botão como branco */
+    font-size: 18px; /* Define o tamanho da fonte como 18 pixels */
+    font-weight: 600; /* Define a espessura da fonte como 600 (semi-negrito) */
+    border-radius: 30px; /* Arredonda os cantos do botão */
+    transition: all 0.3s ease; /* Define uma transição suave de 0.3 segundos para mudanças de estilo no botão */
+    margin-top: 20px; /* Adiciona um espaço de 20 pixels acima do botão */
+    display: inline-block; /* Garante que o botão seja exibido como um bloco em linha, permitindo margens e preenchimento */
+}
+
+.veja-planos-button:hover {
+    background-color: #ff741a; /* Altera a cor de fundo do botão para um tom mais claro de laranja quando o usuário passa o mouse */
+}
+
+section {
+    padding: 80px 20px; /* Adiciona um espaçamento interno de 80px no topo/baixo e 20px nas laterais de todas as seções */
+    text-align: center; /* Centraliza o texto dentro da seção */
+}
+
+#planos h2,
+#informacao h2,
+#dicas h2,
+#contatos h2,
+#depoimentos h2,
+#revenda h2,
+#suporte h2,
+#planos-cliente h2 {
+    font-size: 36px; /* Define o tamanho da fonte dos títulos como 36 pixels */
+    margin-bottom: 30px; /* Adiciona um espaço de 30 pixels abaixo do título */
+    position: relative; /* Define a posição como relativa para poder adicionar pseudo-elementos com posição absoluta */
+}
+Este bloco aplica o mesmo estilo aos títulos (h2) de diversas seções da página, como #planos, #informacao, #dicas, etc. Os títulos terão um tamanho grande de fonte (36px) e um espaçamento inferior para distanciá-los do conteúdo abaixo. A propriedade position: relative é necessária para que o pseudo-elemento ::after seja posicionado corretamente em relação ao título.
+css
+Copiar código
+#planos h2::after,
+#informacao h2::after,
+#dicas h2::after,
+#contatos h2::after,
+#depoimentos h2::after,
+#revenda h2::after,
+#suporte h2::after,
+#planos-cliente h2::after {
+    content: ''; /* Cria um pseudo-elemento vazio */
+    width: 50px; /* Define a largura do pseudo-elemento como 50 pixels */
+    height: 4px; /* Define a altura do pseudo-elemento como 4 pixels */
+    background-color: #ff5200; /* Define a cor de fundo (laranja) do pseudo-elemento */
+    position: absolute; /* Posiciona o pseudo-elemento de forma absoluta em relação ao título */
+    bottom: -10px; /* Posiciona o pseudo-elemento 10 pixels abaixo do título */
+    left: 50%; /* Centraliza o pseudo-elemento horizontalmente */
+    transform: translateX(-50%); /* Garante que o pseudo-elemento fique perfeitamente centrado ao mover sua posição em 50% do seu próprio tamanho */
+}
+
+#planos h2::after,
+#informacao h2::after,
+#dicas h2::after,
+#contatos h2::after,
+#depoimentos h2::after,
+#revenda h2::after,
+#suporte h2::after,
+#planos-cliente h2::after {
+    content: ''; /* Cria um pseudo-elemento vazio */
+    width: 50px; /* Define a largura do pseudo-elemento como 50 pixels */
+    height: 4px; /* Define a altura do pseudo-elemento como 4 pixels */
+    background-color: #ff5200; /* Define a cor de fundo (laranja) do pseudo-elemento */
+    position: absolute; /* Posiciona o pseudo-elemento de forma absoluta em relação ao título */
+    bottom: -10px; /* Posiciona o pseudo-elemento 10 pixels abaixo do título */
+    left: 50%; /* Centraliza o pseudo-elemento horizontalmente */
+    transform: translateX(-50%); /* Garante que o pseudo-elemento fique perfeitamente centrado ao mover sua posição em 50% do seu próprio tamanho */
+}
+
+.planos-container {
+    display: flex; /* Usa o Flexbox para organizar os planos */
+    flex-direction: column; /* Exibe os planos em coluna por padrão (ideal para telas pequenas) */
+    gap: 25px; /* Define um espaço de 25 pixels entre cada plano */
+    margin-top: 30px; /* Adiciona um espaço de 30 pixels no topo do container dos planos */
+    align-items: center; /* Centraliza os planos horizontalmente no container */
+}
+
+@media (min-width: 769px) {
+    .planos-container {
+        flex-direction: row; /* Exibe os planos em linha nas telas maiores */
+        flex-wrap: wrap; /* Permite que os planos quebrem linha se necessário, em vez de sair da tela */
+        justify-content: center; /* Centraliza os planos horizontalmente no container */
+    }
+}
+
+.plano {
+    background-color: #3e2b6c; /* Define a cor de fundo como um roxo escuro */
+    padding: 20px; /* Adiciona um preenchimento interno de 20px em todos os lados */
+    border-radius: 10px; /* Arredonda os cantos do plano */
+    width: 300px; /* Define uma largura fixa de 300 pixels */
+    height: 650px; /* Define uma altura fixa de 650 pixels */
+    transition: transform 0.3s ease; /* Aplica uma transição suave ao efeito de transformação (ao passar o mouse) */
+    display: flex; /* Usa o layout Flexbox */
+    flex-direction: column; /* Organiza os elementos filhos em coluna */
+    justify-content: space-between; /* Distribui os elementos de forma que o conteúdo fique espaçado verticalmente */
+}
+
+.plano:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do plano em 5% quando o mouse passa por cima, criando um efeito de "zoom" */
+}
+
+.plano h3 {
+    font-size: 24px; /* Define o tamanho da fonte do título como 24 pixels */
+    margin-bottom: 15px; /* Adiciona um espaço de 15 pixels abaixo do título */
+    color: #ff5200; /* Define a cor do título como laranja */
+}
+
+.plano p.preco {
+    font-size: 18px; /* Define o tamanho da fonte para o preço como 18 pixels */
+    color: #02ff00; /* Define a cor do preço como verde */
+    margin-bottom: 10px; /* Adiciona um espaço de 10 pixels abaixo do preço */
+}
+
+.plano p {
+    font-size: 16px; /* Define o tamanho da fonte como 16 pixels para o restante do texto */
+    margin: 5px 0; /* Adiciona um espaçamento vertical entre os parágrafos */
+    flex-grow: 1; /* Faz com que o parágrafo ocupe o espaço disponível dentro do container flexível */
+}
+
+.plano button {
+    align-self: center; /* Centraliza o botão horizontalmente dentro do plano */
+    padding: 10px 60px; /* Adiciona um preenchimento de 10px no topo/baixo e 60px nas laterais */
+    background-color: #ff5200; /* Define a cor de fundo como laranja */
+    border: none; /* Remove qualquer borda do botão */
+    color: #fff; /* Define a cor do texto como branco */
+    font-size: 20px; /* Define o tamanho da fonte do botão como 20 pixels */
+    cursor: pointer; /* Altera o cursor para "mão" ao passar sobre o botão */
+    border-radius: 10px; /* Arredonda os cantos do botão */
+    margin-top: 15px; /* Adiciona um espaçamento de 15 pixels no topo do botão */
+    transition: all 0.3s ease; /* Aplica uma transição suave para qualquer mudança no estilo do botão */
+}
+
+.plano button:hover {
+    background-color: #ff741a; /* Muda a cor de fundo do botão para um laranja mais claro ao passar o mouse */
+}
+
+#informacao p,
+#dicas p,
+#contatos p {
+    font-size: 16px; /* Define o tamanho da fonte como 16 pixels */
+    margin: 10px 0; /* Adiciona um espaçamento vertical de 10 pixels */
+    line-height: 1.6; /* Define o espaçamento entre linhas do texto, tornando-o mais legível */
+}
+
+#revenda, #suporte, #dicas, #depoimentos {
+    background-color: #334e74; /* Define a cor de fundo como azul escuro (#334e74) */
+    padding: 50px; /* Adiciona preenchimento de 50px ao redor do conteúdo */
+    border-radius: 10px; /* Arredonda os cantos das caixas */
+    text-align: center; /* Centraliza o texto dentro das seções */
+}
+
+#depoimentos .depoimento {
+    background-color: #334e74; /* Define a cor de fundo dos depoimentos individuais como azul escuro */
+    padding: 20px; /* Adiciona um preenchimento interno de 20px */
+    border-radius: 10px; /* Arredonda os cantos dos depoimentos */
+    margin: 20px 0; /* Adiciona um espaçamento vertical de 20px entre os depoimentos */
+}
+
+#depoimentos .depoimento p {
+    font-size: 16px; /* Define o tamanho da fonte como 16 pixels */
+    margin: 10px 0; /* Adiciona um espaçamento de 10 pixels verticalmente ao redor dos parágrafos */
+}
+
+.stars {
+    color: #ffcc00; /* Define a cor das estrelas como amarelo dourado */
+    font-size: 20px; /* Define o tamanho da fonte das estrelas como 20px */
+    margin: 10px 0; /* Adiciona um espaçamento vertical de 10px ao redor */
+}
+
+footer {
+    background-color: #0d0d0d; /* Define a cor de fundo do rodapé como preto escuro */
+    padding: 20px; /* Adiciona um preenchimento de 20px ao redor do conteúdo no rodapé */
+    text-align: center; /* Centraliza o texto dentro do rodapé */
+    font-size: 14px; /* Define o tamanho da fonte do rodapé como 14px */
+}
+
+footer p {
+    margin: 0; /* Remove qualquer margem ao redor dos parágrafos no rodapé */
+}
+
+.contact-icons {
+    margin-top: 20px; /* Adiciona um espaçamento superior de 20px ao container dos ícones de contato */
+}
+
+.contact-icons a {
+    color: #fff; /* Define a cor dos ícones de contato como branco */
+    font-size: 48px; /* Define o tamanho dos ícones como 48px */
+    margin: 0 10px; /* Adiciona um espaçamento horizontal de 10px entre os ícones */
+    transition: color 0.3s ease; /* Aplica uma transição suave na mudança de cor ao passar o mouse */
+}
+
+.contact-icons a:hover {
+    color: #ff5200; /* Muda a cor dos ícones de contato para laranja quando o usuário passa o mouse */
+}
+
+.revenda-link {
+    display: inline-block; /* Exibe o link como um bloco em linha, permitindo definir altura e largura */
+    padding: 10px 20px; /* Adiciona um preenchimento interno de 10px no topo/baixo e 20px nas laterais */
+    background-color: #ff5200; /* Define a cor de fundo como laranja */
+    color: #fff; /* Define a cor do texto como branco */
+    font-size: 16px; /* Define o tamanho da fonte como 16px */
+    font-weight: 600; /* Define o peso da fonte como 600, deixando-a mais "grossa" */
+    border-radius: 5px; /* Arredonda os cantos do link */
+    transition: background-color 0.3s ease; /* Aplica uma transição suave para a mudança de cor */
+    text-decoration: none; /* Remove a sublinhado padrão dos links */
+    margin-top: 15px; /* Adiciona um espaçamento superior de 15px */
+}
+
+.revenda-link:hover {
+    background-color: #ff741a; /* Muda a cor de fundo para um laranja mais claro quando o usuário passa o mouse */
+}
+
+.gift-icon {
+    position: fixed; /* Posiciona o ícone de forma fixa na tela, mesmo quando a página é rolada */
+    bottom: 20px; /* Define a posição a 20px do fundo da janela */
+    right: 20px; /* Define a posição a 20px do lado direito da janela */
+    font-size: 40px; /* Define o tamanho do ícone como 40px */
+    color: #ff5200; /* Define a cor do ícone como laranja */
+    cursor: pointer; /* Altera o cursor para "mão" ao passar sobre o ícone */
+    z-index: 200; /* Garante que o ícone fique acima de outros elementos na página */
+    animation: pulse 2s infinite; /* Aplica uma animação de "pulsação" que dura 2 segundos e se repete indefinidamente */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Início: tamanho normal */
+    }
+    50% {
+        transform: scale(1.2); /* Meio da animação: o ícone aumenta para 120% do tamanho */
+    }
+    100% {
+        transform: scale(1); /* Fim: volta ao tamanho normal */
+    }
+}
+
+.popup {
+    display: none; /* Inicialmente a pop-up está escondida */
+    position: fixed; /* Fixa a pop-up em um local na tela, mesmo ao rolar */
+    top: 50%; /* Centraliza verticalmente na tela */
+    left: 50%; /* Centraliza horizontalmente na tela */
+    transform: translate(-50%, -50%) translateY(-30px); /* Move a pop-up para o centro da tela e eleva um pouco para um efeito visual de animação */
+    background-color: #5e58a5; /* Define a cor de fundo como roxo escuro */
+    color: #fff; /* Define a cor do texto como branco */
+    padding: 20px; /* Adiciona um preenchimento de 20px ao redor do conteúdo */
+    border-radius: 10px; /* Arredonda os cantos da pop-up */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao redor da pop-up */
+    z-index: 201; /* Define a prioridade da pop-up sobre outros elementos (aparece à frente) */
+    opacity: 0; /* Define a opacidade inicial como 0 (invisível) */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Aplica transições suaves para opacidade e posição ao aparecer */
+}
+
+.popup.active {
+    display: block; /* Torna a pop-up visível */
+    opacity: 1; /* Aumenta a opacidade para 1 (totalmente visível) */
+    transform: translate(-50%, -50%) translateY(0); /* Remove o deslocamento vertical, centralizando a pop-up */
+}
+
+.popup h3 {
+    margin-bottom: 20px; /* Adiciona um espaçamento inferior de 20px ao título */
+    text-align: center; /* Centraliza o texto do título */
+}
+
+.popup button {
+    padding: 10px 40px; /* Adiciona preenchimento interno ao botão (10px no topo/baixo e 40px nas laterais) */
+    background-color: #ff5200; /* Define a cor de fundo do botão como laranja */
+    border: none; /* Remove qualquer borda ao redor do botão */
+    color: #fff; /* Define a cor do texto como branco */
+    font-size: 16px; /* Define o tamanho da fonte como 16px */
+    cursor: pointer; /* Muda o cursor para "mão" ao passar sobre o botão */
+    border-radius: 5px; /* Arredonda os cantos do botão */
+    margin: 5px; /* Adiciona uma margem ao redor do botão */
+    transition: all 0.3s ease; /* Aplica uma transição suave em todas as propriedades ao interagir com o botão */
+}
+
+.popup button:hover {
+    background-color: #ff741a; /* Muda a cor de fundo do botão para um laranja mais claro ao passar o mouse */
+}
+
+.popup .button-group {
+    display: flex; /* Usa Flexbox para organizar os botões */
+    justify-content: space-evenly; /* Distribui os botões igualmente, com espaços iguais entre eles */
+    margin-top: 20px; /* Adiciona um espaçamento superior de 20px entre o grupo de botões e o conteúdo acima */
+}
+
+.plano-cliente {
+    background-color: #0d653f; /* Cor de fundo verde escuro para os planos cliente */
+    color: #fff; /* Cor do texto como branco */
+    padding: 20px; /* Preenchimento interno de 20px */
+    border-radius: 10px; /* Arredonda os cantos dos blocos */
+    width: 300px; /* Define a largura dos blocos como 300px */
+    height: 650px; /* Define a altura dos blocos como 650px */
+    transition: transform 0.3s ease; /* Aplica uma animação suave ao passar o mouse */
+    display: flex; /* Usa Flexbox para organizar o conteúdo internamente */
+    flex-direction: column; /* Organiza o conteúdo dos planos em coluna (vertical) */
+    justify-content: space-between; /* Espaça os itens dentro do bloco de forma uniforme */
+}
+
+.plano-cliente:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do bloco levemente ao passar o mouse */
+}
+
+.plano-cliente h3 {
+    font-size: 24px; /* Define o tamanho do título para 24px */
+    margin-bottom: 15px; /* Adiciona um espaçamento de 15px abaixo do título */
+    color: #ff5200; /* Define a cor do título como laranja */
+}
+
+.plano-cliente p.preco {
+    font-size: 18px; /* Define o tamanho do texto do preço para 18px */
+    color: #02ff00; /* Define a cor do preço como verde neon */
+    margin-bottom: 10px; /* Adiciona um espaçamento de 10px abaixo do preço */
+}
+
+.plano-cliente p {
+    font-size: 16px; /* Define o tamanho do texto para 16px */
+    margin: 5px 0; /* Adiciona um espaçamento vertical de 5px acima e abaixo do parágrafo */
+    flex-grow: 1; /* Permite que o parágrafo expanda para ocupar o espaço disponível no layout */
+}
+
+.plano-cliente button {
+    align-self: center; /* Centraliza o botão horizontalmente no bloco */
+    padding: 10px 60px; /* Adiciona espaçamento interno de 10px no topo/baixo e 60px nas laterais */
+    background-color: #ff5200; /* Define a cor de fundo do botão como laranja */
+    border: none; /* Remove a borda padrão */
+    color: #fff; /* Define a cor do texto do botão como branco */
+    font-size: 20px; /* Define o tamanho do texto do botão como 20px */
+    cursor: pointer; /* Muda o cursor para "mão" ao passar sobre o botão */
+    border-radius: 10px; /* Arredonda os cantos do botão */
+    margin-top: 15px; /* Adiciona um espaçamento de 15px acima do botão */
+    transition: all 0.3s ease; /* Aplica uma transição suave em todas as propriedades ao interagir */
+}
+
+.plano-cliente button:hover {
+    background-color: #ff741a; /* Muda a cor de fundo do botão para um laranja mais claro ao passar o mouse */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Word Streaming Premium</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#planos">Preços Revenda</a></li>
+                <li><a href="#planos-cliente">Preços Cliente</a></li>
+                <li><a href="#informacao">Informação</a></li>
+                <li><a href="#revenda">Revenda</a></li>
+                <li><a href="#dicas">Dicas revenda</a></li>
+                <li><a href="#suporte">Suporte</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contatos">Contatos</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>compre já sua assinatura ORIGINAL</h1>
+            <p>O melhor em entretenimento de streaming premium original das melhores plataformas, se for revender lucro de 100% a 250%</p>
+            <a href="#planos">preços para revenda</a><br><br><br><br>
+            <a href="#planos-cliente">preços para cliente</a>
+        </div>
+    </section>
+
+    <!-- Seção de Planos -->
+    <section id="planos">
+        <h2>TABELA DE REVENDA</h2>
+        <div class="planos-container">
+          
+        <!-- internet ilimitada -->
+        <div class="plano">
+            <h3>internet ilimitada</h3>
+            <p class="preco">R$25/10 Login promoção</p>
+            <p>💭 1 aplicativo pra você com sua logo, nome, papel de parede etc, são 30 dias para vender</p>
+            <p>📲 iphone, android, pc, tv etc</p>          
+            <p>⭐️ renovo sim</p>
+            <p>📶 4g 5g etc</p>
+            <p>🤖 não tenho painel duvidas leia abar de revenda</p>             <p>🎁 teste gratis todos dias</p>
+            <p>📆 duração: 31 dias</p>          
+            <p>🙋🏻‍♂️ usuario: voces escolher se quer os login junto ou não</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano internet ilimitada.'">Assinar</button>
+        </div>          
+        <!-- claro + globo e  canais -->
+        <div class="plano">
+            <h3>Caro tv + globo play e canais</h3>
+            <p class="preco">R$7,00/tela</p>
+            <p>Catálogo completo da clado tv + globo play e canais</p>
+            <p>não renovo, mais 90% das vezes continuar</p>
+            <p>📧 1 tela clato tv ativação codigo e globo play + canais via convite </p>
+            <p>Streaming em HD e 4K</p>            
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano claro tv + globo play e canais.'">Assinar</button>
+        </div>
+        <!-- Disney Premium -->
+        <div class="plano">
+            <h3>Disney + star + espn</h3>
+            <p class="preco">R$15,00/conta</p>
+            <p>Catálogo completo disney e star e todos canais ao vivo espn</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>            
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 7</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Disney Premium.'">Assinar</button>
+        </div>
+        <!-- Max Premium -->
+        <div class="plano">
+            <h3>Max + discovery + futebol</h3>
+            <p class="preco">R$15,00/conta</p>
+            <p>Catálogo completo max e discovery e futebol ao vivo</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Max Premium.'">Assinar</button>
+        </div>
+        <!-- Unitv -->
+        <div class="plano">
+            <h3>Unitv iptv</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo todos canais fechado e todas assinatura dentro de uma só assinatura</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>você já tem e-mail dessa assinatura? -eu recarrego</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 2</p>
+            <p>A Unitv não oferece a funcionalidade de criar perfis</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano unitv.'">Assinar</button>
+        </div>
+        <!-- Youcine -->
+        <div class="plano">
+            <h3>Youcine iptv</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo todos canais e todas assinatura dentro de uma só assinatura</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>você já tem e-mail dessa assinatura? -eu recarrego</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>A youcine não oferece a funcionalidade de criar perfis</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano youcine.'">Assinar</button>
+        </div>
+        <!-- Apple TV -->
+        <div class="plano">
+            <h3>Apple TV</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo Apple TV</p>
+            <p>⭐️ não renovo, dura 30 dias</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Apple TV.'">Assinar</button>
+        </div>
+        <!-- Brasileirinhas -->
+        <div class="plano">
+            <h3>Brasileirinhas</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo de filmes adulto brasileiro</p>
+            <p>⭐️ renovo e tenho o plano que quiser dentro dessa assinatura caso queira</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 2</p>
+            <p>Perfis Suportados: brasileirinha não oferece a funcionalidade de criar perfis</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Brasileirinhas.'">Assinar</button>
+        </div>
+        <!-- Paramount Premium -->
+        <div class="plano">
+            <h3>Paramount + futebol</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo Paramount completo + futebol ao vivo</p>
+            <p>⭐️ não renovo, vai depende do plano pra ser renovável ou precisa de 1 suporte</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Paramount Premium.'">Assinar</button>
+        </div>
+        <!-- Crunchyroll Premium -->
+        <div class="plano">
+            <h3>Crunchyroll</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo completo desenhos e anime</p>
+            <p>não renovo, dura 30 dias ou pode ser que precise de 1 suporte</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Crunchyroll Premium.'">Assinar</button>
+        </div>
+        <!-- Viki Rakuten Premium -->
+        <div class="plano">
+            <h3>Viki Rakuten</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo Viki pass</p>
+            <p>não renovo, pode ser que precise de 1 suporte</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Viki Rakuten Premium.'">Assinar</button>
+        </div>
+        <!-- Mubi Filmes -->
+        <div class="plano">
+            <h3>Mubi Filmes</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo de filmes independentes</p>
+            <p>⭐️ não renovo, dura 30 dias</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Mubi Filmes.'">Assinar</button>
+        </div>
+        <!-- danz -->
+        <div class="plano">
+            <h3>Danz</h3>
+            <p class="preco">R$8,00/conta</p>
+            <p>Catálogo completo Danz variedade de conteúdos esportivos ao vivo e sob demanda futebol, mma, box, uefa, Championship, Fórmula E Tênis, dardosc seria c etc</p>
+            <p>nesse momento ela renova mais eu não renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>            
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o danz.'">Assinar</button>
+        </div>                            
+        <!-- Play Plus Premium -->
+        <div class="plano">
+            <h3>Play Plus</h3>
+            <p class="preco">R$5,00/conta</p>
+            <p>Catálogo Play Plus todos conteúdo da Record tv novela, reality etc</p>
+            <p>não renovo, essa assinatura são 28 dias precisa de 1 suporte </p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Play Plus Premium.'">Assinar</button>
+        </div>
+        <!-- UOL Play + Canais -->
+        <div class="plano">
+            <h3>UOL Play + Canais</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo UOL Play + canais ao vivo </p>
+            <p>⭐️ não renovo, dura 30 dias é renovável</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 4</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano UOL Play + Canais.'">Assinar</button>
+        </div>
+        <!-- Zapping -->
+        <div class="plano">
+            <h3>Zapping full</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo Zapping muitos canais ao vivo</p>
+            <p>⭐️ renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Zapping.'">Assinar</button>
+        </div>
+        <!-- Zapping + Premiere -->
+        <div class="plano">
+            <h3>Zapping + Premiere</h3>
+            <p class="preco">R$15,00/conta</p>
+            <p>Catálogo Zapping e Premiere</p>
+            <p>⭐️ renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Zapping + Premiere.'">Assinar</button>
+        </div>
+        <!-- Zapping + Outras -->
+        <div class="plano">
+            <h3>Zapping + Outras</h3>
+            <p class="preco">R$XX,XX/mês</p>
+            <p>voce pode escolher telecine, canais adulto, premiere, nosso futebol, combate</p>
+            <p>⭐️ renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Zapping + Outras.'">Assinar</button>
+        </div>
+        <!-- Prime Video -->
+        <div class="plano">
+            <h3>Prime Video</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo Amazon Prime Video</p>
+            <p>⭐️ renovo mais se for para renovar mesmo e-mail ativação código apenas TV, se não for envio e-mail e senha</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video.'">Assinar</button>
+        </div>
+        <!-- Prime Video + Premiere -->
+        <div class="plano">
+            <h3>Prime Video + Premiere</h3>
+            <p class="preco">R$7,00/tela(tv)<br>R$20,00/conta(tv)</p>
+            <p>Catálogo Amazon Prime Video e Premiere</p>
+            <p>⭐️ renovo ativação apenas tv via código</p>
+            <p>⚠️ conta pode ativar quantos dispositivos, tela apenas 1</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video + Premiere.'">Assinar</button>
+        </div>
+        <!-- Prime Video + Premiere + Combate -->
+        <div class="plano">
+            <h3>Prime Video + Premiere + Combate</h3>
+            <p class="preco">R$7,00/tela(tv)<br>R$20,00/conta(tv)</p>
+            <p>Catálogo Amazon Prime Video, Premiere e Combate</p>
+            <p>⭐️ renovo ativação apenas tv via código</p>
+            <p>⚠️ conta pode ativar quantos dispositivos, tela apenas 1</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video + Premiere + Combate.'">Assinar</button>
+        </div>
+        <!-- Prime Video + Outras -->
+        <div class="plano">
+            <h3>Prime Video + Outras</h3>
+            <p class="preco">R$XX,XX/apenas conta(tv)</p>
+            <p>monte seu prime dentro do prime video tem Paramont, Telecine, Max, Mgm, Look, Crunchyroll, Sony on, Premiere, Adrenalina pura, Discovery, Universal, Mubi, Reserva imovision, Cindie, Stingray, Box Brasil play, Curtan, Globo canais, Aquarius, Play kids, Love nature, Combate, Arte1 premium, Nfl game pass, Nba pass</p>
+            <p>⭐️ renovo ativação apenas tv via codigo</p>
+            <p>💬 conta pode ativar quantos dispositivos, não vendo tela apenas conta</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video + Outras.'">Assinar</button>
+        </div>
+        <!-- Globo Play -->
+        <div class="plano">
+            <h3>Globo Play</h3>
+            <p class="preco">R$5,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality </p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play.'">Assinar</button>
+        </div>
+        <!-- Globo Play + Canais -->
+        <div class="plano">
+            <h3>Globo Play + Canais</h3>
+            <p class="preco">R$7,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality + canais ao vivo</p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play + Canais.'">Assinar</button>
+        </div>
+        <!-- Globo Play + Canais + Telecine -->
+        <div class="plano">
+            <h3>Globo Play + Canais + Telecine</h3>
+            <p class="preco">R$10,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality + canais ao vivo + canais telecine e tudo da telecine</p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play + Canais + Telecine.'">Assinar</button>
+        </div>
+        <!-- Globo Play + Canais + Telecine + Combate -->
+        <div class="plano">
+            <h3>Globo Play + Canais + Telecine + Combate</h3>
+            <p class="preco">R$10,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality + canais ao vivo + canais telecine e tudo da telecine + combate canal e conteúdo</p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play + Canais + Telecine + Combate.'">Assinar</button>
+        </div>
+        <!-- Sky -->
+        <div class="plano">
+            <h3>Sky</h3>
+            <p class="preco">R$7,00/conta</p>
+            <p>Catálogo Sky canais ao vivo</p>
+            <p>⭐️ renovo se assinatura não levar blok</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Sky.'">Assinar</button>
+        </div>
+        <!-- Sky + Premiere + ESPN -->
+        <div class="plano">
+            <h3>Sky + Premiere + ESPN</h3>
+            <p class="preco">R$15,00/conta</p>
+            <p>Catálogo Sky canais com Premiere e ESPN</p>
+            <p>⭐️ renovo se assinatura não levar blok</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Sky + Premiere + ESPN.'">Assinar</button>
+        </div>
+        <!-- Sky + Outras -->
+        <div class="plano">
+            <h3>Sky + Outras</h3>
+            <p class="preco">R$XX,XX/conta</p>
+            <p>tem max, ufc pass, nosso futebol, premiere, combate, espn, telecine, paramont</p>
+            <p>⭐️ renovo se assinatura não levar blok</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Sky + Outras.'">Assinar</button>
+        </div>
+        <!-- YouTube Premium -->
+        <div class="plano">
+            <h3>YouTube Premium</h3>
+            <p class="preco">R$3,00/família ou individual</p>
+            <p>Vídeos sem anúncios</p>
+            <p>não renovo, caso vc não queira criar um g-mail eu crio cobro 10$</p>
+            <p>plataforma youtube premium</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano YouTube Premium.'">Assinar</button>
+        </div>
+        <!-- Spotify Premium -->
+        <div class="plano">
+            <h3>Spotify Premium</h3>
+            <p class="preco">R$3,00/individual<br>R$5,00/individual<br>R$7,00/individual</p>
+            <p>Streaming de música</p>
+            <p>não renovo, 1 2 3 mês vai depende se tenho geralmente tenho 1 ou 2 mês</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 6 (em plano familiar)</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Spotify Premium.'">Assinar</button>
+        </div>
+        <!-- Canva Pro -->
+        <div class="plano">
+            <h3>Canva Pro</h3>
+            <p class="preco">R$3,00/conta</p>
+            <p>Ferramentas de design gráfico</p>
+            <p>não renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o Canva Pro.'">Assinar</button>
+        </div>
+        <!-- Microsoft Office -->
+        <div class="plano">
+            <h3>Microsoft Office</h3>
+            <p class="preco">R$3,00</p>
+            <p>Microsoft Office 365</p>
+            <p>não renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o Microsoft Office.'">Assinar</button>
+        </div>
+    </div>
+</section>
+  
+    <!-- Seção de Planos cliente -->
+    <section id="planos-cliente">
+        <h2>TABELA DE CLIENTES</h2>
+        <div class="planos-container">
+          
+         <!-- internet ilimitada -->        
+        <div class="plano plano-cliente">
+            <h3>internet ilimitada</h3>
+            <p class="preco">R$10,00 1 login<br>R$15,00 2 login<br>R$20,00 4 login</p>
+            <p>💭 Internet ilimitada use abuse que não acabar</p>
+            <p>📲 iphone, android, pc, tv etc</p>          
+            <p>⭐️ renovo sim</p>
+            <p>📶 4g 5g</p>          
+            <p>🎁 teste gratis de 3 hora</p>
+            <p>📆 duração: 31 dias</p>          
+            <p>🙋🏻‍♂️ usuario: voces escolher se quer os login junto ou não</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano internet ilimitada.'">Assinar</button>
+        </div>   
+           
+        <!-- claro + globo e  canais -->
+        <div class="plano plano-cliente">
+            <h3>Caro tv + globo play e canais</h3>
+            <p class="preco">R$10,00/tela</p>
+            <p>Catálogo completo da clado tv + globo play e canais</p>
+            <p>não renovo, mais 90% das vezes continuar</p>
+            <p>📧 1 tela clato tv ativação codigo e globo play + canais via convite </p>
+            <p>Streaming em HD e 4K</p>            
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano claro tv + globo play e canais.'">Assinar</button>
+        </div>
+                    <!-- Disney Premium -->
+        <div class="plano plano-cliente">
+            <h3>Disney + star + espn</h3>
+            <p class="preco">R$15,00/conta</p>
+            <p>Catálogo completo disney e star e todos canais ao vivo espn</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>       
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 7</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Disney Premium.'">Assinar</button>
+        </div>
+        <!-- Max Premium -->
+        <div class="plano plano-cliente">
+            <h3>Max + discovery + futebol</h3>
+            <p class="preco">R$15,00/conta</p>
+            <p>Catálogo completo max e discovery e futebol ao vivo</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Max Premium.'">Assinar</button>
+        </div>
+        <!-- Unitv -->
+        <div class="plano plano-cliente">
+            <h3>Unitv iptv</h3>
+            <p class="preco">R$20,00/conta</p>
+            <p>Catálogo todos canais e todas assinatura dentro de uma só assinatura</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>você já tem e-mail dessa assinatura? -eu recarrego!</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 2</p>
+            <p>A Unitv não oferece a funcionalidade de criar perfis</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Unitv.'">Assinar</button>
+        </div>
+         <!-- Youcine -->
+        <div class="plano plano-cliente">
+            <h3>Youcine iptv</h3>
+            <p class="preco">R$20,00/conta</p>
+            <p>Catálogo todos canais e todas assinatura dentro de uma só assinatura</p>
+            <p>⭐️ renovo e tenho meses ou anual</p>
+            <p>você já tem e-mail dessa assinatura? -eu recarrego</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>A youcine não oferece a funcionalidade de criar perfis</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano youcine.'">Assinar</button>
+        </div>         
+        <!-- Apple TV -->
+        <div class="plano plano-cliente">
+            <h3>Apple TV</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo Apple TV</p>
+            <p>⭐️ não renovo, dura 30 dias</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Apple TV.'">Assinar</button>
+        </div>
+        <!-- Brasileirinhas -->
+        <div class="plano plano-cliente">
+            <h3>Brasileirinhas</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo de filmes adulto brasileiro</p>
+            <p>⭐️ renovo e tenho o plano que quiser dentro dessa assinatura caso queira</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 2</p>
+            <p>Perfis Suportados: brasileirinha não oferece a funcionalidade de criar perfis</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Brasileirinhas.'">Assinar</button>
+        </div>
+        <!-- Paramount Premium -->
+        <div class="plano plano-cliente">
+            <h3>Paramount + futebol</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo Paramount completo + futebol ao vivo</p>
+            <p>⭐️ não renovo, vai depende do plano pra ser renovável ou precisa de 1 suporte</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Paramount Premium.'">Assinar</button>
+        </div>
+        <!-- Crunchyroll Premium -->
+        <div class="plano plano-cliente">
+            <h3>Crunchyroll</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo completo desenhos e anime</p>
+            <p>não renovo, dura 30 dias ou pode ser que precise de 1 suporte</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Crunchyroll Premium.'">Assinar</button>
+        </div>
+        <!-- Viki Rakuten Premium -->
+        <div class="plano plano-cliente">
+            <h3>Viki Rakuten</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo Viki pass</p>
+            <p>não renovo, pode ser que precise de 1 suporte</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Viki Rakuten Premium.'">Assinar</button>
+        </div>
+        <!-- Mubi Filmes -->
+        <div class="plano plano-cliente">
+            <h3>Mubi Filmes</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo de filmes independentes</p>
+            <p>⭐️ não renovo, dura 30 dias</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Mubi Filmes.'">Assinar</button>
+        </div>     
+        <!-- danz -->
+        <div class="plano plano-cliente">
+            <h3>Danz</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo completo Danz variedade de conteúdos esportivos ao vivo e sob demanda futebol, mma, box, uefa, Championship, Fórmula E Tênis, dardosc seria c etc</p>
+            <p>nesse momento ela renova mais eu não renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>            
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o danz.'">Assinar</button>
+        </div>                  
+        <!-- Play Plus Premium -->
+        <div class="plano plano-cliente">
+            <h3>Play Plus</h3>
+            <p class="preco">R$5,00/conta</p>
+            <p>Catálogo Play Plus todos conteúdo da Record tv novela, reality etc</p>
+            <p>não renovo, essa assinatura são 28 dias precisa de 1 suporte </p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Play Plus Premium.'">Assinar</button>
+        </div>
+        <!-- UOL Play + Canais -->
+        <div class="plano plano-cliente">
+            <h3>UOL Play + Canais</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo UOL Play + canais ao vivo </p>
+            <p>⭐️ não renovo, dura 30 dias é renovável</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 4</p>
+            <p>Perfis Suportados: 4</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano UOL Play + Canais.'">Assinar</button>
+        </div>
+        <!-- Zapping -->
+        <div class="plano plano-cliente">
+            <h3>Zapping full</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo Zapping muitos canais ao vivo</p>
+            <p>⭐️ renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Zapping.'">Assinar</button>
+        </div>
+        <!-- Zapping + Premiere -->
+        <div class="plano plano-cliente">
+            <h3>Zapping + Premiere</h3>
+            <p class="preco">R$20,00/conta</p>
+            <p>Catálogo Zapping e Premiere</p>
+            <p>⭐️ renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Zapping + Premiere.'">Assinar</button>
+        </div>
+        <!-- Zapping + Outras -->
+        <div class="plano plano-cliente">
+            <h3>Zapping + Outras</h3>
+            <p class="preco">R$XX,XX/mês</p>
+            <p>voce pode escolher telecine, canais adulto, premiere, nosso futebol, combate</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>⭐️ renovo</p>
+            <p>Streaming em HD ou 4k</p>
+            <p>Telas Simultâneas: 5</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Zapping + Outras.'">Assinar</button>
+        </div>
+        <!-- Prime Video -->
+        <div class="plano plano-cliente">
+            <h3>Prime Video</h3>
+            <p class="preco">R$8,00/conta</p>
+            <p>Catálogo Amazon Prime Video</p>
+            <p>⭐️ renovo mais se for para renovar mesmo e-mail ativação código apenas TV, se não for envio e-mail e senha</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video.'">Assinar</button>
+        </div>
+        <!-- Prime Video + Premiere -->
+        <div class="plano plano-cliente">
+            <h3>Prime Video + Premiere</h3>
+            <p class="preco">R$10,00/tela(tv)<br>R$20,00/conta(tv)</p>
+            <p>Catálogo Amazon Prime Video e Premiere</p>
+            <p>⭐️ renovo ativação apenas tv via código</p>
+            <p>⚠️ conta pode ativar quantos dispositivos, tela apenas 1</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video + Premiere.'">Assinar</button>
+        </div>
+        <!-- Prime Video + Premiere + Combate -->
+        <div class="plano plano-cliente">
+            <h3>Prime Video + Premiere + Combate</h3>
+            <p class="preco">R$10,00/tela(tv)<br>R$20,00/conta(tv)</p>
+            <p>Catálogo Amazon Prime Video, Premiere e Combate</p>
+            <p>⭐️ renovo ativação apenas tv via código</p>
+            <p>⚠️ conta pode ativar quantos dispositivos, tela apenas 1</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video + Premiere + Combate.'">Assinar</button>
+        </div>
+        <!-- Prime Video + Outras -->
+        <div class="plano plano-cliente">
+            <h3>Prime Video + Outras</h3>
+            <p class="preco">R$XX,XX/apenas conta(tv)</p>
+            <p>monte seu prime dentro do prime video tem Paramont, Telecine, Max, Mgm, Look, Crunchyroll, Sony on, Premiere, Adrenalina pura, Discovery, Universal, Mubi, Reserva imovision, Cindie, Stingray, Box Brasil play, Curtan, Globo canais, Aquarius, Play kids, Love nature, Combate, Arte1 premium, Nfl game pass, Nba pass</p>
+            <p>⭐️ renovo ativação apenas tv via codigo</p>
+            <p>💬 conta pode ativar quantos dispositivos, não vendo tela apenas conta</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Prime Video + Outras.'">Assinar</button>
+        </div>
+        <!-- Globo Play -->
+        <div class="plano plano-cliente">
+            <h3>Globo Play</h3>
+            <p class="preco">R$7,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality </p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play.'">Assinar</button>
+        </div>
+        <!-- Globo Play + Canais -->
+        <div class="plano plano-cliente">
+            <h3>Globo Play + Canais</h3>
+            <p class="preco">R$10,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality + canais ao vivo</p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play + Canais.'">Assinar</button>
+        </div>
+        <!-- Globo Play + Canais + Telecine -->
+        <div class="plano plano-cliente">
+            <h3>Globo Play + Canais + Telecine</h3>
+            <p class="preco">R$15,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality + canais ao vivo + canais telecine e tudo da telecine</p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play + Canais + Telecine.'">Assinar</button>
+        </div>
+        <!-- Globo Play + Canais + Telecine + Combate -->
+        <div class="plano plano-cliente">
+            <h3>Globo Play + Canais + Telecine + Combate</h3>
+            <p class="preco">R$15,00/tela convite</p>
+            <p>Catálogo Globo Play, novelas, filmes, series, bbb reality + canais ao vivo + canais telecine e tudo da telecine + combate canal e conteúdo</p>
+            <p>⭐️ renovo ativação via convite em seu e-mail ou meu</p>
+            <p>📧 convite pode acesassar onde quiser mais lembre que é apenas 1 dispositivo Simultâneo</p>
+            <p>Streaming em HD e 4K</p>
+            <p>Telas Simultâneas: 1</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Globo Play + Canais + Telecine + Combate.'">Assinar</button>
+        </div>
+        <!-- Sky -->
+        <div class="plano plano-cliente">
+            <h3>Sky</h3>
+            <p class="preco">R$10,00/conta</p>
+            <p>Catálogo Sky canais ao vivo</p>
+            <p>⭐️ renovo se assinatura não levar blok</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Sky.'">Assinar</button>
+        </div>
+        <!-- Sky + Premiere + ESPN -->
+        <div class="plano plano-cliente">
+            <h3>Sky + Premiere + ESPN</h3>
+            <p class="preco">R$20,00/conta</p>
+            <p>Catálogo Sky canais com Premiere e ESPN</p>
+            <p>⭐️ renovo se assinatura não levar blok</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Sky + Premiere + ESPN.'">Assinar</button>
+        </div>
+        <!-- Sky + Outras -->
+        <div class="plano plano-cliente">
+            <h3>Sky + Outras</h3>
+            <p class="preco">R$XX,XX/conta</p>
+            <p>tem max, ufc pass, nosso futebol, premiere, combate, espn, telecine, paramont</p>
+            <p>⭐️ renovo se assinatura não levar blok</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Streaming em HD e 4k</p>
+            <p>Telas Simultâneas: 3</p>
+            <p>Perfis Suportados: 5</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Sky + Outras.'">Assinar</button>
+        </div>
+        <!-- YouTube Premium -->
+        <div class="plano plano-cliente">
+            <h3>YouTube Premium</h3>
+            <p class="preco">R$3,00/família ou individual</p>
+            <p>Vídeos sem anúncios</p>
+            <p>não renovo, caso vc não queira criar um g-mail eu crio cobro 10$</p>
+            <p>plataforma youtube premium</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano YouTube Premium.'">Assinar</button>
+        </div>
+        <!-- Spotify Premium -->
+        <div class="plano plano-cliente">
+            <h3>Spotify Premium</h3>
+            <p class="preco">R$3,00/individual<br>R$5,00/individual<br>R$7,00/individual</p>
+            <p>Streaming de música</p>
+            <p>não renovo, 1 2 3 mês vai depende se tenho geralmente tenho 1 ou 2 mês</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 6 (em plano familiar)</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o plano Spotify Premium.'">Assinar</button>
+        </div>
+        <!-- Canva Pro -->
+        <div class="plano plano-cliente">
+            <h3>Canva Pro</h3>
+            <p class="preco">R$5,00/conta</p>
+            <p>Ferramentas de design gráfico</p>
+            <p>não renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 1</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o Canva Pro.'">Assinar</button>
+        </div>
+        <!-- Microsoft Office -->
+        <div class="plano plano-cliente">
+            <h3>Microsoft Office</h3>
+            <p class="preco">R$5,00</p>
+            <p>Microsoft Office 365</p>
+            <p>não renovo</p>
+            <p>✅ conta pode compartilhar</p>
+            <p>Telas Simultâneas: N/A</p>
+            <p>Perfis Suportados: 6</p>
+            <button onclick="window.location.href='https://wa.me/message/XLXD57FM4OZHN1?text=Olá, gostaria de assinar o Microsoft Office.'">Assinar</button>
+        </div>
+    </div>
+</section>
+  
+    <!-- Seção de Informação -->
+    <section id="informacao">
+        <h2>INFORMAÇÃO</h2>
+        <p>Como você pode ter visto temos conta, tela tv, convite!!! conta ideal para você compartilhar com amigos, família, vizinhos, “etc”! Também temos tela ideal para você apenas um dispositivo. Também temos ativação via código apenas para dispositivos TV. e também temos convite pode ser em seu e-mail em sua conta caso não tenha eu faço uma. Dúvidas sobre qual assinatura é conta, tela, tela, TV ou convite basta ver tabela de cada assinatura que tem tudo sobre.<br><br>Nosso serviço oferece uma variedade de assinatura ORIGINAL para todas as idades. 
+        Com opções de planos para diferentes perfis, você pode escolher o que melhor se adapta às suas necessidades de venda.
+        Garantimos suporte durante 30 dias</p>
+        <p>Experimente revender e tenha uma grana extra sem sair casa, vendendo dai mesmo onde você está agora deitado, assistindo, trabalhando, balada até dando aquela cagada você faiz venda.</p>
+    </section>
+
+    <!-- Seção de Revenda -->
+    <section id="revenda">
+        <h2>REVENDA</h2>
+        <p>INTERNET ILIMITADA<br>
+Você quer revender internet? Se sim! Você tem direito teste grátis todos os dias ao um aplicativo próprio com seu nome, logo, papel de parede, etc. <br><br>
+
+Resumo e como se eu fosse painel! Se não lhe agrada, então não revende.<br><br>
+
+Com e revenda da internet? Você pagar xx$ reais tem 30 dias para vender, mais se eu vender apenas 5 login? Então completou 30 dias se ficar algum login que não vendeu perde! Aí tem que pagar xx$ reais para ter mais xx login e 30 dias para vender. E como se eu fosse painel, não tem erro. <br><br>
+
+E se eu vender um login dia 29 ou dia 30? Serio que tenho que responder? Mais tudo bem responderei não importa o dia que você vender serão 30 dias de internet ilimitada para seu cliente. Duvidas pergunte.<br><br>
+
+ASSINATURA ORIGINAL<br>
+Que levantar um dinheiro extra em assinatura original? 
+Não esqueça de ver aba de dicas para ter um sucesso espetacular e venda todos os dias. Para ser uma revenda não é só dizer que é revenda você tem que está qualificado exemplos abaixo.<br><br>
+
+📢 — Para Você comprar preço de revenda tem que fazer mínimo 7 vendo durante o mês, ai, sim, você está qualificado para comprar preço de revenda, tem que manter o ritmo das vendas, O mínimo são 5 venda por mês, isso é nada! Em breve aumentarei, se você não faz venda ou não comprar mínimo de 7 assinatura por mês então não persista comprar preço de revenda OK! Obrigado e vamos prosperar.<br><br>          
+          
+Nunca vendeu? Para você que não sabe, a pessoa compra para vender telas.
+Por exemplo, compra uma conta Disney tem 4 telas simultâneas significa que pode vender para 4 pessoa há 5 reais tela lucrando 10$ isso é apenas um exemplo! Você vende pelo seu preço que achar melhor.<br><br>
+
+ E se cliente quiser conta oque devo fazer? — Ué, serio que tenho que explicar?
+Exemplo compre conta Disney por 10$ e vende ha 17$ já lucrar 7$  isso é apenas um exemplo! Você vende pelo seu preço que achar melhor. <br><br>          
+
+Tenho dicas aqui no site, procure aba de dicas e tenha de 10 ha 25 venda por dia.<br><br>
+      
+Organização: você que revende não esqueça de organizar suas venda, data, e-mail, senha em um bloco de nota ou folha “etc” sempre que comprar. <br><br>
+
+Organização: você que revende não esqueça de avisar seu cliente um dia antes de vencer, é recomendado pagar um dia antecipado de completar 30 dias, vale lembrar que são 30 dias e não 31 assim você agilizar seus pagamento e não tem perigo assinatura ser trocado a senha etc, mais sempre que poder eu aviso a data.</p>
+        <a href="https://wa.me/message/XLXD57FM4OZHN1" class="revenda-link" target="_blank">comprar agora</a>
+    </section>
+
+    <!-- Seção de Dicas -->
+    <section id="dicas">
+        <h2>DICAS</h2>
+        <p>Aqui estão algumas dicas valiosa, grátis e sem falhas para você ter um grande sucesso de vendas todos os dias.<br><br>
+• Dica 1: criar Facebook todo dia um não custa nada, levar 5 minutos para criar, para quer isso de criar Facebook? Você deve esta se perguntando, simplesmente para fazer divulgação quanto mais o Facebook antigo melhor é tem gente que vende Facebook antigo por $ 100 ha $ 300 você criando já não terá gasto. Recomendo fazer pelo menos uma publicação no marketplace Facebook faça uma edição na foto nome sem muita atenção discreto para ser aprovado pelo marketplace eito isso produto foi aprovado já fará outro Facebook e fazer outra publicação porque Facebook ele só deixa fazer uma publicação por Facebook novo assim você vai criando vários e sempre terá mais e mais para publicar, se você já tem um Facebook já usado antigo melhor ainda mais esse antigo recomendo método 2 logo abaixo.<br><br>
+• Dica 2: tenha Facebook antigo? Vamos lá tenha WhatsApp Business não só um WhatsApp tenha vários pelo menos uns 2 como faz para ter 2 ou mais WhatsApp Business tem vídeo YouTube, vamos lá criou uma conta WhatsApp Business criar uma edição nas fotos que você quer publicar em seu catálogo criar tudo bonito e chamativo depois que é aprovado aguarde uns minutos para você publicar catálogo da sua escolha… escolheu oque quer publicar? Então faça oque pede chegará uma parte para você conectar em seu Facebook. Chegará uma parte também para pagar custa $ 6 real dia mais você pode montar do seu jeito quantos dias quer, quanto tem para gastar, etc. faça pagamento via PIX ou cartão e seja feliz. “ Se você arrumar 2 venda com 6 reais gasto você já vai apurar o dinheiro que gastou e já terá dinheiro para fazer outra publicação, assim você vai criando uma bola de neve de cliente que chegará um dia que você não vai mais gastar porque já terá muito clientes.<br><br>
+• Dica 3: publique OLX também<br><br>
+• Dica 4: compre uma impressora usada ou nova para fazer seus cartão e saia entregando nas ruas, centro da cidade, etc.<br><br>
+• Dica 5: faça promoção, por exemplo, chamou um amigo ganhar uma tela grátis<br><br><br>
+existem muito outros meio de divulgação, faça isso quando você for ver já estará ganhando $ 200 a $ 300 por dia terá hora que você vai nem mais querer novos cliente!  
+</p>
+    </section>
+
+    <!-- Seção de Suporte -->
+    <section id="suporte">
+        <h2>SUPORTE</h2>
+        <p>Você revende? Antes de entrar em contato veja com seu cliente oque foi e verifique o erro 80% das vezes você mesmo consegue resolver<br><br> Precisa de ajuda? Estamos aqui para apoiar você. Nosso suporte está disponível 24/7 para responder suas dúvidas
+        e resolver qualquer problema técnico.</p>
+        <p>Para mais informações ou dúvidas frequentes, visite nossa whatsapp ou grupo telegram</p>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section id="depoimentos">
+        <h2>DEPOIMENTOS</h2>
+        <div class="depoimento">
+            <p>"O serviço é incrível! É excelente e a equipe de suporte é muito eficiente. Recomendo a todos!"</p>
+            <div class="stars">
+                ★★★★☆
+            </div>
+            <p>- a Braba das Tela.</p>
+        </div>
+        <div class="depoimento">
+            <p>"A melhor experiência qá tive. O plano Premium vale cada centavo! Assinatura original é outro nível!"</p>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <p>- João.</p>
+        </div>
+        <div class="depoimento">
+            <p>"Ótimo custo-benefício e uma variedade impressionante de conteúdo original. Estou muito satisfeito, já levando uma grana extra faz um bom tempo!"</p>
+            <div class="stars">
+                ★★★★☆
+            </div>
+            <p>- Solsa.</p>
+        </div>
+        <div class="depoimento">
+            <p>"Os planos são muito acessíveis, serviço é de primeira. Recomendo para quem ama streaming original."</p>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <p>- Streaming Telas premium.</p>
+        </div>
+        <div class="depoimento">
+            <p>"Excelente serviço e suporte. Não troco por nada!"</p>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <p>- Morais Streaming.</p>
+        </div>
+        <div class="depoimento">
+            <p>"Eu já lucro de $ 100 ha $ 200 por dia, paree difícil mais depois que tem um bolo de cliente e sabendo atender, tendo paciência e as dicas que ele ensinou! Nunca mais larguei as venda só não lucrar quem não quer!"</p>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <p>- Rei das tela Streaming.</p>
+        </div>
+        <div class="depoimento">
+            <p>"Não revendo, sou apenas cliente para uso próprio, espero que ele coloque meu comentário no site haha… sempre compro com ele “Canva pro” para minhas edições, aplicativo pirata só dar problema além dos riscos de ser clonado, raqueado por isso compro assinatura original sem corre risco."</p>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <p>- usuário antigo.</p>
+        </div>
+        <div class="depoimento">
+            <p>"Não exite outro melhor! Já compro um tempo se exite outro melhor é fke Word net o melhor, minha reclamação é porque deveria escura áudio.."</p>
+            <div class="stars">
+                ★★★☆☆
+            </div>
+            <p>- anonimo.</p>
+        </div>
+              <div class="depoimento">
+            <p>"Já indiquei é já comecei vender."</p>
+            <div class="stars">
+                ★★★★★
+            </div>
+            <p>- vendendor novato.</p>
+        </div>
+    </section>
+  
+<!-- Seção de Contatos -->
+<section id="contatos">
+    <h2>Contatos</h2>
+    <p>Entre em contato conosco através dos seguintes meios:</p>
+    <p>Telegram: @vpnwordnetdono</p>
+    <p>Whatsapp: (85) 9 9722-7519 apenas mensagem inscrita! não mande audio!</p><br>
+    <p>🚨 WhatsApp exite uma opção de transmissão partir do momento que você falar você recebera mensagem automática como divulgação, preços, promoção, alteração, dicas, etc. para você não receber mais mensagem você tem que nos bloquear em seu WhatsApp obrigado pela compreensão.</p>
+    <p>Endereço: Natal, RS</p>
+    <div class="contact-icons">
+        <a href="https://wa.me/message/XLXD57FM4OZHN1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/vpnwordnetdono" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+</section>
+
+<!-- Outras seções da página -->
+
+<i class="fas fa-gift gift-icon"></i>
+
+<div class="popup" id="popup">
+    <h3>estamos sem promoção absurda! 😥<br><br> deseja ir para nosso WhatsApp agora?</h3>
+    <div class="button-group">
+        <button onclick="aceitarPresente()">Sim</button>
+        <button onclick="recusarPresente()">Não</button>
+    </div>
+</div>
+
+<footer>
+    <p>Todos os direitos reservados &copy; 2019-2024 word assine e vpn word net</p>
+</footer>
+
+<script>
+    // Mostrar popup
+    function mostrarPopup() {
+        document.getElementById('popup').classList.add('active');
+    }
+
+    // Fechar popup
+    function closePopup() {
+        document.getElementById('popup').classList.remove('active');
+    }
+
+    // Aceitar presente
+    function aceitarPresente() {
+        window.location.href = 'https://wa.me/message/XLXD57FM4OZHN1'; // Substitua pelo número de telefone desejado
+    }
+
+    // Recusar presente
+    function recusarPresente() {
+        closePopup();
+    }
+
+    // Ao clicar no ícone de presente, mostra o popup
+    document.querySelector('.gift-icon').addEventListener('click', mostrarPopup);
+</script>
+
+<script>
+    // JavaScript para interatividade
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('header nav');
+        const navLinks = document.querySelectorAll('header nav ul li a');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+        });
+
+        // Adiciona funcionalidade para esconder o menu após clicar em um item
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    nav.classList.remove('nav-active');
+                }
+                // Adiciona a classe 'active' ao item clicado
+                navLinks.forEach(a => a.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    });
+</script>
+
+
