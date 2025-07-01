@@ -23,7 +23,7 @@
   }
   body {
     font-family: 'Poppins', sans-serif;
-    background: #0f1218; /* quase preto azulado */
+    background: #0f1218;
     color: #e1e9ff;
     line-height: 1.6;
   }
@@ -104,6 +104,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: bgZoom 15s ease-in-out infinite alternate;
+  }
+  @keyframes bgZoom {
+    0% {
+      background-size: 100% auto;
+    }
+    100% {
+      background-size: 110% auto;
+    }
   }
   .overlay-text {
     position: relative;
@@ -116,6 +125,9 @@
     text-shadow: 0 0 20px #00e5ffaa;
     max-width: 90vw;
     text-align: center;
+    /* Animação inicial */
+  }
+  .overlay-text.animate {
     animation: fadeInDown 1.2s ease forwards;
   }
   /* Linha animada sob o texto */
@@ -129,6 +141,8 @@
     background: #00e5ff;
     border-radius: 2px;
     transform: translateX(-50%);
+  }
+  .overlay-text.animate::after {
     animation: lineGrow 1.2s ease forwards;
     animation-delay: 1.3s;
   }
@@ -195,11 +209,6 @@
     height: 70px;
     margin-bottom: 18px;
   }
-  .service-icon-item > span {
-    margin-top: 8px;
-    font-size: 1.1rem;
-    color: #c0f7ff;
-  }
   .download-btn {
     margin-top: 12px;
     padding: 10px 24px;
@@ -224,48 +233,74 @@
     margin: 0 auto;
     line-height: 1.5;
   }
-  /* Testimonials Section */
+  /* Testimonials Section sem caixa, texto direto no fundo */
+  #testimonials {
+    padding: 60px 20px;
+  }
   #testimonials h2 {
     color: #00e5ff;
+    text-align: center;
     font-size: 2.8rem;
     margin-bottom: 40px;
     text-shadow: 0 0 12px #00e5ffaa;
   }
-  .testimonials-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-  .testimonial-card {
-    background: #1a2238;
-    border-radius: 16px;
-    padding: 30px 25px;
-    max-width: 320px;
-    box-shadow: 0 0 25px #00e5ff88;
-    color: #c0eaff;
+  .testimonials-texts p {
     font-style: italic;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
+    font-size: 1.3rem;
+    color: #c0eaffdd;
+    margin: 25px auto;
+    max-width: 800px;
+    line-height: 1.5;
+    border-bottom: 1px solid #00e5ff33;
+    padding-bottom: 18px;
+    transition: color 0.3s ease;
   }
-  .testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 40px #00ffffcc;
+  .testimonials-texts p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
-  .testimonial-card p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-    line-height: 1.4;
-  }
-  .testimonial-card span {
-    font-weight: 700;
+  .testimonials-texts p:hover {
     color: #00e5ff;
+  }
+  .testimonials-texts span {
+    display: block;
+    font-weight: 700;
+    color: #00e5ffcc;
+    margin-top: 8px;
     font-size: 1rem;
     text-align: right;
     user-select: none;
+  }
+  /* Terms of Use Section */
+  #terms {
+    max-width: 900px;
+    margin: 40px auto 80px auto;
+    padding: 30px 25px;
+    background: linear-gradient(135deg, #001933, #003366);
+    border-radius: 16px;
+    box-shadow: 0 0 40px #00e5ffaa;
+    color: #b0dfff;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify;
+  }
+  #terms h2 {
+    color: #00e5ff;
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 10px #00e5ffcc;
+  }
+  #terms p {
+    margin-bottom: 15px;
+  }
+  #terms ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+  }
+  #terms ul li {
+    margin-bottom: 8px;
   }
   /* Responsive */
   @media(max-width: 960px) {
@@ -287,25 +322,8 @@
     }
   }
   @media(max-width: 760px) {
-    .testimonials-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .testimonial-card {
+    .testimonials-texts p {
       max-width: 90vw;
-    }
-  }
-  @media(max-width: 600px) {
-    nav {
-      gap: 12px;
-    }
-    nav a {
-      padding: 8px 12px;
-      font-size: 0.9rem;
-    }
-    .service-section {
-      margin: 40px 15px;
-      padding: 30px 15px 50px 15px;
     }
     .service-icons {
       flex-direction: column;
@@ -335,6 +353,19 @@
       margin-left: auto;
       font-size: 1.1rem;
       padding: 10px 28px;
+    }
+  }
+  @media(max-width: 600px) {
+    nav {
+      gap: 12px;
+    }
+    nav a {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+    .service-section {
+      margin: 40px 15px;
+      padding: 30px 15px 50px 15px;
     }
   }
   /* Footer */
@@ -367,12 +398,13 @@
     <a href="#eppi-cinema">Eppi Cinema</a>
     <a href="#tv-express">TV Express</a>
     <a href="#testimonials">Comentários</a>
+    <a href="#terms">Termos de Uso</a>
   </nav>
 </header>
 
 <main>
   <section class="section-home" id="home">
-    <div class="overlay-text">Bem-vindo ao TV Express Brasil!</div>
+    <div class="overlay-text animate">Bem-vindo ao TV Express Brasil!</div>
   </section>
 
   <section class="service-section" id="unitv" data-aos="fade-up">
@@ -381,90 +413,88 @@
       <div class="service-icon-item" aria-label="App TV Box">
         <img src="https://cdn-icons-png.flaticon.com/512/1069/1069062.png" alt="TV Box" class="service-icon" />
         <span>App TV Box</span>
-        <button class="download-btn"><i class="fa-solid fa-download"></i> Baixar</button>
+        <button class="download-btn">Baixar</button>
       </div>
       <div class="service-icon-item" aria-label="App Smart TV">
         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Smart TV" class="service-icon" />
         <span>App Smart TV</span>
-        <button class="download-btn"><i class="fa-solid fa-download"></i> Baixar</button>
+        <button class="download-btn">Baixar</button>
       </div>
       <div class="service-icon-item" aria-label="App Stick TV">
         <img src="https://cdn-icons-png.flaticon.com/512/1041/1041880.png" alt="Stick TV" class="service-icon" />
         <span>App Stick TV</span>
-        <button class="download-btn"><i class="fa-solid fa-download"></i> Baixar</button>
+        <button class="download-btn">Baixar</button>
       </div>
       <div class="service-icon-item" aria-label="App Celular">
         <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Celular" class="service-icon" />
         <span>App Celular</span>
-        <button class="download-btn"><i class="fa-solid fa-download"></i> Baixar</button>
+        <button class="download-btn">Baixar</button>
       </div>
     </div>
-    <p class="service-info">
+    <div class="service-info">
       UniTV oferece canais de alta definição, filmes, séries, esportes e conteúdo infantil. Compatível com diversos dispositivos.
-    </p>
+    </div>
   </section>
 
   <section class="service-section" id="youcine" data-aos="fade-up">
     <h2>Youcine</h2>
-    <p class="service-info">
+    <div class="service-info">
       Assista filmes e séries atualizados com qualidade HD em seu smartphone ou TV com Youcine.
-    </p>
+    </div>
   </section>
 
   <section class="service-section" id="eppi-cinema" data-aos="fade-up">
     <h2>Eppi Cinema</h2>
-    <p class="service-info">
+    <div class="service-info">
       Plataforma de filmes atualizados e em alta definição para sua diversão garantida.
-    </p>
+    </div>
   </section>
 
   <section class="service-section" id="tv-express" data-aos="fade-up">
     <h2>TV Express</h2>
-    <p class="service-info">
+    <div class="service-info">
       TV Express reúne canais ao vivo, esportes, filmes e muito mais com alta estabilidade.
-    </p>
+    </div>
   </section>
 
-  <section class="service-section" id="testimonials" data-aos="fade-up">
+  <section id="testimonials" data-aos="fade-up">
     <h2>O que nossos clientes dizem</h2>
-    <div class="testimonials-container">
-      <div class="testimonial-card">
-        <p>"A qualidade da UniTV é incrível! Nunca travou no meu aparelho."</p>
-        <span>- Carlos M.</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"Youcine tem os filmes mais recentes em HD, recomendo muito."</p>
-        <span>- Mariana S.</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"Eppi Cinema é meu app favorito para entretenimento em casa."</p>
-        <span>- João P.</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"O suporte do TV Express é rápido e eficiente, parabéns equipe."</p>
-        <span>- Ana L.</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"Fácil de usar, com canais de alta qualidade. Super satisfeito."</p>
-        <span>- Lucas R.</span>
-      </div>
+    <div class="testimonials-texts">
+      <p>"A qualidade da UniTV é incrível! Nunca travou no meu aparelho."<span>- Carlos M.</span></p>
+      <p>"Youcine tem os filmes mais recentes em HD, recomendo muito."<span>- Mariana S.</span></p>
+      <p>"Eppi Cinema é meu app favorito para entretenimento em casa."<span>- João P.</span></p>
+      <p>"O suporte do TV Express é rápido e eficiente, parabéns equipe."<span>- Ana L.</span></p>
+      <p>"Fácil de usar, com canais de alta qualidade. Super satisfeito."<span>- Lucas R.</span></p>
+      <p>"Melhor app para streaming que já usei, vale cada centavo."<span>- Fernanda T.</span></p>
+      <p>"Atualizações constantes e atendimento nota 10!"<span>- Pedro A.</span></p>
     </div>
+  </section>
+
+  <section id="terms" data-aos="fade-up">
+    <h2>Termos de Uso</h2>
+    <p>Bem-vindo ao TV Express Brasil! Ao utilizar nossos aplicativos e serviços, você concorda com os seguintes termos e condições:</p>
+    <ul>
+      <li><strong>Uso pessoal:</strong> Os aplicativos são para uso pessoal e não comercial. Proibida a redistribuição ou revenda.</li>
+      <li><strong>Conteúdo:</strong> Não nos responsabilizamos por conteúdos ilegais ou que violem direitos autorais exibidos via aplicativos.</li>
+      <li><strong>Privacidade:</strong> Respeitamos sua privacidade e não coletamos dados pessoais sem consentimento.</li>
+      <li><strong>Suporte:</strong> Oferecemos suporte técnico, mas não garantimos disponibilidade contínua dos serviços.</li>
+      <li><strong>Atualizações:</strong> Os apps podem ser atualizados ou modificados a qualquer momento sem aviso prévio.</li>
+      <li><strong>Limitação de responsabilidade:</strong> Não somos responsáveis por danos diretos ou indiretos causados pelo uso dos aplicativos.</li>
+    </ul>
+    <p>Se você não concorda com estes termos, por favor, não utilize nossos serviços.</p>
   </section>
 </main>
 
 <footer>
-  © 2025 TV Express Brasil. Todos os direitos reservados.
+  &copy; 2025 TV Express Brasil. Todos os direitos reservados.
 </footer>
 
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 900,
-    once: true,
-  });
+  AOS.init();
 
-  // Header muda cor ao rolar
+  // Header scrolled effect
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     if(window.scrollY > 50) {
@@ -474,25 +504,24 @@
     }
   });
 
-  // Menu ativo ao rolar
-  const sections = document.querySelectorAll('main section');
-  const navLinks = document.querySelectorAll('nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 80;
-      const sectionHeight = section.clientHeight;
-      if(window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if(link.getAttribute('href').substring(1) === current) {
-        link.classList.add('active');
-      }
+  // Menu active link
+  const links = document.querySelectorAll('nav a');
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      links.forEach(l => l.classList.remove('active'));
+      e.target.classList.add('active');
     });
   });
+
+  // Animate overlay text line and fadeIn on load and when clicking home link
+  const overlayText = document.querySelector('.overlay-text');
+  function restartAnimation() {
+    overlayText.classList.remove('animate');
+    void overlayText.offsetWidth; // trigger reflow
+    overlayText.classList.add('animate');
+  }
+  document.querySelector('nav a[href="#home"]').addEventListener('click', restartAnimation);
+  window.addEventListener('load', restartAnimation);
 </script>
 
 </body>
