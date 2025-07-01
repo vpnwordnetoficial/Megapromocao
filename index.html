@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WORD APLICATIVOS</title>
+<title>WORD APLICATIVOS IPTV</title>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 <!-- Font Awesome para ícones -->
@@ -27,6 +27,7 @@
     color: #e1e9ff;
     line-height: 1.6;
   }
+
   /* Header */
   header {
     position: fixed;
@@ -53,34 +54,27 @@
     cursor: pointer;
     letter-spacing: 2px;
     text-shadow: 0 0 12px #00e5ffcc;
+    user-select: none;
   }
 
-  /* Navegação com ícones e texto */
-  nav {
+  /* Menu Desktop */
+  nav.desktop-menu {
     display: flex;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    gap: 25px;
   }
-  nav a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  nav.desktop-menu a {
     color: #e1e9ff;
     font-weight: 600;
-    padding: 10px 18px;
+    padding: 12px 18px;
     border-radius: 40px;
     text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
   }
-  nav a i {
-    font-size: 1.1rem;
-  }
-  nav a::before {
+  nav.desktop-menu a::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -91,16 +85,90 @@
     transition: height 0.3s ease;
     z-index: 0;
   }
-  nav a:hover::before,
-  nav a.active::before {
+  nav.desktop-menu a:hover::before,
+  nav.desktop-menu a.active::before {
     height: 100%;
   }
-  nav a:hover,
-  nav a.active {
+  nav.desktop-menu a:hover,
+  nav.desktop-menu a.active {
     background-color: #00e5ff;
     color: #0a0f19;
     box-shadow: 0 0 15px #00e5ff;
     z-index: 1;
+  }
+
+  /* Menu Mobile Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 10001;
+  }
+  .hamburger div {
+    width: 100%;
+    height: 3px;
+    background-color: #e1e9ff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  /* Toggle animation */
+  .hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.active div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile menu overlay */
+  nav.mobile-menu {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 260px;
+    height: calc(100% - 70px);
+    background: #121826;
+    box-shadow: -5px 0 30px #00e5ffcc;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 10000;
+  }
+  nav.mobile-menu.open {
+    transform: translateX(0);
+  }
+  nav.mobile-menu a {
+    color: #00e5ff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px;
+    border-radius: 12px;
+    background: #1e2745;
+    box-shadow: 0 0 15px #00e5ffaa;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  nav.mobile-menu a:hover,
+  nav.mobile-menu a.active {
+    background-color: #00e5ff;
+    color: #0a0f19;
+    box-shadow: 0 0 30px #00ffff;
+  }
+  nav.mobile-menu a i {
+    min-width: 24px;
+    font-size: 1.4rem;
+    user-select: none;
   }
 
   /* Main & sections */
@@ -136,6 +204,7 @@
     text-shadow: 0 0 20px #00e5ffaa;
     max-width: 90vw;
     text-align: center;
+    user-select: none;
   }
   .overlay-text.animate {
     animation: fadeInDown 1.2s ease forwards;
@@ -187,6 +256,7 @@
     color: #00e5ff;
     letter-spacing: 1.2px;
     text-shadow: 0 0 10px #00e5ffaa;
+    user-select: none;
   }
   .service-icons {
     display: flex;
@@ -221,6 +291,7 @@
     width: 120px;
     height: 120px;
     margin-bottom: 10px;
+    user-select: none;
   }
   /* Botão baixar agora é um link estilizado */
   .download-btn {
@@ -236,6 +307,7 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     display: inline-block;
+    user-select: none;
   }
   .download-btn:hover {
     background: #00c8ff;
@@ -247,7 +319,9 @@
     max-width: 650px;
     margin: 0 auto;
     line-height: 1.5;
+    user-select: text;
   }
+
   /* Testimonials Section sem caixa, texto direto no fundo */
   #testimonials {
     padding: 60px 20px;
@@ -258,6 +332,7 @@
     font-size: 2.8rem;
     margin-bottom: 40px;
     text-shadow: 0 0 12px #00e5ffaa;
+    user-select: none;
   }
   .testimonials-texts p {
     font-style: italic;
@@ -287,6 +362,7 @@
     text-align: right;
     user-select: none;
   }
+
   /* Terms of Use Section */
   #terms {
     max-width: 900px;
@@ -299,6 +375,7 @@
     font-size: 1rem;
     line-height: 1.6;
     text-align: justify;
+    user-select: text;
   }
   #terms h2 {
     color: #00e5ff;
@@ -306,6 +383,7 @@
     margin-bottom: 20px;
     text-align: center;
     text-shadow: 0 0 10px #00e5ffcc;
+    user-select: none;
   }
   #terms p {
     margin-bottom: 15px;
@@ -317,85 +395,7 @@
   #terms ul li {
     margin-bottom: 8px;
   }
-  /* Responsive */
-  @media(max-width: 960px) {
-    .service-icons {
-      gap: 25px;
-    }
-    .service-icon-item {
-      width: 120px;
-      padding: 20px 10px;
-    }
-    .service-icon {
-      width: 55px;
-      height: 55px;
-      margin-bottom: 14px;
-    }
-    .overlay-text {
-      font-size: 2.5rem;
-      padding: 30px 40px;
-    }
-  }
-  @media(max-width: 760px) {
-    .testimonials-texts p {
-      max-width: 90vw;
-    }
-    .service-icons {
-      flex-direction: column;
-      gap: 30px;
-    }
-    .service-icon-item {
-      width: 100%;
-      max-width: 300px;
-      padding: 20px;
-      flex-direction: row;
-      justify-content: flex-start;
-      gap: 20px;
-    }
-    .service-icon {
-      width: 70px;
-      height: 70px;
-      margin-bottom: 0;
-    }
-    .service-icon-item > span {
-      font-size: 1.2rem;
-      margin-top: 0;
-      color: #00e5ff;
-      font-weight: 800;
-      align-self: center;
-    }
-    .download-btn {
-      margin-left: auto;
-      font-size: 1.1rem;
-      padding: 10px 28px;
-    }
-  }
-  @media(max-width: 600px) {
-    nav {
-      gap: 15px;
-    }
-    nav a {
-      flex: 1 1 45%;
-      font-size: 0.95rem;
-      padding: 8px 12px;
-      justify-content: center;
-    }
-    nav a i {
-      font-size: 1rem;
-    }
-    .service-section {
-      margin: 40px 15px;
-      padding: 30px 15px 50px 15px;
-    }
-  }
-  @media(max-width: 460px) {
-    nav a {
-      flex: 1 1 100%;
-      padding: 10px 0;
-      font-size: 1.1rem;
-      border-radius: 0;
-    }
-  }
+
   /* Footer */
   footer {
     background: #0b1017;
@@ -404,6 +404,7 @@
     padding: 20px 15px;
     font-size: 0.9rem;
     box-shadow: inset 0 1px 10px #00e5ff33;
+    user-select: none;
   }
   footer a {
     color: #00e5ff;
@@ -413,10 +414,50 @@
   footer a:hover {
     text-decoration: underline;
   }
+
+  /* Responsive */
+
+  /* Esconder menu desktop no mobile */
+  @media(max-width: 767px) {
+    nav.desktop-menu {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+    }
+    main {
+      margin-top: 70px;
+    }
+    /* Ajustes nas seções para mobile */
+    .service-section {
+      margin: 60px 15px;
+      padding: 35px 20px 50px 20px;
+    }
+    .service-icon-item {
+      width: 45%;
+      padding: 20px 10px;
+    }
+    .service-icons {
+      gap: 20px;
+    }
+    .overlay-text {
+      font-size: 2.1rem;
+      padding: 28px 30px;
+      max-width: 95vw;
+    }
+  }
+  @media(max-width: 400px) {
+    .service-icon-item {
+      width: 100%;
+    }
+    nav.mobile-menu {
+      width: 100vw;
+      height: calc(100% - 70px);
+    }
+  }
 </style>
 </head>
 <body>
-
 <header id="header">
   <h1>WORD APLICATIVOS IPTV</h1>
   <nav>
@@ -646,6 +687,17 @@
     }
   });
 
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+
+    const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+    hamburgerBtn.setAttribute('aria-expanded', !expanded);
+  });
+  
   // Nav active class change on scroll
   const sections = document.querySelectorAll('main section, main #testimonials, main #terms');
   const navLinks = document.querySelectorAll('header nav a');
