@@ -830,5 +830,18 @@ mobileLinks.forEach(link => {
   });
 });
   </script>
+    <script>
+  if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    window.addEventListener('touchstart', function(event) {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+      }
+    }, { passive: false });
+
+    window.addEventListener('gesturestart', function(event) {
+      event.preventDefault();
+    });
+  }
+  </script>
 </body>
 </html>
