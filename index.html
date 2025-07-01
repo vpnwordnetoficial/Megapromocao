@@ -54,20 +54,31 @@
     letter-spacing: 2px;
     text-shadow: 0 0 12px #00e5ffcc;
   }
+
+  /* Navegação com ícones e texto */
   nav {
     display: flex;
-    gap: 25px;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
   }
   nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: #e1e9ff;
     font-weight: 600;
-    padding: 12px 18px;
+    padding: 10px 18px;
     border-radius: 40px;
     text-decoration: none;
     font-size: 1rem;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+  }
+  nav a i {
+    font-size: 1.1rem;
   }
   nav a::before {
     content: '';
@@ -91,7 +102,7 @@
     box-shadow: 0 0 15px #00e5ff;
     z-index: 1;
   }
-  
+
   /* Main & sections */
   main {
     margin-top: 70px;
@@ -184,26 +195,24 @@
     gap: 40px;
     margin-bottom: 40px;
   }
-.service-icon-item {
-  background: #1e2745;
-  border-radius: 16px;
-  width: 150px;
-  padding: 25px 15px;
-  box-shadow: 0 0 15px #00e5ffaa;
-  cursor: default;
-  color: #00e5ff;
-  font-weight: 700;
-  user-select: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.service-icon-item span {
-  color: #ffffff !important;
-}
-
+  .service-icon-item {
+    background: #1e2745;
+    border-radius: 16px;
+    width: 150px;
+    padding: 25px 15px;
+    box-shadow: 0 0 15px #00e5ffaa;
+    cursor: default;
+    color: #00e5ff;
+    font-weight: 700;
+    user-select: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .service-icon-item span {
+    color: #ffffff !important;
+  }
   .service-icon-item:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 0 30px #00ffffcc;
@@ -233,13 +242,10 @@
     box-shadow: 0 0 30px #00ffff;
   }
   .service-info {
-  font-size: 1.3rem;
-  color: #ffffff;
-  max-width: 650px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
-
+    font-size: 1.3rem;
+    color: #ffffff;
+    max-width: 650px;
+    margin: 0 auto;
     line-height: 1.5;
   }
   /* Testimonials Section sem caixa, texto direto no fundo */
@@ -331,7 +337,6 @@
     }
   }
   @media(max-width: 760px) {
-    /* Regras antigas que podem ser mantidas ou sobrescritas */
     .testimonials-texts p {
       max-width: 90vw;
     }
@@ -367,84 +372,61 @@
   }
   @media(max-width: 600px) {
     nav {
-      gap: 12px;
+      gap: 15px;
     }
     nav a {
+      flex: 1 1 45%;
+      font-size: 0.95rem;
       padding: 8px 12px;
-      font-size: 0.9rem;
+      justify-content: center;
+    }
+    nav a i {
+      font-size: 1rem;
     }
     .service-section {
       margin: 40px 15px;
       padding: 30px 15px 50px 15px;
     }
   }
-
-  /* NOVO - Melhoria para telas até 760px - substitui e melhora */
-  @media(max-width: 760px) {
-    nav {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
+  @media(max-width: 460px) {
     nav a {
-      flex: 1 1 45%;
-      text-align: center;
-      padding: 10px 8px;
-      font-size: 0.9rem;
+      flex: 1 1 100%;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      border-radius: 0;
     }
-    .overlay-text {
-      font-size: 2rem !important;
-      padding: 20px 30px !important;
-    }
-    .service-icons {
-      flex-direction: column !important;
-      align-items: center;
-      gap: 25px !important;
-    }
-    .service-icon-item {
-      max-width: 320px;
-      width: 100%;
-      flex-direction: row !important;
-      justify-content: flex-start !important;
-      padding: 20px 18px !important;
-      gap: 20px !important;
-    }
-    .service-icon {
-      width: 64px !important;
-      height: 64px !important;
-      margin-bottom: 0 !important;
-    }
-    .service-icon-item > span {
-      font-size: 1.15rem !important;
-      color: #00e5ff !important;
-      font-weight: 700 !important;
-      align-self: center !important;
-    }
-    .download-btn {
-      margin-left: auto !important;
-      font-size: 1.1rem !important;
-      padding: 10px 30px !important;
-    }
-    #terms {
-      margin: 25px 15px 60px 15px !important;
-      font-size: 0.95rem !important;
-      padding: 20px 15px !important;
-    }
-    /* Footer e outros ajustes podem ser feitos aqui se quiser */
+  }
+  /* Footer */
+  footer {
+    background: #0b1017;
+    color: #8bcfff;
+    text-align: center;
+    padding: 20px 15px;
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 10px #00e5ff33;
+  }
+  footer a {
+    color: #00e5ff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  footer a:hover {
+    text-decoration: underline;
   }
 </style>
 </head>
 <body>
+
 <header id="header">
   <h1>WORD APLICATIVOS IPTV</h1>
   <nav>
-    <a href="#home" class="active">Início</a>
-    <a href="#unitv">UniTV</a>
-    <a href="#youcine">Youcine</a>
-    <a href="#eppi-cinema">Eppi Cinema</a>
-    <a href="#tv-express">TV Express</a>
-    <a href="#testimonials">Comentários</a>
-    <a href="#terms">Termos de Uso</a>
+    <a href="#home" class="active"><i class="fa fa-home"></i> Início</a>
+    <a href="#unitv"><i class="fa fa-tv"></i> UniTV</a>
+    <a href="#youcine"><i class="fa fa-film"></i> Youcine</a>
+    <a href="#eppi-cinema"><i class="fa fa-video"></i> Eppi Cinema</a>
+    <a href="#tv-express"><i class="fa fa-play"></i> TV Express</a>
+    <a href="#testimonials"><i class="fa fa-comments"></i> Comentários</a>
+    <a href="#terms"><i class="fa fa-file-contract"></i> Termos de Uso</a>
   </nav>
 </header>
 
