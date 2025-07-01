@@ -108,15 +108,22 @@
     margin-top: 70px;
   }
   /* Hero Section */
+.section-home {
+  position: relative;
+  height: 100vh;
+  background: url('https://s14.gifyu.com/images/bHYPG.webp') center center/cover no-repeat fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bgZoom 10s ease-in-out infinite alternate;
+}
+
+/* Para telas até 760px de largura (celulares e tablets pequenos) */
+@media (max-width: 760px) {
   .section-home {
-    position: relative;
-    height: 100vh;
-    background: url('https://s14.gifyu.com/images/bHYPG.webp') center center/cover no-repeat fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: bgZoom 10s ease-in-out infinite alternate;
+    background: url('https://s14.gifyu.com/images/bHtLm.png') center center/cover no-repeat fixed;
   }
+}
   @keyframes bgZoom {
     0% {
       background-size: 100% auto;
