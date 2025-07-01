@@ -452,30 +452,46 @@
     display: flex;
   }
 }
-  @media (max-width: 760px) {
-  html, body {
-    overflow-x: hidden;
+@media(max-width: 760px) {
+  .service-icons {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
 
-  .section-home {
-    background-attachment: scroll !important;
+  .service-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 320px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
   }
 
-  .overlay-text {
-    font-size: 1.8rem;
-    padding: 20px 15px;
+  .service-icon {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
   }
 
-  .service-section h2 {
-    font-size: 2.2rem;
+  .service-icon-item span {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #ffffff;
   }
 
   .download-btn {
-    font-size: 1rem;
-    padding: 10px 20px;
     width: 100%;
+    max-width: 220px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
     text-align: center;
+    margin-top: 10px;
   }
+}
 
   .service-icon-item {
     flex-direction: column !important;
