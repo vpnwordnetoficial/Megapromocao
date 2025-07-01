@@ -208,18 +208,20 @@
     height: 70px;
     margin-bottom: 18px;
   }
+  /* Botão baixar agora é um link estilizado */
   .download-btn {
     margin-top: 12px;
     padding: 10px 24px;
     background: #00e5ff;
     color: #0a0f19;
-    border: none;
     border-radius: 30px;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
     box-shadow: 0 0 18px #00e5ff;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
   }
   .download-btn:hover {
     background: #00c8ff;
@@ -410,24 +412,24 @@
     <h2>UniTV</h2>
     <div class="service-icons">
       <div class="service-icon-item" aria-label="App TV Box">
-        <img src="https://cdn-icons-png.flaticon.com/512/1069/1069062.png" alt="TV Box" class="service-icon" />
+        <img src="https://s14.gifyu.com/images/bHrWy.png" alt="TV Box" class="service-icon" />
         <span>App TV Box</span>
-        <button class="download-btn">Baixar</button>
+        <a href="https://baixa.app/tvebox" download class="download-btn" aria-label="Baixar App TV Box">Baixar</a>
       </div>
       <div class="service-icon-item" aria-label="App Smart TV">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Smart TV" class="service-icon" />
+        <img src="https://s14.gifyu.com/images/bHrcg.png" alt="Smart TV" class="service-icon" />
         <span>App Smart TV</span>
-        <button class="download-btn">Baixar</button>
+        <a href="https://exemplo.com/smarttv.apk" download class="download-btn" aria-label="Baixar App Smart TV">Baixar</a>
       </div>
       <div class="service-icon-item" aria-label="App Stick TV">
-        <img src="https://cdn-icons-png.flaticon.com/512/1041/1041880.png" alt="Stick TV" class="service-icon" />
+        <img src="https://s14.gifyu.com/images/bHrco.png" alt="Stick TV" class="service-icon" />
         <span>App Stick TV</span>
-        <button class="download-btn">Baixar</button>
+        <a href="https://exemplo.com/sticktv.apk" download class="download-btn" aria-label="Baixar App Stick TV">Baixar</a>
       </div>
       <div class="service-icon-item" aria-label="App Celular">
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Celular" class="service-icon" />
+        <img src="https://s14.gifyu.com/images/bHrgN.png" alt="Celular" class="service-icon" />
         <span>App Celular</span>
-        <button class="download-btn">Baixar</button>
+        <a href="https://exemplo.com/celular.apk" download class="download-btn" aria-label="Baixar App Celular">Baixar</a>
       </div>
     </div>
     <p class="service-info">
@@ -441,7 +443,7 @@
       <div class="service-icon-item" aria-label="Youcine App">
         <i class="fas fa-film service-icon"></i>
         <span>Youcine App</span>
-        <button class="download-btn">Baixar</button>
+        <a href="https://exemplo.com/youcine.apk" download class="download-btn" aria-label="Baixar Youcine App">Baixar</a>
       </div>
     </div>
     <p class="service-info">
@@ -455,86 +457,72 @@
       <div class="service-icon-item" aria-label="Eppi Cinema App">
         <i class="fas fa-video service-icon"></i>
         <span>Eppi Cinema App</span>
-        <button class="download-btn">Baixar</button>
+        <a href="https://exemplo.com/eppicinema.apk" download class="download-btn" aria-label="Baixar Eppi Cinema App">Baixar</a>
       </div>
     </div>
     <p class="service-info">
-      Plataforma de filmes atualizados e em alta definição para sua diversão garantida.
+      Filmes e séries atualizados com qualidade HD e legendas. Compatível com dispositivos Android e Smart TVs.
     </p>
   </section>
 
   <section class="service-section" id="tv-express" data-aos="fade-up">
     <h2>TV Express</h2>
     <div class="service-icons">
-      <div class="service-icon-item" aria-label="TV Express App">
+      <div class="service-icon-item" aria-label="App TV Express">
         <i class="fas fa-tv service-icon"></i>
         <span>TV Express App</span>
-        <button class="download-btn">Baixar</button>
+        <a href="https://exemplo.com/tvexpress.apk" download class="download-btn" aria-label="Baixar TV Express App">Baixar</a>
       </div>
     </div>
     <p class="service-info">
-      TV Express reúne canais ao vivo, esportes, filmes e muito mais com alta estabilidade.
+      TV Express traz canais ao vivo, filmes, séries e conteúdo esportivo em alta qualidade.
     </p>
   </section>
 
   <section id="testimonials" data-aos="fade-up">
-    <h2>Comentários de Clientes</h2>
+    <h2>Comentários</h2>
     <div class="testimonials-texts">
-      <p>"Excelente qualidade e estabilidade. Recomendo muito!" <span>- João S.</span></p>
-      <p>"Aplicativo fácil de usar e com ótimo atendimento." <span>- Maria F.</span></p>
-      <p>"A melhor opção para assistir TV online no Brasil." <span>- Carlos M.</span></p>
-      <p>"Atualizações constantes e canais variados." <span>- Ana P.</span></p>
-      <p>"Recomendo para toda a família, super completo!" <span>- Lucas T.</span></p>
-      <p>"Streaming sem travamentos, perfeito para Smart TV." <span>- Fernanda R.</span></p>
-      <p>"Atendimento rápido e eficiente, nota 10!" <span>- Gabriel L.</span></p>
+      <p>"Amei o app UniTV, funciona perfeitamente na minha Smart TV!" <span>- João Silva</span></p>
+      <p>"Youcine tem uma seleção incrível de filmes, super recomendo." <span>- Maria Souza</span></p>
+      <p>"O suporte é rápido e eficiente, sempre ajudando quando preciso." <span>- Carlos Oliveira</span></p>
+      <p>"TV Express salvando as noites de séries em casa!" <span>- Ana Paula</span></p>
     </div>
   </section>
 
   <section id="terms" data-aos="fade-up">
     <h2>Termos de Uso</h2>
-    <p>Ao utilizar os aplicativos do TV Express Brasil, você concorda com os seguintes termos:</p>
-    <ul>
-      <li>Os aplicativos são fornecidos "no estado em que se encontram" e podem ser atualizados ou modificados a qualquer momento sem aviso prévio.</li>
-      <li>Você concorda em usar os aplicativos apenas para fins legais e não para atividades ilegais.</li>
-      <li>Não garantimos disponibilidade contínua dos serviços, podendo haver interrupções.</li>
-      <li>Limitação de responsabilidade: não nos responsabilizamos por danos diretos ou indiretos decorrentes do uso dos aplicativos.</li>
-      <li>Os termos podem ser atualizados a qualquer momento sem aviso prévio.</li>
-    </ul>
-    <p>Se não concordar com estes termos, por favor, não utilize nossos serviços.</p>
+    <p>Este site oferece acesso a aplicativos e conteúdos de terceiros. Ao baixar e utilizar qualquer aplicativo, você concorda com os termos de uso e políticas de privacidade dos desenvolvedores dos apps.</p>
+    <p>Os conteúdos disponibilizados são para uso pessoal e não comercial. Não nos responsabilizamos pelo uso inadequado ou ilegal destes aplicativos.</p>
+    <p>Para dúvidas e suporte, entre em contato com o suporte oficial do aplicativo.</p>
   </section>
 </main>
 
 <footer>
-  &copy; 2025 TV Express Brasil. Todos os direitos reservados.
+  &copy; 2025 TV Express Brasil - Todos os direitos reservados.
 </footer>
 
-<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init();
-
-  // Header scrolled effect
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 50) {
+  // Scroll header background change
+  window.addEventListener('scroll', function() {
+    const header = document.getElementById('header');
+    if(window.scrollY > 20) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
   });
 
-  // Menu active link on click & scroll
-  const navLinks = document.querySelectorAll('nav a');
-  const sections = document.querySelectorAll('main section[id]');
+  // Nav active class change on scroll
+  const sections = document.querySelectorAll('main section, main #testimonials, main #terms');
+  const navLinks = document.querySelectorAll('header nav a');
 
-  function setActiveLink() {
+  window.addEventListener('scroll', () => {
     let current = '';
-    const scrollY = window.pageYOffset;
-
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 80;
-      const sectionHeight = section.offsetHeight;
-      if(scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      const sectionTop = section.offsetTop - 90;
+      if(scrollY >= sectionTop) {
         current = section.getAttribute('id');
       }
     });
@@ -545,26 +533,7 @@
         link.classList.add('active');
       }
     });
-  }
-
-  window.addEventListener('scroll', setActiveLink);
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      navLinks.forEach(l => l.classList.remove('active'));
-      e.target.classList.add('active');
-    });
   });
-
-  // Animate overlay text on home load and menu click
-  const overlayText = document.querySelector('.overlay-text');
-  function restartAnimation() {
-    overlayText.classList.remove('animate');
-    void overlayText.offsetWidth; // reflow
-    overlayText.classList.add('animate');
-  }
-  document.querySelector('nav a[href="#home"]').addEventListener('click', restartAnimation);
-  window.addEventListener('load', restartAnimation);
 </script>
 
 </body>
