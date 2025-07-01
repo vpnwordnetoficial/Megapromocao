@@ -184,21 +184,26 @@
     gap: 40px;
     margin-bottom: 40px;
   }
-  .service-icon-item {
-    background: #1e2745;
-    border-radius: 16px;
-    width: 150px;
-    padding: 25px 15px;
-    box-shadow: 0 0 15px #00e5ffaa;
-    cursor: default;
-    color: #00e5ff;
-    font-weight: 700;
-    user-select: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.service-icon-item {
+  background: #1e2745;
+  border-radius: 16px;
+  width: 150px;
+  padding: 25px 15px;
+  box-shadow: 0 0 15px #00e5ffaa;
+  cursor: default;
+  color: #00e5ff;
+  font-weight: 700;
+  user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-icon-item span {
+  color: #ffffff !important;
+}
+
   .service-icon-item:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 0 30px #00ffffcc;
@@ -228,10 +233,13 @@
     box-shadow: 0 0 30px #00ffff;
   }
   .service-info {
-    font-size: 1.3rem;
-    color: #9ddfff;
-    max-width: 650px;
-    margin: 0 auto;
+  font-size: 1.3rem;
+  color: #ffffff;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
     line-height: 1.5;
   }
   /* Testimonials Section sem caixa, texto direto no fundo */
@@ -281,7 +289,7 @@
     background: linear-gradient(135deg, #001933, #003366);
     border-radius: 16px;
     box-shadow: 0 0 40px #00e5ffaa;
-    color: #b0dfff;
+    color: #ffffff;
     font-size: 1rem;
     line-height: 1.6;
     text-align: justify;
