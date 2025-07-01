@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>WORD BAIXAR APLICATIVOS</title>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -129,7 +129,7 @@
       background-size: 100% auto;
     }
     100% {
-      background-size: 150% auto;
+      background-size: 105% auto;
     }
   }
   .overlay-text {
@@ -148,17 +148,10 @@
     animation: fadeInDown 1.2s ease forwards;
   }
   /* Linha animada sob o texto */
-  .overlay-text::after {
-    content: "";
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    width: 0;
-    height: 4px;
-    background: #00e5ff;
-    border-radius: 2px;
-    transform: translateX(-50%);
-  }
+.overlay-text::after {
+  content: none;
+}
+
   .overlay-text.animate::after {
     animation: lineGrow 1.2s ease forwards;
     animation-delay: 1.3s;
@@ -452,53 +445,30 @@
     display: flex;
   }
 }
-@media(max-width: 760px) {
-  .service-icons {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+  @media (max-width: 760px) {
+  html, body {
+    overflow-x: hidden;
   }
 
-  .service-icon-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    max-width: 320px;
-    padding: 20px;
+  .section-home {
+    background-attachment: scroll !important;
+  }
+
+  .overlay-text {
+    font-size: 1.8rem;
+    padding: 20px 15px;
+  }
+
+  .service-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .download-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    width: 100%;
     text-align: center;
-    margin: 0 auto;
   }
-
-  .service-icon {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 12px;
-  }
-
-  .service-icon-item span {
-    font-size: 1.2rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-    color: #ffffff;
-  }
-
-.download-btn {
-  display: block;
-  margin: 12px auto 0 auto;
-  padding: 14px 0;
-  width: 90%;
-  max-width: 300px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  background: #00e5ff;
-  color: #0a0f19;
-  border-radius: 30px;
-  text-decoration: none;
-  box-shadow: 0 0 18px #00e5ff;
-  text-align: center;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
 
   .service-icon-item {
     flex-direction: column !important;
@@ -524,28 +494,26 @@
     width: 100%;
   }
 }
-  
-@media (max-width: 760px) {
-  .service-icon-item {
-    transform: none !important;
-    box-shadow: 0 0 15px #00e5ffaa !important;
+  /* Mostrar linha animada só no PC */
+@media (min-width: 761px) {
+  .overlay-text::after {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background: #00e5ff;
+    border-radius: 2px;
+    transform: translateX(-50%);
   }
 
-  .service-icon-item:hover {
-    transform: none !important;
-    box-shadow: 0 0 15px #00e5ffaa !important;
+  .overlay-text.animate::after {
+    animation: lineGrow 1.2s ease forwards;
+    animation-delay: 1.3s;
   }
 }
-@media (max-width: 760px) {
-  .service-icon-item {
-    transform: none !important;
-    transition: none !important;
-  }
-  .service-icon-item:hover {
-    transform: none !important;
-    box-shadow: 0 0 15px #00e5ffaa !important; /* mantém sombra, mas sem zoom */
-  }
-}
+
   </style>
 </head>
 <body>
@@ -829,19 +797,6 @@ mobileLinks.forEach(link => {
     hamburgerBtn.setAttribute('aria-expanded', 'false');
   });
 });
-  </script>
-    <script>
-  if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    window.addEventListener('touchstart', function(event) {
-      if (event.touches.length > 1) {
-        event.preventDefault();
-      }
-    }, { passive: false });
-
-    window.addEventListener('gesturestart', function(event) {
-      event.preventDefault();
-    });
-  }
   </script>
 </body>
 </html>
