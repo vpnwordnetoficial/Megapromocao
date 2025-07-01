@@ -536,7 +536,16 @@
     box-shadow: 0 0 15px #00e5ffaa !important;
   }
 }
-
+@media (max-width: 760px) {
+  .service-icon-item {
+    transform: none !important;
+    transition: none !important;
+  }
+  .service-icon-item:hover {
+    transform: none !important;
+    box-shadow: 0 0 15px #00e5ffaa !important; /* mantém sombra, mas sem zoom */
+  }
+}
   </style>
 </head>
 <body>
