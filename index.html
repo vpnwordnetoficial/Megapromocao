@@ -706,7 +706,7 @@
       overlayText.classList.add('animate');
     });
     
-    // Toggle mobile menu
+// Toggle mobile menu
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -716,6 +716,17 @@ hamburgerBtn.addEventListener('click', () => {
 
   const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
   hamburgerBtn.setAttribute('aria-expanded', !expanded);
+});
+
+// Fecha o menu mobile ao clicar em um link
+const mobileLinks = document.querySelectorAll('#mobile-menu a');
+
+mobileLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.classList.remove('active');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+  });
 });
   </script>
 </body>
