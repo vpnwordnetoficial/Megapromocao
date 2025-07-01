@@ -104,14 +104,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: bgZoom 15s ease-in-out infinite alternate;
+    animation: bgZoom 10s ease-in-out infinite alternate;
   }
   @keyframes bgZoom {
     0% {
       background-size: 100% auto;
     }
     100% {
-      background-size: 110% auto;
+      background-size: 150% auto;
     }
   }
   .overlay-text {
@@ -557,6 +557,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init();
+
   // Scroll header background change
   window.addEventListener('scroll', function() {
     const header = document.getElementById('header');
@@ -587,7 +588,16 @@
       }
     });
   });
-</script>
 
+  // Animação no texto "Bem-vindo ao TV Express Brasil!" toda vez que clicar no menu Início
+  const homeLink = document.querySelector('nav a[href="#home"]');
+  const overlayText = document.querySelector('.overlay-text');
+
+  homeLink.addEventListener('click', (e) => {
+    overlayText.classList.remove('animate');
+    void overlayText.offsetWidth; // força reflow para reiniciar animação
+    overlayText.classList.add('animate');
+  });
+</script>
 </body>
 </html>
