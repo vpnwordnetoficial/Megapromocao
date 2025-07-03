@@ -403,408 +403,219 @@
     }
 
     .faq-question::after {
-      content: "\f078";
+      content: "\f107";
       font-family: "Font Awesome 6 Free";
       font-weight: 900;
       position: absolute;
-      right: 25px;
+      right: 1.5rem;
       top: 50%;
       transform: translateY(-50%);
-      transition: transform 0.35s ease;
+      transition: transform 0.3s ease;
+      font-size: 1.25rem;
+      color: #0088ffdd;
       user-select: none;
-      color: #0088ff;
     }
 
     .faq-question[aria-expanded="true"]::after {
       transform: translateY(-50%) rotate(180deg);
+      color: #0055aa;
     }
 
     .faq-answer {
       max-height: 0;
       overflow: hidden;
+      padding: 0 2rem;
       color: #c0d8ffcc;
       font-size: 1rem;
       line-height: 1.6;
-      padding: 0 2rem;
-      transition: max-height 0.35s ease, padding 0.3s ease;
       user-select: text;
+      transition: max-height 0.5s ease, padding 0.3s ease;
     }
 
     .faq-answer.open {
-      max-height: 600px;
+      max-height: 500px; /* valor suficiente para expandir */
       padding: 1rem 2rem 1.5rem 2rem;
     }
 
-    /* GALERIA DE PRINTS */
-    .prints-gallery {
-      max-width: 1000px;
-      margin: 3rem auto 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 20px;
-      user-select: none;
-    }
-
-    .prints-gallery img {
-      width: 100%;
-      border-radius: 15px;
-      cursor: pointer;
-      box-shadow: 0 0 25px #0088ffbb;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      object-fit: cover;
-      aspect-ratio: 9 / 16;
-      user-select: none;
-    }
-
-    .prints-gallery img:hover,
-    .prints-gallery img:focus {
-      transform: scale(1.07);
-      box-shadow: 0 0 40px #00aaff;
-      outline: none;
-    }
-
-    /* LIGHTBOX */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.95);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 99999;
-      user-select: none;
-    }
-
-    .lightbox.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 20px;
-      box-shadow: 0 0 40px #0088ffbb;
-      user-select: none;
-      object-fit: contain;
-    }
-
-    .lightbox .close-btn {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      font-size: 3rem;
-      color: #0088ff;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.3s ease;
-      z-index: 100000;
-      border: none;
-      background: none;
-    }
-
-    .lightbox .close-btn:hover,
-    .lightbox .close-btn:focus {
-      color: #0055aa;
-      outline: none;
-    }
-
-    /* RODAPÉ */
+    /* FOOTER */
     footer {
       width: 100%;
-      background-color: #0a0a0a;
-      padding: 30px 20px;
+      background-color: #121214;
       text-align: center;
+      padding: 1.4rem 0;
+      font-size: 1rem;
       color: #0088ffcc;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
       user-select: none;
-      box-shadow: inset 0 10px 40px #0088ff33;
+      box-shadow: inset 0 1px 3px #0088ff33;
       margin-top: auto;
     }
 
-    footer a {
-      color: #0088ff;
-      text-decoration: none;
-      font-weight: 600;
-      user-select: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover,
-    footer a:focus {
-      color: #0055aa;
-      outline: none;
-    }
-
-    footer .socials {
-      margin-top: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      font-size: 1.6rem;
-      user-select: none;
-    }
-
-    footer .socials a {
-      color: #0088ff;
-      transition: color 0.3s ease;
-      user-select: none;
-    }
-
-    footer .socials a:hover,
-    footer .socials a:focus {
-      color: #0055aa;
-      outline: none;
-    }
-
     /* RESPONSIVO */
-    @media (max-width: 900px) {
-      main {
-        padding: 3rem 1rem 3rem 1rem;
-      }
-
-      h2.section-title {
-        font-size: 2.2rem;
-      }
-
+    @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2.4rem;
       }
 
-      .app-card {
-        padding: 20px 15px;
+      .hero-content p {
+        font-size: 1rem;
       }
-    }
 
-    @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 1.9rem;
+      main {
+        margin: -80px 1rem 2rem 1rem;
+        padding: 3rem 1.5rem 2rem 1.5rem;
+        border-radius: 15px;
       }
 
       .btn-primary {
-        font-size: 1rem;
+        font-size: 1.1rem;
         padding: 12px 30px;
-      }
-
-      nav ul {
-        gap: 1rem;
       }
     }
   </style>
+
+  <script>
+    // Script para FAQ toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const faqButtons = document.querySelectorAll(".faq-question");
+
+      faqButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          const expanded = button.getAttribute("aria-expanded") === "true" || false;
+          button.setAttribute("aria-expanded", !expanded);
+
+          const answer = button.nextElementSibling;
+          if (answer.classList.contains("open")) {
+            answer.classList.remove("open");
+          } else {
+            answer.classList.add("open");
+          }
+        });
+      });
+
+      // Header background on scroll
+      const header = document.querySelector("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 30) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
-
-
-  <!-- HEADER -->
-  <header id="header" role="banner">
+  <header role="banner">
     <div class="logo" tabindex="0">IPTV PREMIUM BRASIL</div>
     <nav role="navigation" aria-label="Menu principal">
       <ul>
         <li><a href="#apps" class="active" tabindex="0">Apps</a></li>
-        <li><a href="#instalacao" tabindex="0">Instalação</a></li>
+        <li><a href="#install" tabindex="0">Instalação</a></li>
         <li><a href="#faq" tabindex="0">FAQ</a></li>
-        <li><a href="#prints" tabindex="0">Galeria</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" role="img" aria-label="Imagem de fundo com chamada para baixar apps">
+  <section class="hero" role="img" aria-label="Imagem de fundo com entretenimento IPTV">
     <div class="hero-content">
-      <h1 tabindex="0">Assista Filmes e Séries Grátis no Seu Celular e TV Box</h1>
-      <p tabindex="0">Apps atualizados, conteúdo premium grátis, fácil instalação e suporte completo para seu entretenimento.</p>
-      <a href="#apps" class="btn-primary" tabindex="0">Ver Aplicativos</a>
+      <h1 tabindex="0">Baixe os Melhores Apps IPTV para Android e TV Box</h1>
+      <p tabindex="0">Youcine, Cine Vision, Eppi Cinema, TV Express e muito mais. Conteúdo gratuito e atualizado!</p>
+      <a href="#apps" class="btn-primary" tabindex="0" role="button" aria-label="Ver aplicativos para download">Ver Apps</a>
     </div>
   </section>
 
-  <main>
-
-    <!-- APPS -->
-    <section id="apps" tabindex="-1" aria-labelledby="apps-title">
-      <h2 class="section-title" id="apps-title">Aplicativos IPTV Top</h2>
-      <div class="apps-grid" role="list">
-        <article class="app-card" role="listitem" tabindex="0" aria-label="Youcine atualizado app">
-          <div class="app-icon" aria-hidden="true"><i class="fas fa-film"></i></div>
-          <h3 class="app-title">Youcine Atualizado</h3>
-          <p class="app-desc">O melhor app para streaming de filmes, séries e canais ao vivo com atualização constante e interface fácil.</p>
-          <a href="https://example.com/youcine.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
-            aria-label="Baixar Youcine Atualizado APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar Youcine</a>
-        </article>
-        <article class="app-card" role="listitem" tabindex="0" aria-label="Cine Vision V5 app">
-          <div class="app-icon" aria-hidden="true"><i class="fas fa-tv"></i></div>
-          <h3 class="app-title">Cine Vision V5</h3>
-          <p class="app-desc">Conteúdo HD com muitos filmes e séries, ideal para Android e TV Box.</p>
-          <a href="https://example.com/cinevision.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
-            aria-label="Baixar Cine Vision APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar Cine Vision</a>
-        </article>
-        <article class="app-card" role="listitem" tabindex="0" aria-label="Eppi Cinema app">
-          <div class="app-icon" aria-hidden="true"><i class="fas fa-play-circle"></i></div>
-          <h3 class="app-title">Eppi Cinema</h3>
-          <p class="app-desc">App leve e rápido, perfeito para smart TVs e celulares Android.</p>
-          <a href="https://example.com/eppicinema.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
-            aria-label="Baixar Eppi Cinema APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar Eppi Cinema</a>
-        </article>
-        <article class="app-card" role="listitem" tabindex="0" aria-label="TV Express app">
-          <div class="app-icon" aria-hidden="true"><i class="fas fa-tv-retro"></i></div>
-          <h3 class="app-title">TV Express</h3>
-          <p class="app-desc">O melhor para canais ao vivo, fácil de usar e com ótima estabilidade.</p>
-          <a href="https://example.com/tvexpress.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
-            aria-label="Baixar TV Express APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar TV Express</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- INSTALAÇÃO -->
-    <section id="instalacao" tabindex="-1" aria-labelledby="instalacao-title" class="install-section">
-      <h2 class="section-title" id="instalacao-title">Como Instalar os Apps</h2>
-      <ul class="install-steps" aria-label="Passos para instalação dos aplicativos">
-        <li>Baixe o arquivo APK do aplicativo desejado clicando no botão de download.</li>
-        <li>Permita a instalação de apps de fontes desconhecidas nas configurações do seu celular ou TV Box.</li>
-        <li>Abra o arquivo APK baixado e siga as instruções na tela para instalar.</li>
-        <li>Após a instalação, abra o app, configure conforme desejado e aproveite seu conteúdo grátis.</li>
-        <li>Para dúvidas, consulte a seção FAQ ou nos procure nas redes sociais.</li>
-      </ul>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" tabindex="-1" aria-labelledby="faq-title" class="faq-section">
-      <h2 class="section-title" id="faq-title">Perguntas Frequentes (FAQ)</h2>
-      <article class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
-          O Youcine funciona em TV Box?
-        </button>
-        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-btn">
-          Sim, o Youcine é compatível com a maioria dos modelos de TV Box Android.
-        </div>
+  <main role="main" id="apps">
+    <h2 class="section-title" tabindex="0">Apps IPTV Premium</h2>
+    <div class="apps-grid">
+      <!-- Youcine -->
+      <article class="app-card" tabindex="0" aria-label="Aplicativo Youcine, app IPTV para filmes e séries">
+        <div class="app-icon"><i class="fa-solid fa-play"></i></div>
+        <h3 class="app-title">Youcine</h3>
+        <p class="app-desc">App para assistir filmes e séries em alta qualidade com atualização constante.</p>
+        <a href="https://example.com/youcine.apk" class="btn-download" tabindex="0" aria-label="Baixar Youcine apk">Baixar APK</a>
       </article>
-      <article class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
-          Preciso pagar para usar esses apps?
-        </button>
-        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-btn">
-          Não, todos os aplicativos listados aqui oferecem conteúdo gratuito e atualizado.
-        </div>
-      </article>
-      <article class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
-          É seguro baixar APK de terceiros?
-        </button>
-        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
-          Sempre baixe de fontes confiáveis. Os links aqui são verificados e seguros para uso.
-        </div>
-      </article>
-      <article class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
-          Como atualizar os apps?
-        </button>
-        <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-btn">
-          Você deve baixar novamente a versão atualizada quando disponibilizarmos novos links.
-        </div>
-      </article>
-    </section>
 
-    <!-- GALERIA DE PRINTS -->
-    <section id="prints" tabindex="-1" aria-labelledby="prints-title" class="prints-gallery">
-      <h2 class="section-title" id="prints-title">Galeria de Prints</h2>
-      <img src="https://s14.gifyu.com/images/print1.webp" alt="Print da tela principal do Youcine" tabindex="0" />
-      <img src="https://s14.gifyu.com/images/print2.webp" alt="Print do Cine Vision rodando no TV Box" tabindex="0" />
-      <img src="https://s14.gifyu.com/images/print3.webp" alt="Print do Eppi Cinema com lista de filmes" tabindex="0" />
-      <img src="https://s14.gifyu.com/images/print4.webp" alt="Print da tela do TV Express com canais ao vivo" tabindex="0" />
-    </section>
+      <!-- Cine Vision -->
+      <article class="app-card" tabindex="0" aria-label="Aplicativo Cine Vision, app IPTV para filmes e séries">
+        <div class="app-icon"><i class="fa-solid fa-film"></i></div>
+        <h3 class="app-title">Cine Vision</h3>
+        <p class="app-desc">Aplicativo fácil de usar para streaming gratuito com uma vasta biblioteca.</p>
+        <a href="https://example.com/cinevision.apk" class="btn-download" tabindex="0" aria-label="Baixar Cine Vision apk">Baixar APK</a>
+      </article>
+
+      <!-- Eppi Cinema -->
+      <article class="app-card" tabindex="0" aria-label="Aplicativo Eppi Cinema, app IPTV para filmes e séries">
+        <div class="app-icon"><i class="fa-solid fa-video"></i></div>
+        <h3 class="app-title">Eppi Cinema</h3>
+        <p class="app-desc">Assista filmes e séries com interface simples e rápida, perfeito para TV Box.</p>
+        <a href="https://example.com/eppicinema.apk" class="btn-download" tabindex="0" aria-label="Baixar Eppi Cinema apk">Baixar APK</a>
+      </article>
+
+      <!-- TV Express -->
+      <article class="app-card" tabindex="0" aria-label="Aplicativo TV Express, app IPTV para canais ao vivo">
+        <div class="app-icon"><i class="fa-solid fa-tv"></i></div>
+        <h3 class="app-title">TV Express</h3>
+        <p class="app-desc">Melhores canais ao vivo com alta estabilidade e conteúdo atualizado.</p>
+        <a href="https://example.com/tvexpress.apk" class="btn-download" tabindex="0" aria-label="Baixar TV Express apk">Baixar APK</a>
+      </article>
+    </div>
   </main>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-img-alt" tabindex="-1">
-    <button class="close-btn" id="lightbox-close" aria-label="Fechar galeria"><i class="fas fa-times"></i></button>
-    <img id="lightbox-img" src="" alt="" />
-  </div>
+  <section class="install-section" id="install" aria-labelledby="install-title">
+    <h3 id="install-title" tabindex="0">Como Instalar</h3>
+    <ol class="install-steps">
+      <li>Baixe o arquivo APK clicando no botão "Baixar APK" do aplicativo desejado.</li>
+      <li>Permita a instalação de aplicativos de fontes desconhecidas nas configurações do seu Android.</li>
+      <li>Abra o arquivo APK baixado e siga as instruções para instalar o app.</li>
+      <li>Após a instalação, abra o aplicativo e aproveite todo o conteúdo gratuito.</li>
+      <li>Mantenha seu app sempre atualizado baixando as versões mais recentes aqui no site.</li>
+    </ol>
+  </section>
 
-  <!-- SCRIPT -->
-  <script>
-    // Sticky header background change on scroll
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <h3 id="faq-title" tabindex="0">Perguntas Frequentes</h3>
 
-    // Menu active link highlight
-    const menuLinks = document.querySelectorAll('nav ul li a');
-    menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
+        O que é IPTV?
+      </button>
+      <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-btn">
+        IPTV é um serviço que permite assistir canais de TV e conteúdos pela internet em dispositivos compatíveis.
+      </div>
+    </div>
 
-    // FAQ accordion toggle
-    const faqs = document.querySelectorAll('.faq-question');
-    faqs.forEach(faq => {
-      faq.addEventListener('click', () => {
-        const expanded = faq.getAttribute('aria-expanded') === 'true';
-        faq.setAttribute('aria-expanded', !expanded);
-        faq.classList.toggle('active');
-        const answer = faq.nextElementSibling;
-        if (answer.classList.contains('open')) {
-          answer.classList.remove('open');
-        } else {
-          answer.classList.add('open');
-        }
-      });
-    });
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
+        Preciso pagar para usar esses aplicativos?
+      </button>
+      <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-btn">
+        Não, todos os aplicativos listados aqui oferecem conteúdo gratuito para assistir filmes, séries e canais ao vivo.
+      </div>
+    </div>
 
-    // Lightbox functionality
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const galleryImages = document.querySelectorAll('.prints-gallery img');
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+        Posso usar esses apps em qualquer dispositivo Android?
+      </button>
+      <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+        Sim, os apps são compatíveis com smartphones, tablets e TV Box Android. Certifique-se de que o dispositivo esteja atualizado.
+      </div>
+    </div>
 
-    galleryImages.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.classList.add('active');
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.focus();
-      });
-      img.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          img.click();
-        }
-      });
-    });
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
+        Como faço para atualizar os aplicativos?
+      </button>
+      <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-btn">
+        Sempre que lançarmos uma versão nova, disponibilizaremos o link para download atualizado aqui no site. Basta baixar e instalar por cima da versão antiga.
+      </div>
+    </div>
+  </section>
 
-    lightboxClose.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      lightboxImg.src = '';
-      lightboxImg.alt = '';
-    });
-
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-        lightboxImg.src = '';
-        lightboxImg.alt = '';
-      }
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-        lightbox.classList.remove('active');
-        lightboxImg.src = '';
-        lightboxImg.alt = '';
-      }
-    });
-  </script>
-
+  <footer role="contentinfo">
+    &copy; 2025 IPTV Premium Brasil. Todos os direitos reservados.
+  </footer>
 </body>
 
 </html>
