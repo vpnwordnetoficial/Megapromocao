@@ -490,36 +490,64 @@
     }
   </style>
 
-  <script>
-    // Script para FAQ toggle
-    document.addEventListener("DOMContentLoaded", () => {
-      const faqButtons = document.querySelectorAll(".faq-question");
+<script>
+  // Script para FAQ toggle e header scroll
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqButtons = document.querySelectorAll(".faq-question");
 
-      faqButtons.forEach(button => {
-        button.addEventListener("click", () => {
-          const expanded = button.getAttribute("aria-expanded") === "true" || false;
-          button.setAttribute("aria-expanded", !expanded);
+    faqButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") === "true" || false;
+        button.setAttribute("aria-expanded", !expanded);
 
-          const answer = button.nextElementSibling;
-          if (answer.classList.contains("open")) {
-            answer.classList.remove("open");
-          } else {
-            answer.classList.add("open");
-          }
-        });
-      });
-
-      // Header background on scroll
-      const header = document.querySelector("header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 30) {
-          header.classList.add("scrolled");
+        const answer = button.nextElementSibling;
+        if (answer.classList.contains("open")) {
+          answer.classList.remove("open");
         } else {
-          header.classList.remove("scrolled");
+          answer.classList.add("open");
         }
       });
     });
-  </script>
+
+    const header = document.querySelector("header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
+    // Scrollspy para ativar link no menu conforme rola a página
+    const sections = [
+      document.getElementById("apps"),
+      document.getElementById("install"),
+      document.getElementById("faq")
+    ];
+    const menuLinks = document.querySelectorAll("nav ul li a");
+
+    window.addEventListener("scroll", () => {
+      let currentSectionId = "";
+
+      sections.forEach(section => {
+        if (!section) return;
+        const top = section.offsetTop - 100; // ajuste para compensar header fixo
+        if (window.scrollY >= top) {
+          currentSectionId = section.id;
+        }
+      });
+
+      menuLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSectionId}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  });
+</script>
+
+
 </head>
 
 <body>
