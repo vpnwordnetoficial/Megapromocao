@@ -352,25 +352,25 @@
       margin-bottom: 1.8rem;
     }
 
-    .install-steps li::before {
-      content: counter(step-counter);
-      counter-increment: step-counter;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 38px;
-      height: 38px;
-      background-color: #0088ff;
-      border-radius: 50%;
-      color: #121214;
-      font-weight: 700;
-      font-size: 1.4rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      user-select: none;
-      box-shadow: 0 0 12px #0088ffcc;
-    }
+.install-steps li::before {
+  content: counter(step-counter);
+  counter-increment: step-counter;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 38px;
+  height: 38px;
+  background-color: #f17f1c; /* <-- fundo azul */
+  border-radius: 50%;
+  color: #000000;            /* <-- texto preto escuro */
+  font-weight: 700;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  box-shadow: 0 0 12px #ffffff;
+}
 
     /* FAQ */
     .faq-section {
