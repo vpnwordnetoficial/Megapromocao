@@ -812,6 +812,17 @@
         }
       });
     });
+
+    // ✅ Fecha o menu ao clicar fora dele
+    document.addEventListener("click", (event) => {
+      const isOpen = nav.classList.contains("open");
+      const clickedOutsideMenu = !nav.contains(event.target) && !menuToggle.contains(event.target);
+
+      if (isOpen && clickedOutsideMenu) {
+        nav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
   });
 </script>
 </body>
