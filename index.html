@@ -491,13 +491,20 @@
   </style>
 
 <script>
-  // Script para FAQ toggle e header scroll
   document.addEventListener("DOMContentLoaded", () => {
     const faqButtons = document.querySelectorAll(".faq-question");
+    const header = document.querySelector("header");
+    const sections = [
+      document.getElementById("apps"),
+      document.getElementById("install"),
+      document.getElementById("faq")
+    ];
+    const menuLinks = document.querySelectorAll("nav ul li a");
 
+    // Toggle FAQ
     faqButtons.forEach(button => {
       button.addEventListener("click", () => {
-        const expanded = button.getAttribute("aria-expanded") === "true" || false;
+        const expanded = button.getAttribute("aria-expanded") === "true";
         button.setAttribute("aria-expanded", !expanded);
 
         const answer = button.nextElementSibling;
@@ -509,29 +516,20 @@
       });
     });
 
-    const header = document.querySelector("header");
+    // Scroll event unificado
     window.addEventListener("scroll", () => {
+      // Header background toggle
       if (window.scrollY > 30) {
         header.classList.add("scrolled");
       } else {
         header.classList.remove("scrolled");
       }
-    });
 
-    // Scrollspy para ativar link no menu conforme rola a página
-    const sections = [
-      document.getElementById("apps"),
-      document.getElementById("install"),
-      document.getElementById("faq")
-    ];
-    const menuLinks = document.querySelectorAll("nav ul li a");
-
-    window.addEventListener("scroll", () => {
+      // Scrollspy menu
       let currentSectionId = "";
-
       sections.forEach(section => {
         if (!section) return;
-        const top = section.offsetTop - 100; // ajuste para compensar header fixo
+        const top = section.offsetTop - 100;
         if (window.scrollY >= top) {
           currentSectionId = section.id;
         }
@@ -544,9 +542,11 @@
         }
       });
     });
+
+    // Inicializa a ativação correta do menu no carregamento
+    window.dispatchEvent(new Event('scroll'));
   });
 </script>
-
 
 </head>
 
