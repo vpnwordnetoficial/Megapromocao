@@ -43,6 +43,8 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      margin: 0;
+      padding-top: 70px; /* para header fixo não sobrepor conteúdo */
     }
 
     a {
@@ -221,28 +223,28 @@
     }
 
     .apps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-}
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+    }
 
-@media (max-width: 1024px) {
-  .apps-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+    @media (max-width: 1024px) {
+      .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
-@media (max-width: 768px) {
-  .apps-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    @media (max-width: 768px) {
+      .apps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-@media (max-width: 480px) {
-  .apps-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    @media (max-width: 480px) {
+      .apps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .app-card {
       background-color: #2a2a34;
@@ -327,24 +329,24 @@
     }
 
     .install-section h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 1.8rem;
-  text-align: center;
-  text-shadow: 0 0 10px #ffffff;
-  user-select: text;
-}
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      text-shadow: 0 0 10px #ffffff;
+      user-select: text;
+    }
 
     .install-steps {
-  list-style: none;
-  counter-reset: step-counter;
-  color: #ffffff; /* branco puro */
-  font-size: 1.15rem;
-  line-height: 1.7;
-  user-select: text;
-  padding-left: 0;
-}
+      list-style: none;
+      counter-reset: step-counter;
+      color: #ffffff; /* branco puro */
+      font-size: 1.15rem;
+      line-height: 1.7;
+      user-select: text;
+      padding-left: 0;
+    }
 
     .install-steps li {
       position: relative;
@@ -352,25 +354,25 @@
       margin-bottom: 1.8rem;
     }
 
-.install-steps li::before {
-  content: counter(step-counter);
-  counter-increment: step-counter;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 38px;
-  height: 38px;
-  background-color: #ffaf00; /* <-- fundo laranja */
-  border-radius: 50%;
-  color: #000000;            /* <-- texto preto escuro */
-  font-weight: 700;
-  font-size: 1.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  box-shadow: 0 0 12px #ffffff;
-}
+    .install-steps li::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      background-color: #ffaf00; /* fundo laranja */
+      border-radius: 50%;
+      color: #000000; /* texto preto escuro */
+      font-weight: 700;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      box-shadow: 0 0 12px #ffffff;
+    }
 
     /* FAQ */
     .faq-section {
@@ -399,19 +401,19 @@
     }
 
     .faq-question {
-  width: 100%;
-  padding: 1rem 2rem;
-  background: transparent;
-  color: #ffaf00; /* agora em branco */
-  font-weight: 700;
-  font-size: 1.15rem;
-  text-align: left;
-  cursor: pointer;
-  border: none;
-  user-select: none;
-  position: relative;
-  transition: background-color 0.3s ease;
-}
+      width: 100%;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: #ffaf00; /* laranja */
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-align: left;
+      cursor: pointer;
+      border: none;
+      user-select: none;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
 
     .faq-question:hover,
     .faq-question:focus {
@@ -439,15 +441,15 @@
     }
 
     .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  padding: 0 2rem;
-  color: #ffffff; /* branco puro */
-  font-size: 1rem;
-  line-height: 1.6;
-  user-select: text;
-  transition: max-height 0.5s ease, padding 0.3s ease;
-}
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 2rem;
+      color: #ffffff; /* branco puro */
+      font-size: 1rem;
+      line-height: 1.6;
+      user-select: text;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+    }
 
     .faq-answer.open {
       max-height: 500px; /* valor suficiente para expandir */
@@ -489,84 +491,26 @@
       }
     }
   </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const faqButtons = document.querySelectorAll(".faq-question");
-    const header = document.querySelector("header");
-    const sections = [
-      document.getElementById("apps"),
-      document.getElementById("install"),
-      document.getElementById("faq")
-    ];
-    const menuLinks = document.querySelectorAll("nav ul li a");
-
-    // Toggle FAQ
-    faqButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const expanded = button.getAttribute("aria-expanded") === "true";
-        button.setAttribute("aria-expanded", !expanded);
-
-        const answer = button.nextElementSibling;
-        if (answer.classList.contains("open")) {
-          answer.classList.remove("open");
-        } else {
-          answer.classList.add("open");
-        }
-      });
-    });
-
-    // Scroll event unificado
-    window.addEventListener("scroll", () => {
-      // Header background toggle
-      if (window.scrollY > 30) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-
-      // Scrollspy menu
-      let currentSectionId = "";
-      sections.forEach(section => {
-        if (!section) return;
-        const top = section.offsetTop - 100;
-        if (window.scrollY >= top) {
-          currentSectionId = section.id;
-        }
-      });
-
-      menuLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${currentSectionId}`) {
-          link.classList.add("active");
-        }
-      });
-    });
-
-    // Inicializa a ativação correta do menu no carregamento
-    window.dispatchEvent(new Event('scroll'));
-  });
-</script>
-
 </head>
 
 <body>
-  <header role="banner">
-    <div class="logo" tabindex="0">IPTV PREMIUM BRASIL</div>
-    <nav role="navigation" aria-label="Menu principal">
+
+  <header>
+    <div class="logo">IPTV PREMIUM</div>
+    <nav>
       <ul>
-        <li><a href="#apps" class="active" tabindex="0">Apps</a></li>
-        <li><a href="#install" tabindex="0">Instalação</a></li>
-        <li><a href="#faq" tabindex="0">FAQ</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#install">Instalação</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero" role="img" aria-label="Imagem de fundo com entretenimento IPTV">
+  <section class="hero">
     <div class="hero-content">
-      <h1 tabindex="0">Baixe os Melhores Apps IPTV para Android e TV Box</h1>
-      <p tabindex="0">Youcine, Cine Vision, Eppi Cinema, TV Express e muito mais. Conteúdo gratuito e atualizado!</p>
-      <a href="#apps" class="btn-primary" tabindex="0" role="button" aria-label="Ver aplicativos para download">Ver Apps</a>
+      <h1>Baixe os melhores apps IPTV</h1>
+      <p>Para Android e TV Box com atualizações e conteúdos gratuitos.</p>
+      <a href="#apps" class="btn-primary">Ver Apps</a>
     </div>
   </section>
 
@@ -723,6 +667,63 @@
   <footer role="contentinfo">
     &copy; 2025 IPTV Premium Brasil. Todos os direitos reservados.
   </footer>
-</body>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqButtons = document.querySelectorAll(".faq-question");
+    const header = document.querySelector("header");
+    const sections = [
+      document.getElementById("apps"),
+      document.getElementById("install"),
+      document.getElementById("faq")
+    ];
+    const menuLinks = document.querySelectorAll("nav ul li a");
+
+    // Toggle FAQ
+    faqButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", !expanded);
+
+        const answer = button.nextElementSibling;
+        if (answer.classList.contains("open")) {
+          answer.classList.remove("open");
+        } else {
+          answer.classList.add("open");
+        }
+      });
+    });
+
+    // Scroll event unificado
+    window.addEventListener("scroll", () => {
+      // Header background toggle
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+      // Scrollspy menu
+      let currentSectionId = "";
+      sections.forEach(section => {
+        if (!section) return;
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) {
+          currentSectionId = section.id;
+        }
+      });
+
+      menuLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSectionId}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Inicializa a ativação correta do menu no carregamento
+    window.dispatchEvent(new Event('scroll'));
+  });
+</script>
+</body>
 </html>
