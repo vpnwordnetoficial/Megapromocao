@@ -220,12 +220,29 @@
       user-select: text;
     }
 
-    /* APPS GRID */
     .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
-    }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .apps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .apps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .apps-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
     .app-card {
       background-color: #2a2a34;
@@ -526,40 +543,102 @@
   </section>
 
   <main role="main" id="apps">
-    <h2 class="section-title" tabindex="0">Apps IPTV Premium</h2>
-    <div class="apps-grid">
-      <!-- Youcine -->
-      <article class="app-card" tabindex="0" aria-label="Aplicativo Youcine, app IPTV para filmes e séries">
-        <div class="app-icon"><i class="fa-solid fa-play"></i></div>
-        <h3 class="app-title">Youcine</h3>
-        <p class="app-desc">App para assistir filmes e séries em alta qualidade com atualização constante.</p>
-        <a href="https://example.com/youcine.apk" class="btn-download" tabindex="0" aria-label="Baixar Youcine apk">Baixar APK</a>
-      </article>
+    <!-- NOVA SEÇÃO 1 -->
+<h2 class="section-title" tabindex="0">Apps Filmes e Séries</h2>
+<div class="apps-grid">
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-clapperboard"></i></div>
+    <h3 class="app-title">MegaFlix</h3>
+    <p class="app-desc">Filmes e séries dublados e legendados com ótima qualidade.</p>
+    <a href="https://example.com/megaflix.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
 
-      <!-- Cine Vision -->
-      <article class="app-card" tabindex="0" aria-label="Aplicativo Cine Vision, app IPTV para filmes e séries">
-        <div class="app-icon"><i class="fa-solid fa-film"></i></div>
-        <h3 class="app-title">Cine Vision</h3>
-        <p class="app-desc">Aplicativo fácil de usar para streaming gratuito com uma vasta biblioteca.</p>
-        <a href="https://example.com/cinevision.apk" class="btn-download" tabindex="0" aria-label="Baixar Cine Vision apk">Baixar APK</a>
-      </article>
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-film"></i></div>
+    <h3 class="app-title">HDO Play</h3>
+    <p class="app-desc">Catálogo atualizado com lançamentos e clássicos do cinema.</p>
+    <a href="https://example.com/hdo.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
 
-      <!-- Eppi Cinema -->
-      <article class="app-card" tabindex="0" aria-label="Aplicativo Eppi Cinema, app IPTV para filmes e séries">
-        <div class="app-icon"><i class="fa-solid fa-video"></i></div>
-        <h3 class="app-title">Eppi Cinema</h3>
-        <p class="app-desc">Assista filmes e séries com interface simples e rápida, perfeito para TV Box.</p>
-        <a href="https://example.com/eppicinema.apk" class="btn-download" tabindex="0" aria-label="Baixar Eppi Cinema apk">Baixar APK</a>
-      </article>
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-video"></i></div>
+    <h3 class="app-title">Pobreflix</h3>
+    <p class="app-desc">App gratuito com streaming de filmes e séries direto no Android.</p>
+    <a href="https://example.com/pobreflix.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
 
-      <!-- TV Express -->
-      <article class="app-card" tabindex="0" aria-label="Aplicativo TV Express, app IPTV para canais ao vivo">
-        <div class="app-icon"><i class="fa-solid fa-tv"></i></div>
-        <h3 class="app-title">TV Express</h3>
-        <p class="app-desc">Melhores canais ao vivo com alta estabilidade e conteúdo atualizado.</p>
-        <a href="https://example.com/tvexpress.apk" class="btn-download" tabindex="0" aria-label="Baixar TV Express apk">Baixar APK</a>
-      </article>
-    </div>
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-tv"></i></div>
+    <h3 class="app-title">Super Cine</h3>
+    <p class="app-desc">Acompanhe os melhores lançamentos da telona no seu celular.</p>
+    <a href="https://example.com/supercine.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+</div>
+
+<!-- NOVA SEÇÃO 2 -->
+<h2 class="section-title" tabindex="0">Apps Canais Ao Vivo</h2>
+<div class="apps-grid">
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-broadcast-tower"></i></div>
+    <h3 class="app-title">Brasil TV</h3>
+    <p class="app-desc">Canais abertos e fechados com excelente qualidade de transmissão.</p>
+    <a href="https://example.com/brtv.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+    <h3 class="app-title">TV Online Max</h3>
+    <p class="app-desc">Diversos canais de esportes, filmes, notícias e mais.</p>
+    <a href="https://example.com/tvonlinemax.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-circle-play"></i></div>
+    <h3 class="app-title">Play TV Plus</h3>
+    <p class="app-desc">Transmissões ao vivo estáveis e interface intuitiva.</p>
+    <a href="https://example.com/playtvplus.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-signal"></i></div>
+    <h3 class="app-title">Ao Vivo HD</h3>
+    <p class="app-desc">App leve para assistir TV ao vivo com sinal rápido.</p>
+    <a href="https://example.com/aovivohd.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+</div>
+
+<!-- NOVA SEÇÃO 3 -->
+<h2 class="section-title" tabindex="0">Apps Kids & Família</h2>
+<div class="apps-grid">
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-child"></i></div>
+    <h3 class="app-title">Kids Flix</h3>
+    <p class="app-desc">Filmes e desenhos infantis para todas as idades.</p>
+    <a href="https://example.com/kidsflix.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-star"></i></div>
+    <h3 class="app-title">TV Família</h3>
+    <p class="app-desc">Canais e conteúdos voltados para toda a família.</p>
+    <a href="https://example.com/tvfamilia.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-heart"></i></div>
+    <h3 class="app-title">Desenhos Now</h3>
+    <p class="app-desc">Desenhos e séries animadas para crianças em português.</p>
+    <a href="https://example.com/desenhos.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+
+  <article class="app-card" tabindex="0">
+    <div class="app-icon"><i class="fa-solid fa-gamepad"></i></div>
+    <h3 class="app-title">Kids Play</h3>
+    <p class="app-desc">Plataforma segura com conteúdos educativos e diversão.</p>
+    <a href="https://example.com/kidsplay.apk" class="btn-download" tabindex="0">Baixar APK</a>
+  </article>
+</div>
+
   </main>
 
   <section class="install-section" id="install" aria-labelledby="install-title">
