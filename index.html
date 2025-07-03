@@ -490,21 +490,171 @@
         padding: 12px 30px;
       }
     }
+    
+    /* Esconder botão e sidebar por padrão em desktop */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* escondido à esquerda */
+  width: 250px;
+  height: 100vh;
+  background-color: #1e1e24;
+  box-shadow: 2px 0 8px rgba(0, 136, 255, 0.7);
+  padding-top: 70px; /* para não ficar atrás do header */
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0; /* aparece */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: block;
+  padding: 0.7rem 0;
+  user-select: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background-color: #0088ff;
+  color: #121212;
+  border-radius: 5px;
+}
+
+/* Mostrar o botão hambúrguer em telas pequenas */
+@media (max-width: 768px) {
+  nav ul {
+    display: none; /* esconder menu horizontal */
+  }
+
+  #menu-toggle {
+    display: block;
+  }
+}
+    
+    /* Botão hamburguer */
+.burger-button {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: #0088ff;
+  cursor: pointer;
+  display: none; /* só aparece em telas pequenas */
+  user-select: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.burger-button:focus {
+  outline: 2px solid #0055aa;
+  outline-offset: 2px;
+}
+
+/* Menu lateral oculto */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px; /* fora da tela */
+  width: 250px;
+  height: 100vh;
+  background-color: #1e1e24;
+  box-shadow: 2px 0 12px rgba(0, 136, 255, 0.7);
+  padding-top: 70px; /* para não ficar embaixo do header */
+  transition: left 0.3s ease;
+  z-index: 1500;
+  user-select: none;
+}
+
+/* Fundo clicável ao redor do menu */
+.side-menu.open {
+  left: 0;
+}
+
+/* Lista do menu lateral */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  margin: 1.2rem 0;
+}
+
+.side-menu ul li a {
+  color: #0088ff;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0.6rem 2rem;
+  display: block;
+  text-decoration: none;
+  user-select: text;
+  transition: background-color 0.3s ease;
+}
+
+.side-menu ul li a:hover,
+.side-menu ul li a:focus {
+  background-color: #0055aa;
+  outline: none;
+  color: #fff;
+}
+
+/* Mostrar botão hamburguer só em telas pequenas */
+@media (max-width: 768px) {
+  .burger-button {
+    display: block;
+  }
+
+  /* Oculta o menu do header normal */
+  header nav {
+    display: none;
+  }
+}
+
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">IPTV PREMIUM</div>
-    <nav>
-      <ul>
-        <li><a href="#apps">Apps</a></li>
-        <li><a href="#install">Instalação</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <div class="logo">IPTV PREMIUM</div>
+
+  <!-- Botão hambúrguer -->
+  <button id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar-menu">
+    <i class="fa fa-bars" style="font-size: 1.8rem; color: #0088ff;"></i>
+  </button>
+
+  <!-- Sidebar com menu -->
+  <nav id="sidebar-menu" class="sidebar" aria-hidden="true">
+    <ul>
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#install">Instalação</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+</header>
 
   <section class="hero">
     <div class="hero-content">
@@ -723,7 +873,63 @@
 
     // Inicializa a ativação correta do menu no carregamento
     window.dispatchEvent(new Event('scroll'));
+
+    // MENU HAMBURGUER E MENU LATERAL
+    // Cria botão hamburguer dinamicamente (ou você pode colocar no HTML)
+    const headerNav = document.querySelector("header nav");
+    const burgerButton = document.createElement("button");
+    burgerButton.setAttribute("aria-label", "Abrir menu");
+    burgerButton.classList.add("burger-button");
+    burgerButton.innerHTML = '<i class="fa fa-bars"></i>';
+    header.insertBefore(burgerButton, headerNav);
+
+    // Cria menu lateral
+    const sideMenu = document.createElement("nav");
+    sideMenu.classList.add("side-menu");
+    sideMenu.setAttribute("aria-hidden", "true");
+    sideMenu.innerHTML = `
+      <ul>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#install">Instalação</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    `;
+    document.body.appendChild(sideMenu);
+
+    // Função abrir/fechar menu lateral
+    function openMenu() {
+      sideMenu.setAttribute("aria-hidden", "false");
+      sideMenu.classList.add("open");
+      document.body.style.overflow = "hidden"; // evita scroll da página
+    }
+
+    function closeMenu() {
+      sideMenu.setAttribute("aria-hidden", "true");
+      sideMenu.classList.remove("open");
+      document.body.style.overflow = ""; // libera scroll
+    }
+
+    // Clique no botão hamburguer abre o menu
+    burgerButton.addEventListener("click", () => {
+      if (sideMenu.classList.contains("open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Fecha menu ao clicar em um link dentro dele
+    sideMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    // Fecha menu se clicar fora do menu (na sombra)
+    sideMenu.addEventListener("click", (e) => {
+      if (e.target === sideMenu) {
+        closeMenu();
+      }
+    });
   });
 </script>
-</body>
-</html>
