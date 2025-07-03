@@ -1,791 +1,807 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WORD BAIXAR APLICATIVOS</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-<!-- Font Awesome para ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-<!-- AOS Animations -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-<style>
-  /* Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-  }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: #0f1218;
-    color: #e1e9ff;
-    line-height: 1.6;
-  }
-  /* Header */
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(90deg, #0055ff, #00e5ff);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-    box-shadow: 0 3px 15px rgba(0, 85, 255, 0.7);
-    z-index: 9999;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  header.scrolled {
-    background: #0041cc;
-    box-shadow: 0 5px 25px rgba(0, 70, 200, 0.85);
-  }
-  header h1 {
-    color: #e1e9ff;
-    font-size: 28px;
-    font-weight: 700;
-    cursor: pointer;
-    letter-spacing: 2px;
-    text-shadow: 0 0 12px #00e5ffcc;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IPTV Premium Brasil | Apps Youcine, Cine Vision, Eppi Cinema e TV Express</title>
+  <meta name="description"
+    content="Baixe os melhores apps IPTV para Android e TV Box com atualizações e conteúdos gratuitos. Youcine, Cine Vision, Eppi Cinema, TV Express." />
+  <meta name="keywords"
+    content="IPTV, Youcine, Cine Vision, Eppi Cinema, TV Express, apps android, baixar apk, filmes grátis, séries, tv box" />
+  <meta name="author" content="Seu Nome" />
 
-  /* Navegação com ícones e texto */
-  nav {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  nav a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #e1e9ff;
-    font-weight: 600;
-    padding: 10px 18px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  nav a i {
-    font-size: 1.1rem;
-  }
-  nav a::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 0%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 229, 255, 0.15);
-    transition: height 0.3s ease;
-    z-index: 0;
-  }
-  nav a:hover::before,
-  nav a.active::before {
-    height: 100%;
-  }
-  nav a:hover,
-  nav a.active {
-    background-color: #00e5ff;
-    color: #0a0f19;
-    box-shadow: 0 0 15px #00e5ff;
-    z-index: 1;
-  }
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet" />
 
-  /* Main & sections */
-  main {
-    margin-top: 70px;
-  }
-  /* Hero Section */
-.section-home {
-  position: relative;
-  height: 100vh;
-  background: url('https://s14.gifyu.com/images/bHYPG.webp') center center/cover no-repeat fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: bgZoom 15s ease-in-out infinite alternate;
-}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-/* Para telas até 760px de largura (celulares e tablets pequenos) */
-@media (max-width: 760px) {
-  .section-home {
-    background: url('https://s14.gifyu.com/images/bHtsK.png') center center/cover no-repeat fixed;
-  }
-}
-  @keyframes bgZoom {
-    0% {
-      background-size: 100% auto;
+  <style>
+    /* Reset */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    100% {
-      background-size: 105% auto;
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      font-family: 'Inter', 'Poppins', sans-serif;
+      background-color: #121214;
+      color: #e1e1e6;
     }
-  }
-  .overlay-text {
-    position: relative;
-    background: rgba(15, 18, 24, 0.8);
-    padding: 40px 60px;
-    border-radius: 14px;
-    font-size: 3.2rem;
-    font-weight: 700;
-    color: #00e5ff;
-    text-shadow: 0 0 20px #00e5ffaa;
-    max-width: 90vw;
-    text-align: center;
-  }
-  .overlay-text.animate {
-    animation: fadeInDown 1.2s ease forwards;
-  }
-  /* Linha animada sob o texto */
-  .overlay-text::after {
-    content: "";
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    width: 0;
-    height: 4px;
-    background: #00e5ff;
-    border-radius: 2px;
-    transform: translateX(-50%);
-  }
-  .overlay-text.animate::after {
-    animation: lineGrow 1.2s ease forwards;
-    animation-delay: 1.3s;
-  }
-  @keyframes lineGrow {
-    to {
-      width: 60%;
-    }
-  }
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  /* Service Sections */
-  .service-section {
-    max-width: 1000px;
-    background: #121826;
-    margin: 60px auto;
-    padding: 40px 30px 60px 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 40px #00e5ffaa;
-    text-align: center;
-  }
-  .service-section h2 {
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    color: #00e5ff;
-    letter-spacing: 1.2px;
-    text-shadow: 0 0 10px #00e5ffaa;
-  }
-  .service-icons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 40px;
-  }
-  .service-icon-item {
-    background: #1e2745;
-    border-radius: 16px;
-    width: 150px;
-    padding: 25px 15px;
-    box-shadow: 0 0 15px #00e5ffaa;
-    cursor: default;
-    color: #00e5ff;
-    font-weight: 700;
-    user-select: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .service-icon-item span {
-    color: #ffffff !important;
-  }
-  .service-icon-item:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 0 30px #00ffffcc;
-  }
-  .service-icon {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 10px;
-  }
-  /* Botão baixar agora é um link estilizado */
-  .download-btn {
-    margin-top: 12px;
-    padding: 10px 24px;
-    background: #00e5ff;
-    color: #0a0f19;
-    border-radius: 30px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 0 18px #00e5ff;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .download-btn:hover {
-    background: #00c8ff;
-    box-shadow: 0 0 30px #00ffff;
-  }
-  .service-info {
-    font-size: 1.3rem;
-    color: #ffffff;
-    max-width: 650px;
-    margin: 0 auto;
-    line-height: 1.5;
-  }
-  /* Testimonials Section sem caixa, texto direto no fundo */
-  #testimonials {
-    padding: 60px 20px;
-  }
-  #testimonials h2 {
-    color: #00e5ff;
-    text-align: center;
-    font-size: 2.8rem;
-    margin-bottom: 40px;
-    text-shadow: 0 0 12px #00e5ffaa;
-  }
-  .testimonials-texts p {
-    font-style: italic;
-    font-size: 1.3rem;
-    color: #c0eaffdd;
-    margin: 25px auto;
-    max-width: 800px;
-    line-height: 1.5;
-    border-bottom: 1px solid #00e5ff33;
-    padding-bottom: 18px;
-    transition: color 0.3s ease;
-  }
-  .testimonials-texts p:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-  .testimonials-texts p:hover {
-    color: #00e5ff;
-  }
-  .testimonials-texts span {
-    display: block;
-    font-weight: 700;
-    color: #00e5ffcc;
-    margin-top: 8px;
-    font-size: 1rem;
-    text-align: right;
-    user-select: none;
-  }
-  /* Terms of Use Section */
-  #terms {
-    max-width: 900px;
-    margin: 40px auto 80px auto;
-    padding: 30px 25px;
-    background: linear-gradient(135deg, #001933, #003366);
-    border-radius: 16px;
-    box-shadow: 0 0 40px #00e5ffaa;
-    color: #ffffff;
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: justify;
-  }
-  #terms h2 {
-    color: #00e5ff;
-    font-size: 2.4rem;
-    margin-bottom: 20px;
-    text-align: center;
-    text-shadow: 0 0 10px #00e5ffcc;
-  }
-  #terms p {
-    margin-bottom: 15px;
-  }
-  #terms ul {
-    margin-left: 20px;
-    margin-bottom: 15px;
-  }
-  #terms ul li {
-    margin-bottom: 8px;
-  }
-  /* Responsive */
-  @media(max-width: 960px) {
-    .service-icons {
-      gap: 25px;
-    }
-    .service-icon-item {
-      width: 120px;
-      padding: 20px 10px;
-    }
-    .service-icon {
-      width: 55px;
-      height: 55px;
-      margin-bottom: 14px;
-    }
-    .overlay-text {
-      font-size: 2.5rem;
-      padding: 30px 40px;
-    }
-  }
-  @media(max-width: 760px) {
-    .testimonials-texts p {
-      max-width: 90vw;
-    }
-    .service-icons {
+
+    body {
+      min-height: 100vh;
+      display: flex;
       flex-direction: column;
-      gap: 30px;
-      align-items: center; /* CENTRALIZA OS QUADRADOS NO CELULAR */
-    }
-    .service-icon-item {
-      width: 100%;
-      max-width: 300px;
-      padding: 20px;
-      flex-direction: row;
       justify-content: flex-start;
-      gap: 20px;
+      align-items: center;
     }
-    .service-icon {
-      width: 70px;
-      height: 70px;
-      margin-bottom: 0;
+
+    a {
+      color: #0af;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    .service-icon-item > span {
-      font-size: 1.2rem;
-      margin-top: 0;
-      color: #00e5ff;
-      font-weight: 800;
-      align-self: center;
+
+    a:hover,
+    a:focus {
+      color: #06c;
+      outline: none;
     }
-    .download-btn {
-      margin-left: auto;
-      font-size: 1.1rem;
-      padding: 10px 28px;
+
+    /* HEADER */
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(18, 18, 20, 0.85);
+      backdrop-filter: saturate(180%) blur(10px);
+      box-shadow: 0 0 15px #0af8;
+      z-index: 999;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
     }
-  }
-  @media(max-width: 600px) {
-    nav {
-      gap: 15px;
+
+    header.scrolled {
+      background: #0d0d0fcc;
+      box-shadow: 0 0 30px #0aafffbb;
     }
-    nav a {
-      flex: 1 1 45%;
-      font-size: 0.95rem;
-      padding: 8px 12px;
-      justify-content: center;
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: #0af;
+      user-select: none;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 10px #0af8;
     }
-    nav a i {
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      font-weight: 600;
       font-size: 1rem;
+      padding: 0.3rem 0;
+      position: relative;
+      user-select: none;
     }
-    .service-section {
-      margin: 40px 15px;
-      padding: 30px 15px 50px 15px;
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #0af;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s ease;
+      border-radius: 4px;
     }
-  }
-  @media(max-width: 460px) {
-    nav a {
-      flex: 1 1 100%;
-      padding: 10px 0;
-      font-size: 1.1rem;
-      border-radius: 0;
+
+    nav ul li a:hover,
+    nav ul li a:focus,
+    nav ul li a.active {
+      color: #0af;
     }
-  }
-  /* Footer */
-  footer {
-    background: #0b1017;
-    color: #8bcfff;
-    text-align: center;
-    padding: 20px 15px;
-    font-size: 0.9rem;
-    box-shadow: inset 0 1px 10px #00e5ff33;
-  }
-  footer a {
-    color: #00e5ff;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  footer a:hover {
-    text-decoration: underline;
-  }
-  #hamburgerBtn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  color: white;
-  cursor: pointer;
-  z-index: 10000;
-}
 
-@media (max-width: 760px) {
-  #hamburgerBtn {
-    display: block;
-  }
+    nav ul li a:hover::after,
+    nav ul li a:focus::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
 
-  nav {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: #0f1218;
-    flex-direction: column;
-    align-items: center;
-    display: none;
-    padding: 20px 0;
-    box-shadow: 0 10px 20px #0008;
-  }
+    /* HERO */
+    .hero {
+      width: 100%;
+      height: 100vh;
+      background: url('https://s14.gifyu.com/images/bHYPG.webp') center center / cover no-repeat fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
 
-  nav.open {
-    display: flex;
-  }
-}
-  @media (max-width: 760px) {
-  html, body {
-    overflow-x: hidden;
-  }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 12, 0.75);
+      z-index: 1;
+    }
 
-  .section-home {
-    background-attachment: scroll !important;
-  }
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      z-index: 2;
+      color: #0af;
+      text-shadow: 0 0 12px #0af8;
+    }
 
-  .overlay-text {
-    font-size: 1.8rem;
-    padding: 20px 15px;
-  }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      user-select: text;
+    }
 
-  .service-section h2 {
-    font-size: 2.2rem;
-  }
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      color: #b3d9ffcc;
+      user-select: text;
+    }
 
-  .download-btn {
-    font-size: 1rem;
-    padding: 10px 20px;
-    width: 100%;
-    text-align: center;
-  }
+    .btn-primary {
+      background-color: #0af;
+      color: #121214;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 15px 45px;
+      border-radius: 50px;
+      box-shadow: 0 0 25px #0af8;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-  .service-icon-item {
-    flex-direction: column !important;
-    align-items: center;
-    gap: 10px;
-  }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #05a;
+      box-shadow: 0 0 40px #05a8ff;
+      outline: none;
+      color: #e1e1e6;
+    }
 
-  .service-icon-item span {
-    text-align: center;
-  }
+    /* MAIN */
+    main {
+      max-width: 1100px;
+      width: 100%;
+      background-color: #17171c;
+      margin: -120px auto 3rem auto;
+      border-radius: 20px 20px 0 0;
+      padding: 4rem 2rem 3rem 2rem;
+      box-shadow: 0 0 50px #0af6;
+      user-select: none;
+      z-index: 5;
+      position: relative;
+    }
 
-  .service-info {
-    font-size: 1.1rem;
-    padding: 10px;
-  }
+    /* SECTION TITLES */
+    h2.section-title {
+      color: #0af;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 0 0 15px #0af8;
+      user-select: text;
+    }
 
-  .testimonials-texts p {
-    font-size: 1.1rem;
-    text-align: center;
-  }
+    /* APPS GRID */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
 
-  nav {
-    width: 100%;
-  }
-}
+    .app-card {
+      background-color: #212126;
+      border-radius: 15px;
+      padding: 25px 20px;
+      box-shadow: 0 0 20px #0af7;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
 
-</style>
+    .app-card:hover,
+    .app-card:focus-within {
+      transform: translateY(-12px);
+      box-shadow: 0 0 40px #0af9;
+      outline: none;
+    }
+
+    .app-icon {
+      font-size: 4rem;
+      color: #0af;
+      margin-bottom: 18px;
+      text-align: center;
+      user-select: none;
+    }
+
+    .app-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #0af;
+      margin-bottom: 1rem;
+      text-align: center;
+      user-select: text;
+    }
+
+    .app-desc {
+      flex-grow: 1;
+      font-size: 1rem;
+      color: #aad4ffcc;
+      margin-bottom: 1.6rem;
+      text-align: center;
+      user-select: text;
+      min-height: 90px;
+    }
+
+    .btn-download {
+      background-color: #0af;
+      color: #121214;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 12px 0;
+      border-radius: 50px;
+      box-shadow: 0 0 25px #0af8;
+      text-align: center;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      display: block;
+      text-decoration: none;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .btn-download:hover,
+    .btn-download:focus {
+      background-color: #058;
+      box-shadow: 0 0 40px #058aff;
+      color: #e1e1e6;
+      outline: none;
+    }
+
+    /* INSTALAÇÃO */
+    .install-section {
+      background-color: #212126;
+      border-radius: 15px;
+      max-width: 720px;
+      margin: 3rem auto 0 auto;
+      padding: 30px 35px;
+      box-shadow: 0 0 35px #0af7;
+      user-select: none;
+    }
+
+    .install-section h3 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0af;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      text-shadow: 0 0 10px #0af8;
+      user-select: text;
+    }
+
+    .install-steps {
+      list-style: none;
+      counter-reset: step-counter;
+      color: #aad4ffcc;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      user-select: text;
+      padding-left: 0;
+    }
+
+    .install-steps li {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 1.8rem;
+    }
+
+    .install-steps li::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 38px;
+      height: 38px;
+      background-color: #0af;
+      border-radius: 50%;
+      color: #121214;
+      font-weight: 700;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      box-shadow: 0 0 12px #0af8;
+    }
+
+    /* FAQ */
+    .faq-section {
+      max-width: 900px;
+      margin: 3rem auto 0 auto;
+      user-select: none;
+    }
+
+    .faq-section h3 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #0af;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 0 0 12px #0af8;
+      user-select: text;
+    }
+
+    .faq-item {
+      background-color: #212126;
+      border-radius: 15px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 0 20px #0af7;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: #0af;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-align: left;
+      cursor: pointer;
+      border: none;
+      user-select: none;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover,
+    .faq-question:focus {
+      background-color: #0af1;
+      outline: none;
+    }
+
+    .faq-question::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.35s ease;
+      user-select: none;
+    }
+
+    .faq-question[aria-expanded="true"]::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      color: #aad4ffcc;
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 0 2rem;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      user-select: text;
+    }
+
+    .faq-answer.open {
+      max-height: 600px;
+      padding: 1rem 2rem 1.5rem 2rem;
+    }
+
+    /* GALERIA DE PRINTS */
+    .prints-gallery {
+      max-width: 1000px;
+      margin: 3rem auto 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 20px;
+      user-select: none;
+    }
+
+    .prints-gallery img {
+      width: 100%;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 0 25px #0af7;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      object-fit: cover;
+      aspect-ratio: 9 / 16;
+      user-select: none;
+    }
+
+    .prints-gallery img:hover,
+    .prints-gallery img:focus {
+      transform: scale(1.07);
+      box-shadow: 0 0 40px #0affdd;
+      outline: none;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 12, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 99999;
+      user-select: none;
+    }
+
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #0af8;
+      user-select: none;
+      object-fit: contain;
+    }
+
+    .lightbox .close-btn {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 3rem;
+      color: #0af;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+      z-index: 100000;
+      border: none;
+      background: none;
+    }
+
+    .lightbox .close-btn:hover,
+    .lightbox .close-btn:focus {
+      color: #05a;
+      outline: none;
+    }
+
+    /* RODAPÉ */
+    footer {
+      width: 100%;
+      background-color: #0a0a0c;
+      padding: 30px 20px;
+      text-align: center;
+      color: #0af7aa;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      user-select: none;
+      box-shadow: inset 0 10px 40px #0af733;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #0af;
+      text-decoration: none;
+      font-weight: 600;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover,
+    footer a:focus {
+      color: #05a;
+      outline: none;
+    }
+
+    footer .socials {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 1.6rem;
+      user-select: none;
+    }
+
+    footer .socials a {
+      color: #0af;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    footer .socials a:hover,
+    footer .socials a:focus {
+      color: #05a;
+      outline: none;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      main {
+        padding: 3rem 1rem 3rem 1rem;
+      }
+
+      h2.section-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .app-card {
+        padding: 20px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 1.9rem;
+      }
+
+      .btn-primary {
+        font-size: 1rem;
+        padding: 12px 30px;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header id="header">
-    <h1>WORD APP IPTV</h1>
-    <button id="hamburgerBtn" aria-label="Abrir menu mobile">
-  <i class="fas fa-bars"></i>
-</button>
 
-<nav id="mobile-menu">
-  <a href="#home" class="active"><i class="fa fa-home"></i> Início</a>
-  <a href="#unitv"><i class="fa fa-tv"></i> UniTV</a>
-  <a href="#youcine"><i class="fa fa-film"></i> Youcine</a>
-  <a href="#eppi-cinema"><i class="fa fa-video"></i> Eppi Cinema</a>
-  <a href="#tv-express"><i class="fa fa-play"></i> TV Express</a>
-  <a href="#testimonials"><i class="fa fa-comments"></i> Comentários</a>
-  <a href="#terms"><i class="fa fa-file-contract"></i> Termos de Uso</a>
-</nav>
-
+  <!-- HEADER -->
+  <header id="header" role="banner">
+    <div class="logo" tabindex="0">IPTV PREMIUM BRASIL</div>
+    <nav role="navigation" aria-label="Menu principal">
+      <ul>
+        <li><a href="#apps" class="active" tabindex="0">Apps</a></li>
+        <li><a href="#instalacao" tabindex="0">Instalação</a></li>
+        <li><a href="#faq" tabindex="0">FAQ</a></li>
+        <li><a href="#prints" tabindex="0">Galeria</a></li>
+      </ul>
+    </nav>
   </header>
 
-<main>
-  <section class="section-home" id="home">
-    <div class="overlay-text animate">Transforme sua TV! Baixe agora os melhores apps IPTV do momento.</div>
-  </section>
-  <section class="service-section" id="unitv" data-aos="fade-up">
-    <h2>UNITV</h2>
-    <div class="service-icons">
-      <div class="service-icon-item" aria-label="App TV Box">
-        <img src="https://s14.gifyu.com/images/bHrWy.png" alt="TV Box" class="service-icon" />        
-        <span>App TV Box</span>
-        <a href="https://www.unitvoficial.tv/unitv-tv.apk" download class="download-btn" aria-label="Baixar App TV Box">Baixar</a>
-      </div>      
-      <div class="service-icon-item" aria-label="App Smart TV">
-        <img src="https://s14.gifyu.com/images/bHrcg.png" alt="Smart TV" class="service-icon" />
-        <span>App Smart TV</span>
-        <a href="https://www.unitvoficial.tv/unitv-tv.apk" download class="download-btn" aria-label="Baixar App Smart TV">Baixar</a>
-      </div>      
-      <div class="service-icon-item" aria-label="App Stick TV">
-        <img src="https://s14.gifyu.com/images/bHrco.png" alt="Stick TV" class="service-icon" />       
-        <span>App Stick TV</span>
-        <a href="https://www.unitvoficial.tv/unitv-tv.apk" download class="download-btn" aria-label="Baixar App Stick TV">Baixar</a>
-      </div>      
-      <div class="service-icon-item" aria-label="App Celular">
-        <img src="https://s14.gifyu.com/images/bHrgN.png" alt="Celular" class="service-icon" />
-        <span>App Celular</span>
-        <a href="https://www.unitvoficial.tv/unitv-celular.apk" download class="download-btn" aria-label="Baixar App Celular">Baixar</a>
-      </div>
-    </div>    
-<div class="service-info" style="color: white; font-size: 1.3rem; line-height: 1.5; max-width: 650px; margin: 0 auto;">
-  Com o **UniTV**, você leva uma experiência completa de entretenimento para onde quiser — com canais ao vivo, VOD e qualidade 4K.<br><br>
-
-  <strong><span style="color: red;">Transmissão ao vivo:</span></strong> mais de **500 canais ao vivo**, incluindo esportes, notícias, séries, filmes, animação e reality shows — tudo em HD e 4K.<br><br>
-
-  <strong><span style="color: red;">Catálogo sob demanda (VOD):</span></strong> biblioteca rica com filmes, séries, desenhos, animes e mais — com 280.000+ horas disponíveis.<br><br>
-
-  <strong><span style="color: red;">Suporte para legendas:</span></strong> personalização completa do estilo, tamanho e cor, com suporte a múltiplos idiomas.<br><br>
-
-  <strong><span style="color: red;">Busca por categorias:</span></strong> navegação ágil com filtros por gênero, país, popularidade e lançamentos — encontre o que você quer com facilidade. :contentReference[oaicite:4]{index=4}<br><br>
-
-  <strong><span style="color: red;">Controle parental:</span></strong> bloqueio de conteúdo adulto por senha, garantindo uma experiência segura para toda a família.<br><br>
-
-  <strong><span style="color: red;">Dispositivos compatíveis:</span></strong> roda em Android, TV Box, smart TVs, TV sticks e PCs (via emulador ou navegador), com reprodução simultânea em até 2 dispositivos<br><br>
-
-  <strong><span style="color: red;">Teste gratuito:</span></strong> **7 dias grátis**, sem necessidade de cartão de crédito, para testar todos os recursos do app.<br><br>
-
-  <strong><span style="color: red;">Download direto:</span></strong> disponível via site oficial (Android APK) e compatível com celulares, TV Box, TV stick e PC.<br><br>
-</div>
-</section>
-  <section class="service-section" id="youcine" data-aos="fade-up">
-    <h2>YOUCINE</h2>
-    <div class="service-icons">
-      <div class="service-icon-item" aria-label="App TV Box">
-        <img src="https://s14.gifyu.com/images/bHrWy.png" alt="TV Box" class="service-icon" />
-        <span>App TV Box</span>
-        <a href="https://baixa.app/tvebox" download class="download-btn" aria-label="Baixar App TV Box">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Smart TV">
-        <img src="https://s14.gifyu.com/images/bHrcg.png" alt="Smart TV" class="service-icon" />
-        <span>App Smart TV</span>
-        <a href="https://exemplo.com/smarttv.apk" download class="download-btn" aria-label="Baixar App Smart TV">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Stick TV">
-        <img src="https://s14.gifyu.com/images/bHrco.png" alt="Stick TV" class="service-icon" />
-        <span>App Stick TV</span>
-        <a href="https://exemplo.com/sticktv.apk" download class="download-btn" aria-label="Baixar App Stick TV">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Celular">
-        <img src="https://s14.gifyu.com/images/bHrgN.png" alt="Celular" class="service-icon" />
-        <span>App Celular</span>
-        <a href="https://exemplo.com/celular.apk" download class="download-btn" aria-label="Baixar App Celular">Baixar</a>
-      </div>
-    </div>
-    <div class="service-info" style="color: white; font-size: 1.3rem; line-height: 1.5; max-width: 650px; margin: 0 auto;">
-  Com o YouCine, descubra uma nova forma de assistir aos seus filmes, séries e animes favoritos com praticidade, qualidade e atualização constante.<br><br>
-
-  <strong><span style="color: red;">Catálogo completo sob demanda:</span></strong> filmes, séries, animes, desenhos, reality shows e muito mais, organizados por categorias e atualizados com frequência. Tudo em uma única plataforma para seu entretenimento completo.<br><br>
-
-  <strong><span style="color: red;">Modo família:</span></strong> controle de conteúdo com perfis personalizados, bloqueio de conteúdo adulto e filtro infantil. Ideal para uso em casa com crianças ou em ambientes compartilhados.<br><br>
-
-  <strong><span style="color: red;">Assistir offline:</span></strong> opção para download de conteúdos e visualização sem conexão com a internet. Perfeito para viagens, momentos sem Wi-Fi ou planos de dados limitados.<br><br>
-
-  <strong><span style="color: red;">Qualidade e estabilidade:</span></strong> vídeos em HD e Full HD com carregamento rápido e fluido. Experiência otimizada para Smart TVs, TV Box, celulares Android e tablets.<br><br>
-
-  <strong><span style="color: red;">Atualizações automáticas:</span></strong> o app se atualiza constantemente com novos lançamentos e melhorias de desempenho, garantindo sempre novidades e estabilidade para o usuário.<br><br>
-
-  <strong><span style="color: red;">Interface intuitiva:</span></strong> fácil de navegar, com visual moderno, rápido acesso aos lançamentos e categorias como ação, comédia, suspense, infantil, documentários e muito mais.<br><br>
-
-  <strong><span style="color: red;">Comece agora a assistir:</span></strong> baixe o app YouCine e aproveite uma experiência completa de cinema e TV na palma da sua mão. Compatível com celulares Android, TV Box, Smart TVs e dispositivos com sistema Android.<br><br>
-</div>
-  </section>
-
-  <section class="service-section" id="eppi-cinema" data-aos="fade-up">
-    <h2>EPPI CINEMA ex MY FAMILY CINEMA</h2>
-    <div class="service-icons">
-      <div class="service-icon-item" aria-label="App TV Box">
-        <img src="https://s14.gifyu.com/images/bHrWy.png" alt="TV Box" class="service-icon" />
-        <span>App TV Box</span>
-        <a href="https://baixa.app/tvebox" download class="download-btn" aria-label="Baixar App TV Box">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Smart TV">
-        <img src="https://s14.gifyu.com/images/bHrcg.png" alt="Smart TV" class="service-icon" />
-        <span>App Smart TV</span>
-        <a href="https://exemplo.com/smarttv.apk" download class="download-btn" aria-label="Baixar App Smart TV">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Stick TV">
-        <img src="https://s14.gifyu.com/images/bHrco.png" alt="Stick TV" class="service-icon" />
-        <span>App Stick TV</span>
-        <a href="https://exemplo.com/sticktv.apk" download class="download-btn" aria-label="Baixar App Stick TV">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Celular">
-        <img src="https://s14.gifyu.com/images/bHrgN.png" alt="Celular" class="service-icon" />
-        <span>App Celular</span>
-        <a href="https://exemplo.com/celular.apk" download class="download-btn" aria-label="Baixar App Celular">Baixar</a>
-      </div>
-    </div>
-    <div class="service-info" style="color: white; font-size: 1.3rem; line-height: 1.5; max-width: 650px; margin: 0 auto;">
-  Com o **Eppi Cinema**, transforme seu dispositivo Android em um verdadeiro cinema portátil — assista filmes, séries e até TV ao vivo com praticidade e qualidade.<br><br>
-
-  <strong><span style="color: red;">Catálogo diversificado:</span></strong> acesse uma vasta biblioteca de filmes, séries, animes e canais de TV ao vivo em HD/Full HD/4K, tudo atualizado com frequência.<br><br>
-
-  <strong><span style="color: red;">Streaming gratuito + premium:</span></strong> funcionamento freemium — parte dos conteúdos é gratuita, e há planos pagos para acesso completo, sem anúncios e com conteúdo extra. Inclui teste gratuito.<br><br>
-
-  <strong><span style="color: red;">Controle total do usuário:</span></strong> o app não armazena ou fornece conteúdo — você precisa usar meios externos (login ou fontes próprias), garantindo que todo o conteúdo seja de sua responsabilidade.<br><br>
-
-  <strong><span style="color: red;">Fácil instalação via APK:</span></strong> disponível por download direto (site oficial ou lojas alternativas) e compatível com celulares, tablets, TV Boxes e emuladores Android.<br><br>
-
-  <strong><span style="color: red;">Período de teste:</span></strong> costuma oferecer **7 dias grátis** para testar antes de assinar (no Premium/Anual).<br><br>
-
-  <strong><span style="color: red;">Compatível com múltiplos dispositivos:</span></strong> suporte a uso em celulares, tablets, TV Box e PC (via emulador); número de telas simultâneas varia conforme plano contratado.<br><br>
-
-  <strong><span style="color: red;">Segurança e transparência:</span></strong> segundo a Play Store, o app não coleta nem compartilha dados de usuários — todo conteúdo é acessado via fonte do usuário.<br><br>
-
-  <strong><span style="color: red;">Comece agora:</span></strong> baixe o APK ou instale via lojas de sua confiança, escolha seu plano e aproveite o cinema em casa ou na palma da mão.<br><br>
-</div>
-  </section>
-
-  <section class="service-section" id="tv-express" data-aos="fade-up">
-    <h2>TV EXPRESS</h2>
-     <div class="service-icons">
-      <div class="service-icon-item" aria-label="App TV Box">
-        <img src="https://s14.gifyu.com/images/bHrWy.png" alt="TV Box" class="service-icon" />
-        <span>App TV Box</span>
-        <a href="https://baixa.app/tvebox" download class="download-btn" aria-label="Baixar App TV Box">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Smart TV">
-        <img src="https://s14.gifyu.com/images/bHrcg.png" alt="Smart TV" class="service-icon" />
-        <span>App Smart TV</span>
-        <a href="https://exemplo.com/smarttv.apk" download class="download-btn" aria-label="Baixar App Smart TV">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Stick TV">
-        <img src="https://s14.gifyu.com/images/bHrco.png" alt="Stick TV" class="service-icon" />
-        <span>App Stick TV</span>
-        <a href="https://exemplo.com/sticktv.apk" download class="download-btn" aria-label="Baixar App Stick TV">Baixar</a>
-      </div>
-      <div class="service-icon-item" aria-label="App Celular">
-        <img src="https://s14.gifyu.com/images/bHrgN.png" alt="Celular" class="service-icon" />
-        <span>App Celular</span>
-        <a href="https://exemplo.com/celular.apk" download class="download-btn" aria-label="Baixar App Celular">Baixar</a>
-      </div>
-    </div>
-    <div class="service-info" style="color: white; font-size: 1.3rem; line-height: 1.5; max-width: 650px; margin: 0 auto;">
-  Com o **TV Express**, você tem acesso a dezenas de canais ao vivo de forma simples, rápida e sem complicação — tudo direto no seu dispositivo Android.<br><br>
-
-  <strong><span style="color: red;">Mais de 300 canais ao vivo:</span></strong> programação variada com esportes, filmes, séries, novelas, documentários e canais internacionais em HD e Full HD.<br><br>
-
-  <strong><span style="color: red;">Teste grátis de 7 dias:</span></strong> experimente o app sem cadastro, sem cartão e com acesso completo a todos os canais disponíveis — exclusivo para novos usuários.<br><br>
-
-  <strong><span style="color: red;">Compatível com Android TV, TV Box, Fire Stick e celulares:</span></strong> instalação via APK, sempre otimizado para diferentes dispositivos Android.<br><br>
-
-  <strong><span style="color: red;">Recarga instantânea:</span></strong> compre seu código via PIX, cartão ou boleto e ative o app na hora, com suporte e ativação imediata.<br><br>
-
-  <strong><span style="color: red;">Recursos avançados:</span></strong> Mirrorcast, playback, mosaico de canais e lembretes de programação — tudo para melhorar a experiência de assistir.<br><br>
-
-  <strong><span style="color: red;">Observações importantes:</span></strong> 
-  alguns usuários relatam qualidade variável na transmissão (queda para 480p e travamentos em canais de esportes) e problemas de compatibilidade com tablets — o app é oficialmente focado em mobile e TV Box.<br><br>
-
-  <strong><span style="color: red;">Comece agora:</span></strong> baixe o APK do site oficial ou loja parceira, instale em seu dispositivo Android, recarregue seu código e aproveite todos os canais em instantes.<br><br>
-</div>
-  </section>
-
-  <section id="testimonials" data-aos="fade-up">
-    <h2>Comentários</h2>
-    <div class="testimonials-texts">
-      <p>"Amei o app UniTV, funciona perfeitamente na minha Smart TV!" <span>- João Silva</span></p>
-      <p>"Youcine tem uma seleção incrível de filmes, super recomendo." <span>- Maria Souza</span></p>
-      <p>"O suporte é rápido e eficiente, sempre ajudando quando preciso." <span>- Carlos Oliveira</span></p>
-      <p>"TV Express salvando as noites de séries em casa!" <span>- Ana Paula</span></p>
+  <!-- HERO -->
+  <section class="hero" role="img" aria-label="Imagem de fundo com chamada para baixar apps">
+    <div class="hero-content">
+      <h1 tabindex="0">Assista Filmes e Séries Grátis no Seu Celular e TV Box</h1>
+      <p tabindex="0">Apps atualizados, conteúdo premium grátis, fácil instalação e suporte completo para seu entretenimento.</p>
+      <a href="#apps" class="btn-primary" tabindex="0">Ver Aplicativos</a>
     </div>
   </section>
 
-  <section id="terms" data-aos="fade-up">
-    <h2>Termos de Uso</h2>
-    <p>Este site oferece acesso a aplicativos e conteúdos de terceiros. Ao baixar e utilizar qualquer aplicativo, você concorda com os termos de uso e políticas de privacidade dos desenvolvedores dos apps.</p>
-    <p>Os conteúdos disponibilizados são para uso pessoal e não comercial. Não nos responsabilizamos pelo uso inadequado ou ilegal destes aplicativos.</p>
-    <p>Para dúvidas e suporte, entre em contato com o suporte oficial do aplicativo.</p>
-  </section>
-</main>
+  <main>
 
-  <footer>
-    &copy; 2025 TV Express Brasil - Todos os direitos reservados.
-  </footer>
+    <!-- APPS -->
+    <section id="apps" tabindex="-1" aria-labelledby="apps-title">
+      <h2 class="section-title" id="apps-title">Aplicativos IPTV Top</h2>
+      <div class="apps-grid" role="list">
+        <article class="app-card" role="listitem" tabindex="0" aria-label="Youcine atualizado app">
+          <div class="app-icon" aria-hidden="true"><i class="fas fa-film"></i></div>
+          <h3 class="app-title">Youcine Atualizado</h3>
+          <p class="app-desc">O melhor app para streaming de filmes, séries e canais ao vivo com atualização constante e interface fácil.</p>
+          <a href="https://example.com/youcine.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
+            aria-label="Baixar Youcine Atualizado APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar Youcine</a>
+        </article>
+        <article class="app-card" role="listitem" tabindex="0" aria-label="Cine Vision V5 app">
+          <div class="app-icon" aria-hidden="true"><i class="fas fa-tv"></i></div>
+          <h3 class="app-title">Cine Vision V5</h3>
+          <p class="app-desc">Conteúdo HD com muitos filmes e séries, ideal para Android e TV Box.</p>
+          <a href="https://example.com/cinevision.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
+            aria-label="Baixar Cine Vision APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar Cine Vision</a>
+        </article>
+        <article class="app-card" role="listitem" tabindex="0" aria-label="Eppi Cinema app">
+          <div class="app-icon" aria-hidden="true"><i class="fas fa-play-circle"></i></div>
+          <h3 class="app-title">Eppi Cinema</h3>
+          <p class="app-desc">App leve e rápido, perfeito para smart TVs e celulares Android.</p>
+          <a href="https://example.com/eppicinema.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
+            aria-label="Baixar Eppi Cinema APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar Eppi Cinema</a>
+        </article>
+        <article class="app-card" role="listitem" tabindex="0" aria-label="TV Express app">
+          <div class="app-icon" aria-hidden="true"><i class="fas fa-tv-retro"></i></div>
+          <h3 class="app-title">TV Express</h3>
+          <p class="app-desc">O melhor para canais ao vivo, fácil de usar e com ótima estabilidade.</p>
+          <a href="https://example.com/tvexpress.apk" target="_blank" class="btn-download" tabindex="0" rel="noopener noreferrer"
+            aria-label="Baixar TV Express APK"><i class="fas fa-download" aria-hidden="true"></i> Baixar TV Express</a>
+        </article>
+      </div>
+    </section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- INSTALAÇÃO -->
+    <section id="instalacao" tabindex="-1" aria-labelledby="instalacao-title" class="install-section">
+      <h2 class="section-title" id="instalacao-title">Como Instalar os Apps</h2>
+      <ul class="install-steps" aria-label="Passos para instalação dos aplicativos">
+        <li>Baixe o arquivo APK do aplicativo desejado clicando no botão de download.</li>
+        <li>Permita a instalação de apps de fontes desconhecidas nas configurações do seu celular ou TV Box.</li>
+        <li>Abra o arquivo APK baixado e siga as instruções na tela para instalar.</li>
+        <li>Após a instalação, abra o app, configure conforme desejado e aproveite seu conteúdo grátis.</li>
+        <li>Para dúvidas, consulte a seção FAQ ou nos procure nas redes sociais.</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" tabindex="-1" aria-labelledby="faq-title" class="faq-section">
+      <h2 class="section-title" id="faq-title">Perguntas Frequentes (FAQ)</h2>
+      <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
+          O Youcine funciona em TV Box?
+        </button>
+        <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-btn">
+          Sim, o Youcine é compatível com a maioria dos modelos de TV Box Android.
+        </div>
+      </article>
+      <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
+          Preciso pagar para usar esses apps?
+        </button>
+        <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-btn">
+          Não, todos os aplicativos listados aqui oferecem conteúdo gratuito e atualizado.
+        </div>
+      </article>
+      <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+          É seguro baixar APK de terceiros?
+        </button>
+        <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+          Sempre baixe de fontes confiáveis. Os links aqui são verificados e seguros para uso.
+        </div>
+      </article>
+      <article class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
+          Como atualizar os apps?
+        </button>
+        <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-btn">
+          Você deve baixar novamente a versão atualizada quando disponibilizarmos novos links.
+        </div>
+      </article>
+    </section>
+
+    <!-- GALERIA DE PRINTS -->
+    <section id="prints" tabindex="-1" aria-labelledby="prints-title" class="prints-gallery">
+      <h2 class="section-title" id="prints-title">Galeria de Prints</h2>
+      <img src="https://s14.gifyu.com/images/print1.webp" alt="Print da tela principal do Youcine" tabindex="0" />
+      <img src="https://s14.gifyu.com/images/print2.webp" alt="Print do Cine Vision rodando no TV Box" tabindex="0" />
+      <img src="https://s14.gifyu.com/images/print3.webp" alt="Print do Eppi Cinema com lista de filmes" tabindex="0" />
+      <img src="https://s14.gifyu.com/images/print4.webp" alt="Print da tela do TV Express com canais ao vivo" tabindex="0" />
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-img-alt" tabindex="-1">
+    <button class="close-btn" id="lightbox-close" aria-label="Fechar galeria"><i class="fas fa-times"></i></button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- SCRIPT -->
   <script>
-    AOS.init();
-
-    window.addEventListener('scroll', function() {
-      const header = document.getElementById('header');
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    const sections = document.querySelectorAll('main section, main #testimonials, main #terms');
-    const navLinks = document.querySelectorAll('header nav a');
-
+    // Sticky header background change on scroll
+    const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 90;
-        if(scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
+      if (window.scrollY > 60) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
 
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
+    // Menu active link highlight
+    const menuLinks = document.querySelectorAll('nav ul li a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // FAQ accordion toggle
+    const faqs = document.querySelectorAll('.faq-question');
+    faqs.forEach(faq => {
+      faq.addEventListener('click', () => {
+        const expanded = faq.getAttribute('aria-expanded') === 'true';
+        faq.setAttribute('aria-expanded', !expanded);
+        faq.classList.toggle('active');
+        const answer = faq.nextElementSibling;
+        if (answer.classList.contains('open')) {
+          answer.classList.remove('open');
+        } else {
+          answer.classList.add('open');
         }
       });
     });
 
-    const homeLink = document.querySelector('nav a[href="#home"]');
-    const overlayText = document.querySelector('.overlay-text');
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const galleryImages = document.querySelectorAll('.prints-gallery img');
 
-    homeLink.addEventListener('click', (e) => {
-      overlayText.classList.remove('animate');
-      void overlayText.offsetWidth;
-      overlayText.classList.add('animate');
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.focus();
+      });
+      img.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          img.click();
+        }
+      });
     });
-    
-// Toggle mobile menu
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const mobileMenu = document.getElementById('mobile-menu');
 
-hamburgerBtn.addEventListener('click', () => {
-  hamburgerBtn.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      lightboxImg.alt = '';
+    });
 
-  const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
-  hamburgerBtn.setAttribute('aria-expanded', !expanded);
-});
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        lightboxImg.alt = '';
+      }
+    });
 
-// Fecha o menu mobile ao clicar em um link
-const mobileLinks = document.querySelectorAll('#mobile-menu a');
-
-mobileLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    hamburgerBtn.classList.remove('active');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-  });
-});
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        lightboxImg.alt = '';
+      }
+    });
   </script>
+
 </body>
+
 </html>
