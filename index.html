@@ -636,12 +636,10 @@ nav.open ul {
   justify-content: center;
 }
 
-
 .gallery-image:hover {
   transform: translateY(-30px);      /* sobe a imagem levemente */
   box-shadow: 0 0 50px #0088ffdd;    /* sombra azul mais intensa */
 }
-
 
 .gallery-image img {
   width: 100%;
@@ -650,7 +648,6 @@ nav.open ul {
   transition: transform 0.4s ease, filter 0.3s ease;
   border-radius: 15px;      /* para acompanhar o arredondamento do quadrado */
 }
-
 
 .gallery-image:hover img {
   transform: scale(1.05);
@@ -706,9 +703,9 @@ nav.open ul {
   }
 }
 
+    
   </style>
 </head>
-
 <body>
 
   <header>
@@ -1021,7 +1018,7 @@ nav.open ul {
       });
     });
 
-    // ✅ Fecha o menu ao clicar fora dele
+    // Fecha o menu ao clicar fora dele
     document.addEventListener("click", (event) => {
       const isOpen = nav.classList.contains("open");
       const clickedOutsideMenu = !nav.contains(event.target) && !menuToggle.contains(event.target);
@@ -1031,7 +1028,28 @@ nav.open ul {
         menuToggle.setAttribute("aria-expanded", "false");
       }
     });
+
+
+    // NOVO: Animar os itens da galeria ao entrarem na viewport
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = "running";
+        } else {
+          entry.target.style.animationPlayState = "paused";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    galleryItems.forEach(item => {
+      item.style.animationPlayState = "paused"; // pausa animação por padrão
+      observer.observe(item);
+    });
+
   });
 </script>
 </body>
 </html>
+
