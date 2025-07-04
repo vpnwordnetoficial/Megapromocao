@@ -1023,11 +1023,10 @@ nav.open ul {
       }
     });
 
-    // GALERIA: ativa animações com IntersectionObserver e permite repetir animação ao entrar na tela
+    // GALERIA: ativa animações com IntersectionObserver em todos dispositivos (mobile incluso)
     const galleryItems = document.querySelectorAll(".gallery-item");
-    const isMobile = window.innerWidth <= 768;
 
-    if ('IntersectionObserver' in window && !isMobile) {
+    if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const target = entry.target;
@@ -1040,9 +1039,9 @@ nav.open ul {
           } else {
             // Pausa e reseta para poder animar de novo na próxima entrada
             target.style.animationPlayState = "paused";
-            target.style.animation = 'none';    // reseta animação
-            void target.offsetWidth;            // força reflow para reiniciar a animação
-            target.style.animation = '';        // remove reset
+            target.style.animation = 'none';
+            void target.offsetWidth; // força reflow
+            target.style.animation = '';
 
             if (text) {
               text.style.animationPlayState = "paused";
@@ -1061,7 +1060,7 @@ nav.open ul {
         observer.observe(item);
       });
     } else {
-      // Em mobile: executa direto
+      // Fallback para navegadores que não suportam IntersectionObserver
       galleryItems.forEach(item => {
         item.style.animationPlayState = "running";
         const text = item.querySelector(".gallery-text");
@@ -1070,6 +1069,7 @@ nav.open ul {
     }
   });
 </script>
+
 </body>
 </html>
 
