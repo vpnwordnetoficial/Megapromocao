@@ -580,99 +580,100 @@ nav.open ul {
     display: block;
   }
 }
+    
 
-      /* Container geral da galeria */
-  .gallery-section {
-    max-width: 1100px;
-    margin: 3rem auto;
-  }
+/* Container geral da galeria */
+.gallery-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+}
 
-  /* Cada item da galeria */
+/* Cada item da galeria */
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Alternar posição da imagem/texto para itens pares */
+.gallery-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Texto do app */
+.app-text {
+  flex: 1;
+  color: #0cf;
+  text-shadow: 1px 1px 3px rgba(0, 136, 255, 0.8);
+}
+
+/* Título do app */
+.app-text h4 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(90deg, #00d2ff, #004e92);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Destaque especial (pode ser aplicado a palavras) */
+.app-text h4 span.highlight {
+  color: #ffdd00;
+  text-shadow: 2px 2px 10px #ffdd00aa;
+}
+
+/* Parágrafo descritivo */
+.app-text p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #aeefff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Imagens dos apps - tamanho fixo e uniforme */
+.gallery-item img {
+  width: 500px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 0 0px #00bbffcc;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efeito hover nas imagens */
+.gallery-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 70px #00ddffdd;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 850px) {
   .gallery-item {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    margin-bottom: 4rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    flex-direction: column !important;
+    text-align: center;
+    gap: 1.5rem;
   }
 
-  /* Alternar posição da imagem/texto para itens pares */
   .gallery-item:nth-child(even) {
-    flex-direction: row-reverse;
+    flex-direction: column !important;
   }
 
-  /* Texto do app */
-  .app-text {
-    flex: 1;
-    color: #0cf;
-    text-shadow: 1px 1px 3px rgba(0, 136, 255, 0.8);
-  }
-
-  /* Título do app */
   .app-text h4 {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 0.6rem;
-    background: linear-gradient(90deg, #00d2ff, #004e92);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
   }
 
-  /* Destaque especial (pode ser aplicado a palavras) */
-  .app-text h4 span.highlight {
-    color: #ffdd00;
-    text-shadow: 2px 2px 10px #ffdd00aa;
-  }
-
-  /* Parágrafo descritivo */
   .app-text p {
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 1.6;
-    color: #aeefff;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    font-size: 1.2rem;
   }
-
-  /* Imagens dos apps */
-  .gallery-item img {
-    flex: 1;
-    border-radius: 16px;
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0 0 0px #00bbffcc;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  /* Efeito hover nas imagens */
-  .gallery-item img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px #00ddffdd;
-  }
-
-  /* Responsivo para telas menores */
-  @media (max-width: 850px) {
-    .gallery-item {
-      flex-direction: column !important;
-      text-align: center;
-      gap: 1.5rem;
-    }
-
-    .gallery-item:nth-child(even) {
-      flex-direction: column !important;
-    }
-
-    .app-text h4 {
-      font-size: 2.5rem;
-    }
-
-    .app-text p {
-      font-size: 1.2rem;
-    }
-  }
+}
     
   </style>
 </head>
