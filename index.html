@@ -599,16 +599,24 @@ nav.open ul {
   position: relative;
   opacity: 0;
   transform: translateY(40px);
-  /* remove animação padrão */
+  animation: fadeUp 1s ease forwards;
   animation-play-state: paused;
   background: none;
   box-shadow: none;
   padding: 0;
 }
 
-/* Remove animação direta daqui para controlar só via classe .animate */
-/* animation: fadeUp 1s ease forwards; */
-/* animation-delay foi removido para controlar via JS */
+.gallery-item:nth-child(1) { animation-delay: 0.2s; }
+.gallery-item:nth-child(2) { animation-delay: 0.4s; }
+.gallery-item:nth-child(3) { animation-delay: 0.6s; }
+.gallery-item:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .gallery-item.reverse {
   flex-direction: row-reverse;
@@ -652,35 +660,18 @@ nav.open ul {
   font-size: 1.1rem;
   line-height: 1.6;
   text-shadow: 0 0 6px #000000;
-  opacity: 0;
-  /* remove animação padrão */
+  animation: fadeInText 1.2s ease forwards;
   animation-play-state: paused;
+  opacity: 0;
   background: none;
   box-shadow: none;
   padding: 0;
-}
-
-/* Animações via classes .animate */
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @keyframes fadeInText {
   to {
     opacity: 1;
   }
-}
-
-.gallery-item.animate {
-  animation: fadeUp 1s ease forwards;
-}
-
-.gallery-text.animate {
-  animation: fadeInText 1.2s ease forwards;
 }
 
 .gallery-text h4 {
@@ -700,7 +691,11 @@ nav.open ul {
   .gallery-item {
     flex-direction: column !important;
     text-align: center;
-    /* animações vão rodar pelo JS controlando a classe .animate */
+    animation-play-state: running !important;
+  }
+
+  .gallery-text {
+    animation-play-state: running !important;
   }
 
   .gallery-image,
@@ -955,7 +950,7 @@ nav.open ul {
       document.getElementById("apps"),
       document.getElementById("install"),
       document.getElementById("faq"),
-      document.getElementById("galeria")
+      document.getElementById("galeria") // ✅ corrigido para "galeria"
     ];
     const menuLinks = document.querySelectorAll("nav ul li a");
 
@@ -964,6 +959,7 @@ nav.open ul {
       button.addEventListener("click", () => {
         const expanded = button.getAttribute("aria-expanded") === "true";
         button.setAttribute("aria-expanded", !expanded);
+
         const answer = button.nextElementSibling;
         answer.classList.toggle("open");
       });
@@ -994,6 +990,7 @@ nav.open ul {
       });
     });
 
+    // Inicializa scrollspy ao carregar
     window.dispatchEvent(new Event('scroll'));
 
     // Menu mobile toggle
@@ -1006,6 +1003,7 @@ nav.open ul {
       menuToggle.setAttribute("aria-expanded", !expanded);
     });
 
+    // Fecha menu ao clicar em link
     menuLinks.forEach(link => {
       link.addEventListener("click", () => {
         if (nav.classList.contains("open")) {
@@ -1015,6 +1013,7 @@ nav.open ul {
       });
     });
 
+    // Fecha ao clicar fora
     document.addEventListener("click", (event) => {
       const isOpen = nav.classList.contains("open");
       const clickedOutside = !nav.contains(event.target) && !menuToggle.contains(event.target);
@@ -1024,25 +1023,26 @@ nav.open ul {
       }
     });
 
-    // GALERIA
+    // GALERIA: ativa animações com IntersectionObserver e permite repetir animação ao entrar na tela
     const galleryItems = document.querySelectorAll(".gallery-item");
     const isMobile = window.innerWidth <= 768;
 
     if ('IntersectionObserver' in window && !isMobile) {
-      // Desktop: IntersectionObserver normal
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const target = entry.target;
           const text = target.querySelector(".gallery-text");
 
           if (entry.isIntersecting) {
+            // Reativa animação
             target.style.animationPlayState = "running";
             if (text) text.style.animationPlayState = "running";
           } else {
+            // Pausa e reseta para poder animar de novo na próxima entrada
             target.style.animationPlayState = "paused";
-            target.style.animation = 'none';
-            void target.offsetWidth;
-            target.style.animation = '';
+            target.style.animation = 'none';    // reseta animação
+            void target.offsetWidth;            // força reflow para reiniciar a animação
+            target.style.animation = '';        // remove reset
 
             if (text) {
               text.style.animationPlayState = "paused";
@@ -1060,45 +1060,15 @@ nav.open ul {
         if (text) text.style.animationPlayState = "paused";
         observer.observe(item);
       });
-
     } else {
-      // Mobile: usar scroll manual para disparar animação repetida
-
-      // Função para checar se elemento está visível na viewport
-      function isVisible(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-          rect.top < window.innerHeight * 0.9 && 
-          rect.bottom > 0
-        );
-      }
-
-      function animateGalleryItems() {
-        galleryItems.forEach(item => {
-          const text = item.querySelector(".gallery-text");
-
-          if (isVisible(item)) {
-            // Resetar animação para disparar de novo suavemente
-            item.style.animation = 'none';
-            void item.offsetWidth;
-            item.style.animationPlayState = "running";
-            item.style.animation = '';
-
-            if (text) {
-              text.style.animation = 'none';
-              void text.offsetWidth;
-              text.style.animationPlayState = "running";
-              text.style.animation = '';
-            }
-          }
-        });
-      }
-
-      // Rodar no scroll e no load
-      window.addEventListener("scroll", animateGalleryItems);
-      animateGalleryItems();
+      // Em mobile: executa direto
+      galleryItems.forEach(item => {
+        item.style.animationPlayState = "running";
+        const text = item.querySelector(".gallery-text");
+        if (text) text.style.animationPlayState = "running";
+      });
     }
   });
 </script>
-
-
+</body>
+</html>
