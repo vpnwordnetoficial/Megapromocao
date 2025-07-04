@@ -505,23 +505,21 @@
   cursor: pointer;
 }
 
-/* Mobile styles */
 @media (max-width: 768px) {
   nav {
     position: fixed;
     top: 0;
     right: -280px;
     width: 280px;
-    height: 35vh; /* Ajuste a altura aqui como quiser (20vh, 30vh, etc) */
+    height: 30vh; /* Altura que você escolher */
     background-color: #1e1e24;
     box-shadow: -3px 0 15px #0088ff88;
-    padding-top: 70px;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
     transition: right 0.3s ease;
     z-index: 1050;
-    overflow: hidden; /* impede crescimento além da altura */
-    position: fixed;
+    overflow: hidden;
   }
 
   nav.open {
@@ -530,25 +528,15 @@
 
   nav img {
     width: 100%;
-    height: auto;
-    max-height: 80px; /* Limita altura da imagem */
-    object-fit: cover;
-    opacity: 0.3; /* Transparência */
+    height: 100%;         /* imagem ocupa toda a altura da janela */
+    object-fit: cover;    /* recorta e preenche o espaço */
+    opacity: 0.35;        /* transparência opcional */
     border-radius: 0;
-    margin-bottom: 0.5rem;
     display: block;
   }
 
   nav ul {
-    flex-direction: column;
-    gap: 1rem;
-    padding-left: 1rem;
-    margin: 0;
-    overflow-y: auto; /* rolagem se passar da altura */
-  }
-
-  nav ul li a {
-    font-size: 1.1rem;
+    display: none; /* esconde os links se você quiser só a imagem */
   }
 
   .menu-toggle {
