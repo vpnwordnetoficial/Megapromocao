@@ -623,31 +623,34 @@ nav.open ul {
 }
 
 .gallery-image {
-  flex: 1 1 300px;
-  max-width: 480px;
-  height: 270px; /* altura fixa para padronizar */
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 0 25px #0088ffbb;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  display: flex;
+  flex: 1 1 300px;          /* largura mínima flexível */
+  max-width: 480px;         /* largura máxima */
+  height: 270px;            /* altura fixa para padronizar o tamanho */
+  overflow: hidden;         /* esconde partes que ultrapassarem o border-radius */
+  border-radius: 15px;      /* cantos arredondados */
+  box-shadow: 0 0 0px #0088ffbb; /* sombra azul suave ao redor da imagem */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* animações suaves */
+  cursor: pointer;          /* muda o cursor para indicar interatividade */
+  display: flex;            /* para centralizar a imagem internamente */
   align-items: center;
   justify-content: center;
 }
 
+
 .gallery-image:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 0 40px #0088ffdd;
+  transform: translateY(-30px);      /* sobe a imagem levemente */
+  box-shadow: 0 0 50px #0088ffdd;    /* sombra azul mais intensa */
 }
+
 
 .gallery-image img {
   width: 100%;
-  height: 100%; /* força altura igual */
-  object-fit: cover; /* mantém proporção sem distorcer */
+  height: 100%;             /* para preencher todo o quadrado */
+  object-fit: cover;        /* para manter proporção e preencher área */
   transition: transform 0.4s ease, filter 0.3s ease;
-  border-radius: 15px;
+  border-radius: 15px;      /* para acompanhar o arredondamento do quadrado */
 }
+
 
 .gallery-image:hover img {
   transform: scale(1.05);
