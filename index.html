@@ -712,21 +712,21 @@ nav.open ul {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  .testimonials-section h3 {
+.testimonials-section h3 {
     font-size: 2.8rem;
     margin-bottom: 2rem;
     color: #00aaff;
     text-shadow: 0 0 8px #00aaff66;
   }
 
-  .testimonials-container {
+.testimonials-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
   }
 
-  .testimonial-arrow {
+.testimonial-arrow {
     background: #00aaff;
     border: none;
     color: white;
@@ -737,43 +737,43 @@ nav.open ul {
     transition: background-color 0.3s ease;
     user-select: none;
   }
-  .testimonial-arrow:hover,
-  .testimonial-arrow:focus {
+.testimonial-arrow:hover,
+.testimonial-arrow:focus {
     background: #0088cc;
     outline: none;
   }
 
-  .testimonials-wrapper {
+.testimonials-wrapper {
     overflow: hidden;
     width: 700px;
     max-width: 100%;
     position: relative;
   }
 
-  .testimonial {
+.testimonial {
     display: none;
     flex-direction: column;
     align-items: center;
     padding: 1rem 2rem;
     background: #111;
-    border-radius: 15px;
-    box-shadow: 0 0 12px #00aaff33;
+    border-radius: 10px;
+    box-shadow: 0 0 80px #00aaff33;
     color: #eee;
     font-size: 1.2rem;
     line-height: 1.5;
   }
 
-  .testimonial.active {
+.testimonial.active {
     display: flex;
-    animation: fadeInTestimonial 0.5s ease forwards;
+    animation: fadeInTestimonial 0.9s ease forwards;
   }
 
-  @keyframes fadeInTestimonial {
+@keyframes fadeInTestimonial {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
   }
 
-  .testimonial img {
+.testimonial img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -782,19 +782,19 @@ nav.open ul {
     box-shadow: 0 0 8px #00aaffaa;
   }
 
-  .testimonial-text {
+.testimonial-text {
     font-style: italic;
     margin-bottom: 1rem;
     max-width: 600px;
   }
 
-  .testimonial-author {
+.testimonial-author {
     font-weight: 700;
     color: #00aaff;
   }
 
-  /* Responsividade */
-  @media (max-width: 768px) {
+/* Responsividade */
+@media (max-width: 768px) {
     .testimonials-container {
       flex-direction: column;
       gap: 1.5rem;
@@ -1198,7 +1198,7 @@ nav.open ul {
       });
     }
 
-    // DEPOIMENTOS - slider com setas
+    // DEPOIMENTOS - slider com setas e auto slide
     const testimonials = document.querySelectorAll(".testimonial");
     const prevBtn = document.querySelector(".testimonial-arrow.prev");
     const nextBtn = document.querySelector(".testimonial-arrow.next");
@@ -1210,7 +1210,7 @@ nav.open ul {
       });
     }
 
-    if(prevBtn && nextBtn && testimonials.length > 0) {
+    if (prevBtn && nextBtn && testimonials.length > 0) {
       prevBtn.addEventListener("click", () => {
         currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
         showTestimonial(currentIndex);
@@ -1223,11 +1223,14 @@ nav.open ul {
 
       // Inicializa com o primeiro depoimento ativo
       showTestimonial(currentIndex);
+
+      // Passagem automática a cada 5 segundos
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        showTestimonial(currentIndex);
+      }, 5000);
     }
   });
 </script>
-
-
-
 </body>
 </html>
