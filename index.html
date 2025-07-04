@@ -1071,9 +1071,10 @@ nav.open ul {
     </div>
 
     <button class="testimonial-arrow next" aria-label="Próximo depoimento">&#8594;</button>
-  </div>
+
   </div>
 </section>
+
 
   <footer role="contentinfo">
     &copy; 2025 IPTV Premium Brasil. Todos os direitos reservados.
@@ -1088,7 +1089,7 @@ nav.open ul {
       document.getElementById("install"),
       document.getElementById("faq"),
       document.getElementById("galeria"),
-      document.getElementById("depoimentos") // nova seção depoimentos
+      document.getElementById("depoimentos")  // seção depoimentos
     ];
     const menuLinks = document.querySelectorAll("nav ul li a");
 
@@ -1097,13 +1098,12 @@ nav.open ul {
       button.addEventListener("click", () => {
         const expanded = button.getAttribute("aria-expanded") === "true";
         button.setAttribute("aria-expanded", !expanded);
-
         const answer = button.nextElementSibling;
         answer.classList.toggle("open");
       });
     });
 
-    // Scroll event: header fixo e scrollspy
+    // ScrollSpy inteligente baseado na posição média da viewport
     window.addEventListener("scroll", () => {
       if (window.scrollY > 30) {
         header.classList.add("scrolled");
@@ -1111,11 +1111,13 @@ nav.open ul {
         header.classList.remove("scrolled");
       }
 
+      const scrollMiddle = window.innerHeight / 2;
       let currentSectionId = "";
+
       sections.forEach(section => {
         if (!section) return;
-        const top = section.offsetTop - 120;
-        if (window.scrollY >= top) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= scrollMiddle && rect.bottom >= scrollMiddle) {
           currentSectionId = section.id;
         }
       });
@@ -1128,10 +1130,9 @@ nav.open ul {
       });
     });
 
-    // Inicializa scrollspy ao carregar
-    window.dispatchEvent(new Event('scroll'));
+    window.dispatchEvent(new Event('scroll')); // dispara ao carregar
 
-    // Menu mobile toggle
+    // Menu mobile
     const menuToggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector("nav");
 
@@ -1141,7 +1142,6 @@ nav.open ul {
       menuToggle.setAttribute("aria-expanded", !expanded);
     });
 
-    // Fecha menu ao clicar em link
     menuLinks.forEach(link => {
       link.addEventListener("click", () => {
         if (nav.classList.contains("open")) {
@@ -1151,7 +1151,6 @@ nav.open ul {
       });
     });
 
-    // Fecha ao clicar fora
     document.addEventListener("click", (event) => {
       const isOpen = nav.classList.contains("open");
       const clickedOutside = !nav.contains(event.target) && !menuToggle.contains(event.target);
@@ -1161,9 +1160,8 @@ nav.open ul {
       }
     });
 
-    // GALERIA: ativa animações com IntersectionObserver e permite repetir animação ao entrar na tela
+    // GALERIA animação
     const galleryItems = document.querySelectorAll(".gallery-item");
-
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1197,33 +1195,25 @@ nav.open ul {
       });
     }
 
-    // DEPOIMENTOS - slider com setas
+    // AUTOPLAY dos depoimentos
     const testimonials = document.querySelectorAll(".testimonial");
-    const prevBtn = document.querySelector(".testimonial-arrow.prev");
-    const nextBtn = document.querySelector(".testimonial-arrow.next");
-    let currentIndex = 0;
+    let currentTestimonial = 0;
 
-    function showTestimonial(index) {
-      testimonials.forEach((t, i) => {
-        t.classList.toggle("active", i === index);
+    const showTestimonial = (index) => {
+      testimonials.forEach((el, i) => {
+        el.classList.toggle("active", i === index);
       });
-    }
+    };
 
-    if(prevBtn && nextBtn && testimonials.length > 0) {
-      prevBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(currentIndex);
-      });
+    showTestimonial(currentTestimonial); // mostra o primeiro
 
-      nextBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
-      });
-
-      // Inicializa com o primeiro depoimento ativo
-      showTestimonial(currentIndex);
-    }
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000); // troca a cada 5 segundos
   });
 </script>
+
+
 </body>
 </html>
