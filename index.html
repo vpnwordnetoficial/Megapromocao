@@ -703,6 +703,110 @@ nav.open ul {
     font-size: 1.6rem;
   }
 }
+    
+.testimonials-section {
+    max-width: 900px;
+    margin: 3rem auto 5rem auto;
+    padding: 0 1rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .testimonials-section h3 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: #00aaff;
+    text-shadow: 0 0 8px #00aaff66;
+  }
+
+  .testimonials-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .testimonial-arrow {
+    background: #00aaff;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .testimonial-arrow:hover,
+  .testimonial-arrow:focus {
+    background: #0088cc;
+    outline: none;
+  }
+
+  .testimonials-wrapper {
+    overflow: hidden;
+    width: 700px;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .testimonial {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #111;
+    border-radius: 15px;
+    box-shadow: 0 0 12px #00aaff33;
+    color: #eee;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .testimonial.active {
+    display: flex;
+    animation: fadeInTestimonial 0.5s ease forwards;
+  }
+
+  @keyframes fadeInTestimonial {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .testimonial img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #00aaff;
+    box-shadow: 0 0 8px #00aaffaa;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+    max-width: 600px;
+  }
+
+  .testimonial-author {
+    font-weight: 700;
+    color: #00aaff;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .testimonials-container {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .testimonial-arrow {
+      font-size: 2rem;
+      padding: 0.4rem 0.8rem;
+    }
+    .testimonials-wrapper {
+      width: 100%;
+    }
+  }
 
   </style>
 </head>
@@ -723,7 +827,8 @@ nav.open ul {
   <li><a href="#apps">Apps</a></li>
   <li><a href="#install">Instalação</a></li>
   <li><a href="#faq">FAQ</a></li>
-  <li><a href="#galeria">Galeria</a></li> <!-- Novo item -->
+  <li><a href="#galeria">Galeria</a></li>
+  <li><a href="#depoimentos">Depoimentos</a></li>
 </ul>
 </nav>
 
@@ -931,8 +1036,45 @@ nav.open ul {
         <img src="https://s14.gifyu.com/images/bHBHD.webp" alt="Imagem do app TV Express" loading="lazy">
       </div>
     </div>
-
   </section>
+
+<section id="depoimentos" class="testimonials-section">
+  <h3>Depoimentos</h3>
+  <div class="testimonials-container">
+
+    <button class="testimonial-arrow prev" aria-label="Depoimento anterior">&#8592;</button>
+
+    <div class="testimonials-wrapper">
+      <div class="testimonial active" tabindex="0">
+        <img src="https://i.pravatar.cc/100?img=1" alt="Foto do João Silva" />
+        <p class="testimonial-text">"Ótimo serviço, fácil de usar e muitos conteúdos disponíveis. Recomendo demais!"</p>
+        <p class="testimonial-author">— João Silva</p>
+      </div>
+
+      <div class="testimonial" tabindex="0">
+        <img src="https://i.pravatar.cc/100?img=2" alt="Foto da Maria Oliveira" />
+        <p class="testimonial-text">"A instalação foi simples e rápida. O suporte respondeu todas as minhas dúvidas."</p>
+        <p class="testimonial-author">— Maria Oliveira</p>
+      </div>
+
+      <div class="testimonial" tabindex="0">
+        <img src="https://i.pravatar.cc/100?img=3" alt="Foto do Carlos Souza" />
+        <p class="testimonial-text">"Conteúdos atualizados sempre e imagem de ótima qualidade. Estou satisfeito!"</p>
+        <p class="testimonial-author">— Carlos Souza</p>
+      </div>
+
+      <div class="testimonial" tabindex="0">
+        <img src="https://i.pravatar.cc/100?img=4" alt="Foto da Ana Paula" />
+        <p class="testimonial-text">"Melhor IPTV que já usei, com ótimo custo-benefício."</p>
+        <p class="testimonial-author">— Ana Paula</p>
+      </div>
+    </div>
+
+    <button class="testimonial-arrow next" aria-label="Próximo depoimento">&#8594;</button>
+
+  </div>
+</section>
+
 
   <footer role="contentinfo">
     &copy; 2025 IPTV Premium Brasil. Todos os direitos reservados.
@@ -946,7 +1088,8 @@ nav.open ul {
       document.getElementById("apps"),
       document.getElementById("install"),
       document.getElementById("faq"),
-      document.getElementById("galeria")
+      document.getElementById("galeria"),
+      document.getElementById("depoimentos") // nova seção depoimentos
     ];
     const menuLinks = document.querySelectorAll("nav ul li a");
 
@@ -1054,8 +1197,37 @@ nav.open ul {
         observer.observe(item);
       });
     }
+
+    // DEPOIMENTOS - slider com setas
+    const testimonials = document.querySelectorAll(".testimonial");
+    const prevBtn = document.querySelector(".testimonial-arrow.prev");
+    const nextBtn = document.querySelector(".testimonial-arrow.next");
+    let currentIndex = 0;
+
+    function showTestimonial(index) {
+      testimonials.forEach((t, i) => {
+        t.classList.toggle("active", i === index);
+      });
+    }
+
+    if(prevBtn && nextBtn && testimonials.length > 0) {
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        showTestimonial(currentIndex);
+      });
+
+      // Inicializa com o primeiro depoimento ativo
+      showTestimonial(currentIndex);
+    }
   });
 </script>
+
+
 
 </body>
 </html>
