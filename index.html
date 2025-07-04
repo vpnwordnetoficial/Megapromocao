@@ -712,21 +712,21 @@ nav.open ul {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-.testimonials-section h3 {
+  .testimonials-section h3 {
     font-size: 2.8rem;
     margin-bottom: 2rem;
     color: #00aaff;
     text-shadow: 0 0 8px #00aaff66;
   }
 
-.testimonials-container {
+  .testimonials-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
   }
 
-.testimonial-arrow {
+  .testimonial-arrow {
     background: #00aaff;
     border: none;
     color: white;
@@ -737,43 +737,43 @@ nav.open ul {
     transition: background-color 0.3s ease;
     user-select: none;
   }
-.testimonial-arrow:hover,
-.testimonial-arrow:focus {
+  .testimonial-arrow:hover,
+  .testimonial-arrow:focus {
     background: #0088cc;
     outline: none;
   }
 
-.testimonials-wrapper {
+  .testimonials-wrapper {
     overflow: hidden;
     width: 700px;
     max-width: 100%;
     position: relative;
   }
 
-.testimonial {
+  .testimonial {
     display: none;
     flex-direction: column;
     align-items: center;
     padding: 1rem 2rem;
     background: #111;
-    border-radius: 10px;
-    box-shadow: 0 0 80px #00aaff33;
+    border-radius: 15px;
+    box-shadow: 0 0 12px #00aaff33;
     color: #eee;
     font-size: 1.2rem;
     line-height: 1.5;
   }
 
-.testimonial.active {
+  .testimonial.active {
     display: flex;
-    animation: fadeInTestimonial 2.9s ease forwards;
+    animation: fadeInTestimonial 0.5s ease forwards;
   }
 
-@keyframes fadeInTestimonial {
+  @keyframes fadeInTestimonial {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
   }
 
-.testimonial img {
+  .testimonial img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -782,19 +782,19 @@ nav.open ul {
     box-shadow: 0 0 8px #00aaffaa;
   }
 
-.testimonial-text {
+  .testimonial-text {
     font-style: italic;
     margin-bottom: 1rem;
     max-width: 600px;
   }
 
-.testimonial-author {
+  .testimonial-author {
     font-weight: 700;
     color: #00aaff;
   }
 
-/* Responsividade */
-@media (max-width: 768px) {
+  /* Responsividade */
+  @media (max-width: 768px) {
     .testimonials-container {
       flex-direction: column;
       gap: 1.5rem;
@@ -1045,104 +1045,35 @@ nav.open ul {
     <button class="testimonial-arrow prev" aria-label="Depoimento anterior">&#8592;</button>
 
     <div class="testimonials-wrapper">
-
       <div class="testimonial active" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Foto do João Silva" />
+        <img src="https://i.pravatar.cc/100?img=1" alt="Foto do João Silva" />
         <p class="testimonial-text">"Ótimo serviço, fácil de usar e muitos conteúdos disponíveis. Recomendo demais!"</p>
         <p class="testimonial-author">— João Silva</p>
       </div>
 
       <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Foto da Maria Oliveira" />
+        <img src="https://i.pravatar.cc/100?img=2" alt="Foto da Maria Oliveira" />
         <p class="testimonial-text">"A instalação foi simples e rápida. O suporte respondeu todas as minhas dúvidas."</p>
         <p class="testimonial-author">— Maria Oliveira</p>
       </div>
 
       <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Foto do Carlos Souza" />
+        <img src="https://i.pravatar.cc/100?img=3" alt="Foto do Carlos Souza" />
         <p class="testimonial-text">"Conteúdos atualizados sempre e imagem de ótima qualidade. Estou satisfeito!"</p>
         <p class="testimonial-author">— Carlos Souza</p>
       </div>
 
       <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Foto da Ana Paula" />
+        <img src="https://i.pravatar.cc/100?img=4" alt="Foto da Ana Paula" />
         <p class="testimonial-text">"Melhor IPTV que já usei, com ótimo custo-benefício."</p>
         <p class="testimonial-author">— Ana Paula</p>
       </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/30.jpg" alt="Foto do Marcos Lima" />
-        <p class="testimonial-text">"Assisto todos os dias, sem travar. Muito melhor que outros serviços."</p>
-        <p class="testimonial-author">— Marcos Lima</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="Foto da Fernanda Ribeiro" />
-        <p class="testimonial-text">"Variedade de filmes e canais me surpreendeu. Recomendo muito."</p>
-        <p class="testimonial-author">— Fernanda Ribeiro</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/40.jpg" alt="Foto do André Costa" />
-        <p class="testimonial-text">"Serviço estável e com ótimo suporte. Continuarei assinando."</p>
-        <p class="testimonial-author">— André Costa</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto da Patrícia Nunes" />
-        <p class="testimonial-text">"Fácil de instalar na Smart TV e funciona muito bem!"</p>
-        <p class="testimonial-author">— Patrícia Nunes</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Foto do Rafael Martins" />
-        <p class="testimonial-text">"Adoro os canais esportivos. Nunca perco um jogo!"</p>
-        <p class="testimonial-author">— Rafael Martins</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="Foto da Camila Duarte" />
-        <p class="testimonial-text">"Me surpreendi com a qualidade dos filmes e séries disponíveis."</p>
-        <p class="testimonial-author">— Camila Duarte</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Foto do Eduardo Rocha" />
-        <p class="testimonial-text">"Assisto com a família toda. Muito conteúdo infantil e adulto."</p>
-        <p class="testimonial-author">— Eduardo Rocha</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Foto da Juliana Silva" />
-        <p class="testimonial-text">"Nunca mais precisei procurar links na internet. Está tudo aqui!"</p>
-        <p class="testimonial-author">— Juliana Silva</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="Foto do Fábio Almeida" />
-        <p class="testimonial-text">"Preço justo e conteúdo de qualidade. Parabéns à equipe!"</p>
-        <p class="testimonial-author">— Fábio Almeida</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/women/64.jpg" alt="Foto da Simone Teixeira" />
-        <p class="testimonial-text">"Adorei o layout do app e a praticidade para acessar os canais."</p>
-        <p class="testimonial-author">— Simone Teixeira</p>
-      </div>
-
-      <div class="testimonial" tabindex="0">
-        <img src="https://randomuser.me/api/portraits/men/66.jpg" alt="Foto do Leonardo Barros" />
-        <p class="testimonial-text">"Fácil de pagar, fácil de usar e com muita variedade. Excelente."</p>
-        <p class="testimonial-author">— Leonardo Barros</p>
-      </div>
-
     </div>
 
     <button class="testimonial-arrow next" aria-label="Próximo depoimento">&#8594;</button>
-
+  </div>
   </div>
 </section>
-
 
   <footer role="contentinfo">
     &copy; 2025 IPTV Premium Brasil. Todos os direitos reservados.
@@ -1266,7 +1197,7 @@ nav.open ul {
       });
     }
 
-    // DEPOIMENTOS - slider com setas e auto slide
+    // DEPOIMENTOS - slider com setas
     const testimonials = document.querySelectorAll(".testimonial");
     const prevBtn = document.querySelector(".testimonial-arrow.prev");
     const nextBtn = document.querySelector(".testimonial-arrow.next");
@@ -1278,7 +1209,7 @@ nav.open ul {
       });
     }
 
-    if (prevBtn && nextBtn && testimonials.length > 0) {
+    if(prevBtn && nextBtn && testimonials.length > 0) {
       prevBtn.addEventListener("click", () => {
         currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
         showTestimonial(currentIndex);
@@ -1291,12 +1222,6 @@ nav.open ul {
 
       // Inicializa com o primeiro depoimento ativo
       showTestimonial(currentIndex);
-
-      // Passagem automática a cada 5 segundos
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
-      }, 4000);
     }
   });
 </script>
