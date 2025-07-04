@@ -674,94 +674,7 @@ nav.open ul {
     font-size: 1.2rem;
   }
 }
-
     
-/* Seção de depoimentos */
-.testimonial-section {
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 3rem 2rem;
-  /* Fundo removido para herdar o fundo do site */
-  border-radius: 20px;
-  box-shadow: 0 0 0px #00bbff44;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Container flex para cada depoimento */
-.testimonial {
-  max-width: 600px;
-  margin-bottom: 2.5rem;
-  padding: 2rem 2.5rem;
-  border-left: 6px solid #00d2ff;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 14px;
-  color: #fff;
-  font-size: 1.5rem;
-  font-style: italic;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0, 219, 255, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
-
-  /* padrão: alinhado à esquerda */
-  margin-left: 0;
-}
-
-/* Alterna alinhamento dos depoimentos pares para deslocar para direita */
-.testimonial:nth-child(even) {
-  margin-left: 100px; /* ajusta o quanto desloca para a direita */
-}
-
-/* Hover aumenta e sobe */
-.testimonial:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(0, 219, 255, 0.4);
-}
-
-/* Aspas decorativas */
-.testimonial::before {
-  content: "“";
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  font-size: 4rem;
-  color: #00d2ffcc;
-  font-weight: 900;
-  pointer-events: none;
-  font-family: Georgia, serif;
-}
-
-/* Nome do autor */
-.testimonial span {
-  display: block;
-  margin-top: 1.2rem;
-  font-weight: 900;
-  font-style: normal;
-  font-size: 1.3rem;
-  color: #0cf;
-  text-shadow: 1px 1px 5px #0088ff;
-  letter-spacing: 1px;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-  .testimonial {
-    font-size: 1.2rem;
-    padding: 1.5rem 1.8rem;
-    margin-left: 0 !important; /* para celular todos alinhados a esquerda */
-  }
-  
-  .testimonial::before {
-    font-size: 3rem;
-    top: 5px;
-    left: 10px;
-  }
-
-  .testimonial span {
-    font-size: 1.1rem;
-  }
-}
-
   </style>
 </head>
 
@@ -782,7 +695,6 @@ nav.open ul {
     <li><a href="#install">Instalação</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#galeria">Galeria</a></li>
-    <li><a href="#depoimentos">Depoimentos</a></li>
   </ul>
 </nav>
 
@@ -1053,28 +965,6 @@ nav.open ul {
     </div>
     <img src="https://s14.gifyu.com/images/bHBHD.webp" alt="Tela do app TV Express">
   </div>
-  </div>
-  
-<section class="testimonial-section" id="depoimentos" aria-label="Depoimentos de usuários">
-  <div class="testimonial">
-    <p>O UniTV mudou minha forma de assistir TV, recomendo demais!</p>
-    <span>- João Silva</span>
-  </div>
-  <div class="testimonial">
-    <p>Youcine é simplesmente o melhor app IPTV que já usei, com conteúdo atualizado.</p>
-    <span>- Maria Oliveira</span>
-  </div>
-  <div class="testimonial">
-    <p>Eppi Cinema tem uma seleção incrível de filmes, ótima qualidade.</p>
-    <span>- Carlos Souza</span>
-  </div>
-  <div class="testimonial">
-    <p>TV Express é rápido, estável e fácil de usar. Nota 10!</p>
-    <span>- Ana Pereira</span>
-  </div>
-</section>
-
-
 
 </section>
 
