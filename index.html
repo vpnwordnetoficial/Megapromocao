@@ -891,51 +891,51 @@ nav.open ul {
         Sempre que lançarmos uma versão nova, disponibilizaremos o link para download atualizado aqui no site. Basta baixar e instalar por cima da versão antiga.
       </div>
     </div>
-    
+  </section> <!-- Fecha FAQ -->
+
   <section class="gallery-section" id="galeria">
-  <h3 class="section-title" tabindex="0">Galeria de Aplicativos</h3>
+    <h3 class="section-title" tabindex="0">Galeria de Aplicativos</h3>
 
-  <div class="gallery-item">
-    <div class="gallery-text">
-      <h4>UniTV</h4>
-      <p>Com o UniTV, você assiste a canais de TV ao vivo com ótima estabilidade e variedade de conteúdo nacional e internacional.</p>
+    <div class="gallery-item">
+      <div class="gallery-text">
+        <h4>UniTV</h4>
+        <p>Com o UniTV, você assiste a canais de TV ao vivo com ótima estabilidade e variedade de conteúdo nacional e internacional.</p>
+      </div>
+      <div class="gallery-image">
+        <img src="https://s14.gifyu.com/images/bHBHc.webp" alt="Imagem do app UniTV" loading="lazy">
+      </div>
     </div>
-    <div class="gallery-image">
-      <img src="https://s14.gifyu.com/images/bHBHc.webp" alt="UniTV" loading="lazy">
-    </div>
-  </div>
 
-  <div class="gallery-item reverse">
-    <div class="gallery-text">
-      <h4>Youcine</h4>
-      <p>Youcine é perfeito para quem ama filmes, séries, desenhos e esportes com uma interface amigável e fácil de usar.</p>
+    <div class="gallery-item reverse">
+      <div class="gallery-text">
+        <h4>Youcine</h4>
+        <p>Youcine é perfeito para quem ama filmes, séries, desenhos e esportes com uma interface amigável e fácil de usar.</p>
+      </div>
+      <div class="gallery-image">
+        <img src="https://s14.gifyu.com/images/bHBHH.png" alt="Imagem do app Youcine" loading="lazy">
+      </div>
     </div>
-    <div class="gallery-image">
-      <img src="https://s14.gifyu.com/images/bHBHH.png" alt="Youcine" loading="lazy">
-    </div>
-  </div>
 
-  <div class="gallery-item">
-    <div class="gallery-text">
-      <h4>Eppi Cinema</h4>
-      <p>O Eppi Cinema oferece lançamentos de filmes em alta qualidade e conteúdo dublado/legendado para toda a família.</p>
+    <div class="gallery-item">
+      <div class="gallery-text">
+        <h4>Eppi Cinema</h4>
+        <p>O Eppi Cinema oferece lançamentos de filmes em alta qualidade e conteúdo dublado/legendado para toda a família.</p>
+      </div>
+      <div class="gallery-image">
+        <img src="https://s14.gifyu.com/images/bHBH0.png" alt="Imagem do app Eppi Cinema" loading="lazy">
+      </div>
     </div>
-    <div class="gallery-image">
-      <img src="https://s14.gifyu.com/images/bHBH0.png" alt="Eppi Cinema" loading="lazy">
-    </div>
-  </div>
 
-  <div class="gallery-item reverse">
-    <div class="gallery-text">
-      <h4>TV Express</h4>
-      <p>Com a TV Express, você tem acesso a milhares de canais e VODs atualizados diariamente direto no seu Android ou TV Box.</p>
+    <div class="gallery-item reverse">
+      <div class="gallery-text">
+        <h4>TV Express</h4>
+        <p>Com a TV Express, você tem acesso a milhares de canais e VODs atualizados diariamente direto no seu Android ou TV Box.</p>
+      </div>
+      <div class="gallery-image">
+        <img src="https://s14.gifyu.com/images/bHBHD.webp" alt="Imagem do app TV Express" loading="lazy">
+      </div>
     </div>
-    <div class="gallery-image">
-      <img src="https://s14.gifyu.com/images/bHBHD.webp" alt="TV Express" loading="lazy">
-    </div>
-  </div>
-</section>
-      
+
   </section>
 
   <footer role="contentinfo">
@@ -950,7 +950,7 @@ nav.open ul {
       document.getElementById("apps"),
       document.getElementById("install"),
       document.getElementById("faq"),
-      document.getElementById("gallery") // adiciona galeria no scrollspy
+      document.getElementById("galeria") // ✅ corrigido para "galeria"
     ];
     const menuLinks = document.querySelectorAll("nav ul li a");
 
@@ -1023,17 +1023,33 @@ nav.open ul {
       }
     });
 
-    // GALERIA: ativa animações com IntersectionObserver
+    // GALERIA: ativa animações com IntersectionObserver e permite repetir animação ao entrar na tela
     const galleryItems = document.querySelectorAll(".gallery-item");
     const isMobile = window.innerWidth <= 768;
 
     if ('IntersectionObserver' in window && !isMobile) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+          const target = entry.target;
+          const text = target.querySelector(".gallery-text");
+
           if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = "running";
-            const text = entry.target.querySelector(".gallery-text");
+            // Reativa animação
+            target.style.animationPlayState = "running";
             if (text) text.style.animationPlayState = "running";
+          } else {
+            // Pausa e reseta para poder animar de novo na próxima entrada
+            target.style.animationPlayState = "paused";
+            target.style.animation = 'none';    // reseta animação
+            void target.offsetWidth;            // força reflow para reiniciar a animação
+            target.style.animation = '';        // remove reset
+
+            if (text) {
+              text.style.animationPlayState = "paused";
+              text.style.animation = 'none';
+              void text.offsetWidth;
+              text.style.animation = '';
+            }
           }
         });
       }, { threshold: 0.1 });
