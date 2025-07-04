@@ -491,7 +491,7 @@
       }
     }
     
-    /* Botão hamburger só aparece no mobile */
+/* Botão hamburger só aparece no mobile */
 .menu-toggle {
   display: none;
   position: fixed;
@@ -505,59 +505,11 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  nav {
-    position: fixed;
-    top: 0;
-    right: -280px;
-    width: 280px;
-    height: 30vh; /* Altura que você escolher */
-    background-color: #1e1e24;
-    box-shadow: -3px 0 15px #0088ff88;
-    padding-top: 0;
-    display: flex;
-    flex-direction: column;
-    transition: right 0.3s ease;
-    z-index: 1050;
-    overflow: hidden;
-  }
-
-  nav.open {
-    right: 0;
-  }
-
-  nav img {
-    width: 100%;
-    height: 100%;         /* imagem ocupa toda a altura da janela */
-    object-fit: cover;    /* recorta e preenche o espaço */
-    opacity: 0.35;        /* transparência opcional */
-    border-radius: 0;
-    display: block;
-  }
-
-  nav ul {
-    display: none; /* esconde os links se você quiser só a imagem */
-  }
-
-  .menu-toggle {
-    display: block;
-  }
+/* Esconde imagem de fundo no desktop */
+nav .menu-bg {
+  display: none;
 }
 
-  /* Imagem de fundo no menu */
-  nav .menu-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.2; /* transparência da imagem */
-    z-index: 0;
-    display: block;
-  }
-}
-    
 /* Animação para o conteúdo do menu quando abrir (fade + slide da direita) */
 @keyframes menuFadeSlide {
   from {
@@ -574,22 +526,17 @@ nav.open ul {
   animation: menuFadeSlide 0.4s ease forwards;
 }
 
-/* Esconde imagem no desktop */
-nav .menu-bg {
-  display: none;
-}
-
-/* Menu mobile com imagem de fundo */
+/* Estilos para mobile */
 @media (max-width: 768px) {
   nav {
     position: fixed;
     top: 0;
     right: -280px;
     width: 280px;
-    height: 70vh;
+    height: 30vh; /* Ajuste a altura aqui */
     background-color: #1e1e24;
     box-shadow: -3px 0 15px #0088ff88;
-    padding-top: 70px;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
     transition: right 0.3s ease;
@@ -601,17 +548,18 @@ nav .menu-bg {
     right: 0;
   }
 
-nav .menu-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.1; /* 👈 aqui você ajusta a transparência */
-  z-index: 0;
-  display: block;
-}
+  /* Imagem de fundo no menu */
+  nav .menu-bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2; /* Ajuste a transparência aqui */
+    z-index: 0;
+  }
 
   nav ul {
     position: relative;
@@ -620,13 +568,19 @@ nav .menu-bg {
     gap: 1.5rem;
     padding-left: 1.5rem;
     list-style: none;
+    margin: 0;
   }
 
   nav ul li a {
     font-size: 1.3rem;
     color: #ffffff;
   }
+
+  .menu-toggle {
+    display: block;
+  }
 }
+
 
   </style>
 </head>
@@ -642,13 +596,14 @@ nav .menu-bg {
     </button>
 
 <nav id="main-nav">
-  <img class="menu-bg" src="" alt="Imagem de fundo do menu" />
+  <img src="https://s14.gifyu.com/images/bHB2m.jpg" alt="Imagem de fundo do menu" class="menu-bg" />
   <ul>
     <li><a href="#apps">Apps</a></li>
     <li><a href="#install">Instalação</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
 </nav>
+
 
 
   </header>
