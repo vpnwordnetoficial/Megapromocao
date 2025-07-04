@@ -600,7 +600,7 @@ nav.open ul {
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUp 1s ease forwards;
-  /* REMOVIDO: sem fundo e sem caixa */
+  animation-play-state: paused;
   background: none;
   box-shadow: none;
   padding: 0;
@@ -623,30 +623,30 @@ nav.open ul {
 }
 
 .gallery-image {
-  flex: 1 1 300px;          /* largura mínima flexível */
-  max-width: 480px;         /* largura máxima */
-  height: 270px;            /* altura fixa para padronizar o tamanho */
-  overflow: hidden;         /* esconde partes que ultrapassarem o border-radius */
-  border-radius: 15px;      /* cantos arredondados */
-  box-shadow: 0 0 0px #0088ffbb; /* sombra azul suave ao redor da imagem */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* animações suaves */
-  cursor: pointer;          /* muda o cursor para indicar interatividade */
-  display: flex;            /* para centralizar a imagem internamente */
+  flex: 1 1 300px;
+  max-width: 480px;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 0px #0088ffbb;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .gallery-image:hover {
-  transform: translateY(-30px);      /* sobe a imagem levemente */
-  box-shadow: 0 0 50px #0088ffdd;    /* sombra azul mais intensa */
+  transform: translateY(-30px);
+  box-shadow: 0 0 50px #0088ffdd;
 }
 
 .gallery-image img {
   width: 100%;
-  height: 100%;             /* para preencher todo o quadrado */
-  object-fit: cover;        /* para manter proporção e preencher área */
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.4s ease, filter 0.3s ease;
-  border-radius: 15px;      /* para acompanhar o arredondamento do quadrado */
+  border-radius: 15px;
 }
 
 .gallery-image:hover img {
@@ -661,8 +661,8 @@ nav.open ul {
   line-height: 1.6;
   text-shadow: 0 0 6px #000000;
   animation: fadeInText 1.2s ease forwards;
+  animation-play-state: paused;
   opacity: 0;
-  /* sem fundo nem caixa */
   background: none;
   box-shadow: none;
   padding: 0;
@@ -691,6 +691,11 @@ nav.open ul {
   .gallery-item {
     flex-direction: column !important;
     text-align: center;
+    animation-play-state: running !important;
+  }
+
+  .gallery-text {
+    animation-play-state: running !important;
   }
 
   .gallery-image,
@@ -703,9 +708,9 @@ nav.open ul {
   }
 }
 
-    
   </style>
 </head>
+
 <body>
 
   <header>
@@ -944,7 +949,8 @@ nav.open ul {
     const sections = [
       document.getElementById("apps"),
       document.getElementById("install"),
-      document.getElementById("faq")
+      document.getElementById("faq"),
+      document.getElementById("gallery") // adiciona galeria no scrollspy
     ];
     const menuLinks = document.querySelectorAll("nav ul li a");
 
@@ -955,28 +961,22 @@ nav.open ul {
         button.setAttribute("aria-expanded", !expanded);
 
         const answer = button.nextElementSibling;
-        if (answer.classList.contains("open")) {
-          answer.classList.remove("open");
-        } else {
-          answer.classList.add("open");
-        }
+        answer.classList.toggle("open");
       });
     });
 
-    // Scroll event unificado
+    // Scroll event: header fixo e scrollspy
     window.addEventListener("scroll", () => {
-      // Header background toggle
       if (window.scrollY > 30) {
         header.classList.add("scrolled");
       } else {
         header.classList.remove("scrolled");
       }
 
-      // Scrollspy menu
       let currentSectionId = "";
       sections.forEach(section => {
         if (!section) return;
-        const top = section.offsetTop - 100;
+        const top = section.offsetTop - 120;
         if (window.scrollY >= top) {
           currentSectionId = section.id;
         }
@@ -990,25 +990,20 @@ nav.open ul {
       });
     });
 
-    // Inicializa a ativação correta do menu no carregamento
+    // Inicializa scrollspy ao carregar
     window.dispatchEvent(new Event('scroll'));
 
-    // Controle do menu mobile
+    // Menu mobile toggle
     const menuToggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector("nav");
 
     menuToggle.addEventListener("click", () => {
       const expanded = menuToggle.getAttribute("aria-expanded") === "true";
-      if (expanded) {
-        nav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      } else {
-        nav.classList.add("open");
-        menuToggle.setAttribute("aria-expanded", "true");
-      }
+      nav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", !expanded);
     });
 
-    // Fecha menu ao clicar em qualquer link do menu (mobile)
+    // Fecha menu ao clicar em link
     menuLinks.forEach(link => {
       link.addEventListener("click", () => {
         if (nav.classList.contains("open")) {
@@ -1018,38 +1013,48 @@ nav.open ul {
       });
     });
 
-    // Fecha o menu ao clicar fora dele
+    // Fecha ao clicar fora
     document.addEventListener("click", (event) => {
       const isOpen = nav.classList.contains("open");
-      const clickedOutsideMenu = !nav.contains(event.target) && !menuToggle.contains(event.target);
-
-      if (isOpen && clickedOutsideMenu) {
+      const clickedOutside = !nav.contains(event.target) && !menuToggle.contains(event.target);
+      if (isOpen && clickedOutside) {
         nav.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
       }
     });
 
-
-    // NOVO: Animar os itens da galeria ao entrarem na viewport
+    // GALERIA: ativa animações com IntersectionObserver
     const galleryItems = document.querySelectorAll(".gallery-item");
+    const isMobile = window.innerWidth <= 768;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = "running";
-        } else {
-          entry.target.style.animationPlayState = "paused";
-        }
+    if ('IntersectionObserver' in window && !isMobile) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = "running";
+            const text = entry.target.querySelector(".gallery-text");
+            if (text) text.style.animationPlayState = "running";
+          }
+        });
+      }, { threshold: 0.1 });
+
+      galleryItems.forEach(item => {
+        item.style.animationPlayState = "paused";
+        const text = item.querySelector(".gallery-text");
+        if (text) text.style.animationPlayState = "paused";
+        observer.observe(item);
       });
-    }, { threshold: 0.1 });
-
-    galleryItems.forEach(item => {
-      item.style.animationPlayState = "paused"; // pausa animação por padrão
-      observer.observe(item);
-    });
-
+    } else {
+      // Em mobile: executa direto
+      galleryItems.forEach(item => {
+        item.style.animationPlayState = "running";
+        const text = item.querySelector(".gallery-text");
+        if (text) text.style.animationPlayState = "running";
+      });
+    }
   });
 </script>
 </body>
 </html>
+
 
