@@ -564,22 +564,60 @@ nav.open ul {
   animation: menuFadeSlide 0.4s ease forwards;
 }
 
-/* Esconde a imagem no desktop */
-nav img {
+/* Esconde imagem no desktop */
+nav .menu-bg {
   display: none;
 }
 
-/* Mostra a imagem no menu mobile com estilos */
+/* Menu mobile com imagem de fundo */
 @media (max-width: 768px) {
-  nav img {
+  nav {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 70vh;
+    background-color: #1e1e24;
+    box-shadow: -3px 0 15px #0088ff88;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+    z-index: 1050;
+    overflow: hidden;
+  }
+
+  nav.open {
+    right: 0;
+  }
+
+  nav .menu-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4; /* Transparência */
+    z-index: 0;
     display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto 1rem auto;
-    border-radius: 10px;
+  }
+
+  nav ul {
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 1.5rem;
+    list-style: none;
+  }
+
+  nav ul li a {
+    font-size: 1.3rem;
+    color: #ffffff;
   }
 }
-    
+
   </style>
 </head>
 
@@ -594,13 +632,14 @@ nav img {
     </button>
 
 <nav id="main-nav">
-  <img src="https://s14.gifyu.com/images/bHB2m.jpg" alt="Descrição da imagem" />
+  <img class="menu-bg" src="https://s14.gifyu.com/images/bHB2m.jpg" alt="Imagem de fundo do menu" />
   <ul>
     <li><a href="#apps">Apps</a></li>
     <li><a href="#install">Instalação</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
 </nav>
+
 
   </header>
 
