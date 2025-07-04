@@ -581,6 +581,71 @@ nav.open ul {
   }
 }
 
+/* GALERIA DE APPS */
+.gallery-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #1e1e24;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #0088ff55;
+  user-select: none;
+}
+
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.gallery-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.gallery-image {
+  flex: 1 1 300px;
+  max-width: 480px;
+}
+
+.gallery-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #0088ffaa;
+}
+
+.gallery-text {
+  flex: 1 1 300px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-shadow: 0 0 6px #000000;
+}
+
+.gallery-text h4 {
+  font-size: 2rem;
+  color: #ffaf00;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #000;
+}
+
+@media (max-width: 768px) {
+  .gallery-item {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .gallery-image,
+  .gallery-text {
+    flex: 1 1 100%;
+  }
+
+  .gallery-text h4 {
+    font-size: 1.5rem;
+  }
+}    
+    
   </style>
 </head>
 
@@ -763,6 +828,52 @@ nav.open ul {
         Sempre que lançarmos uma versão nova, disponibilizaremos o link para download atualizado aqui no site. Basta baixar e instalar por cima da versão antiga.
       </div>
     </div>
+    
+  <section class="gallery-section">
+  <h3 class="section-title" tabindex="0">Galeria de Aplicativos</h3>
+
+  <div class="gallery-item">
+    <div class="gallery-text">
+      <h4>UniTV</h4>
+      <p>Com o UniTV, você assiste a canais de TV ao vivo com ótima estabilidade e variedade de conteúdo nacional e internacional.</p>
+    </div>
+    <div class="gallery-image">
+      <img src="https://s14.gifyu.com/images/uni.webp" alt="UniTV" loading="lazy">
+    </div>
+  </div>
+
+  <div class="gallery-item reverse">
+    <div class="gallery-text">
+      <h4>Youcine</h4>
+      <p>Youcine é perfeito para quem ama filmes, séries, desenhos e esportes com uma interface amigável e fácil de usar.</p>
+    </div>
+    <div class="gallery-image">
+      <img src="https://s14.gifyu.com/images/youcine.webp" alt="Youcine" loading="lazy">
+    </div>
+  </div>
+
+  <div class="gallery-item">
+    <div class="gallery-text">
+      <h4>Eppi Cinema</h4>
+      <p>O Eppi Cinema oferece lançamentos de filmes em alta qualidade e conteúdo dublado/legendado para toda a família.</p>
+    </div>
+    <div class="gallery-image">
+      <img src="https://s14.gifyu.com/images/eppi.webp" alt="Eppi Cinema" loading="lazy">
+    </div>
+  </div>
+
+  <div class="gallery-item reverse">
+    <div class="gallery-text">
+      <h4>TV Express</h4>
+      <p>Com a TV Express, você tem acesso a milhares de canais e VODs atualizados diariamente direto no seu Android ou TV Box.</p>
+    </div>
+    <div class="gallery-image">
+      <img src="https://s14.gifyu.com/images/tvexpress.webp" alt="TV Express" loading="lazy">
+    </div>
+  </div>
+</section>
+  
+    
   </section>
 
   <footer role="contentinfo">
@@ -864,4 +975,3 @@ nav.open ul {
 </script>
 </body>
 </html>
-
