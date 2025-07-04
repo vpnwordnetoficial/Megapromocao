@@ -395,7 +395,7 @@
       background-color: #2a2a34;
       border-radius: 15px;
       margin-bottom: 1.2rem;
-      box-shadow: 0 0 5px #ffaf00;
+      box-shadow: 0 0 20px #0088ffbb;
       overflow: hidden;
       user-select: none;
     }
@@ -580,101 +580,7 @@ nav.open ul {
     display: block;
   }
 }
-    
 
-/* Container geral da galeria */
-.gallery-section {
-  max-width: 1100px;
-  margin: 3rem auto;
-}
-
-/* Cada item da galeria */
-.gallery-item {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  margin-bottom: 4rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Alternar posição da imagem/texto para itens pares */
-.gallery-item:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-/* Texto do app */
-.app-text {
-  flex: 1;
-  color: #0cf;
-  text-shadow: 1px 1px 3px rgba(0, 136, 255, 0.8);
-}
-
-/* Título do app */
-.app-text h4 {
-  font-size: 3rem;
-  font-weight: 900;
-  margin-bottom: 0.6rem;
-  background: linear-gradient(90deg, #00d2ff, #004e92);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Destaque especial (pode ser aplicado a palavras) */
-.app-text h4 span.highlight {
-  color: #ffdd00;
-  text-shadow: 2px 2px 10px #ffdd00aa;
-}
-
-/* Parágrafo descritivo */
-.app-text p {
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1.6;
-  color: #aeefff;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-}
-
-/* Imagens dos apps - tamanho fixo e uniforme */
-.gallery-item img {
-  width: 500px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 0 0px #00bbffcc;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-/* Efeito hover nas imagens */
-.gallery-item img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 70px #00ddffdd;
-}
-
-/* Responsivo para telas menores */
-@media (max-width: 850px) {
-  .gallery-item {
-    flex-direction: column !important;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .gallery-item:nth-child(even) {
-    flex-direction: column !important;
-  }
-
-  .app-text h4 {
-    font-size: 2.5rem;
-  }
-
-  .app-text p {
-    font-size: 1.2rem;
-  }
-}
-    
   </style>
 </head>
 
@@ -694,9 +600,10 @@ nav.open ul {
     <li><a href="#apps">Apps</a></li>
     <li><a href="#install">Instalação</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#galeria">Galeria</a></li>
   </ul>
 </nav>
+
+
 
   </header>
 
@@ -856,118 +763,7 @@ nav.open ul {
         Sempre que lançarmos uma versão nova, disponibilizaremos o link para download atualizado aqui no site. Basta baixar e instalar por cima da versão antiga.
       </div>
     </div>
-    
-    <div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq13" id="faq13-btn">
-    O UniTV precisa de internet para funcionar?
-  </button>
-  <div class="faq-answer" id="faq13" role="region" aria-labelledby="faq13-btn">
-    Sim. O UniTV transmite canais e vídeos pela internet, então é necessário estar conectado via Wi-Fi ou dados móveis.
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq14" id="faq14-btn">
-    O UniTV tem suporte a Chromecast?
-  </button>
-  <div class="faq-answer" id="faq14" role="region" aria-labelledby="faq14-btn">
-    Alguns conteúdos do UniTV suportam transmissão via Chromecast. Isso depende do dispositivo e versão do app.
-  </div>
-</div>
-
-    <div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq15" id="faq15-btn">
-    O Youcine é atualizado com frequência?
-  </button>
-  <div class="faq-answer" id="faq15" role="region" aria-labelledby="faq15-btn">
-    Sim. O Youcine recebe atualizações frequentes com novos conteúdos e melhorias no desempenho.
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq16" id="faq16-btn">
-    O app tem opção de legendas e áudio dublado?
-  </button>
-  <div class="faq-answer" id="faq16" role="region" aria-labelledby="faq16-btn">
-    Sim. A maioria dos filmes e séries no Youcine oferece áudio dublado e legendas em português.
-  </div>
-</div>
-
-  <div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq17" id="faq17-btn">
-    O Eppi Cinema tem muitos anúncios?
-  </button>
-  <div class="faq-answer" id="faq17" role="region" aria-labelledby="faq17-btn">
-    O Eppi Cinema pode exibir anúncios ocasionais, mas isso ajuda a manter o app gratuito para todos os usuários.
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq18" id="faq18-btn">
-    Posso baixar os filmes no Eppi Cinema?
-  </button>
-  <div class="faq-answer" id="faq18" role="region" aria-labelledby="faq18-btn">
-    A função de download não está disponível em todas as versões. Verifique nas configurações do app se há suporte para isso.
-  </div>
-</div>
- 
-<div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq19" id="faq19-btn">
-    Como saber se o TV Express está fora do ar?
-  </button>
-  <div class="faq-answer" id="faq19" role="region" aria-labelledby="faq19-btn">
-    Caso os canais não estejam funcionando, pode ser instabilidade temporária. Verifique sua internet ou aguarde alguns minutos.
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-question" aria-expanded="false" aria-controls="faq20" id="faq20-btn">
-    O TV Express exige login ou senha?
-  </button>
-  <div class="faq-answer" id="faq20" role="region" aria-labelledby="faq20-btn">
-    Em geral, não é necessário login. Porém, versões privadas ou modificadas podem pedir senha de acesso fornecida pelo distribuidor.
-  </div>
-</div>   
-    
- <!-- Título da galeria -->
-<h3 class="section-subtitle" tabindex="0" id="galeria-title">Galeria</h3>
-
-<section class="gallery-section" id="galeria" aria-labelledby="galeria-title">
-
-  <div class="gallery-item">
-    <div class="app-text">
-      <h4>UniTV <span class="highlight">Premium</span></h4>
-      <p>App leve e intuitivo para streaming IPTV, com atualizações constantes e fácil navegação para você não perder nada.</p>
-    </div>
-    <img src="https://s14.gifyu.com/images/bHBHc.webp" alt="Tela do app UniTV">
-  </div>
-
-  <div class="gallery-item">
-    <div class="app-text">
-      <h4>Youcine <span class="highlight">HD</span></h4>
-      <p>Grande acervo de filmes e séries em alta definição, interface moderna e recursos exclusivos para a melhor experiência.</p>
-    </div>
-    <img src="https://s14.gifyu.com/images/bHBHH.png" alt="Tela do app Youcine">
-  </div>
-
-  <div class="gallery-item">
-    <div class="app-text">
-      <h4>Eppi <span class="highlight">Cinema</span></h4>
-      <p>Foque nos lançamentos mais recentes, com atualização diária e suporte para múltiplas plataformas em uma interface amigável.</p>
-    </div>
-    <img src="https://s14.gifyu.com/images/bHBH0.png" alt="Tela do app Eppi Cinema">
-  </div>
-
-  <div class="gallery-item">
-    <div class="app-text">
-      <h4>TV Express <span class="highlight">Ao Vivo</span></h4>
-      <p>Grande variedade de canais ao vivo, interface simples e compatibilidade ampla para você assistir de onde quiser.</p>
-    </div>
-    <img src="https://s14.gifyu.com/images/bHBHD.webp" alt="Tela do app TV Express">
-  </div>
-
-</section>
-
+  </section>
 
   <footer role="contentinfo">
     &copy; 2025 IPTV Premium Brasil. Todos os direitos reservados.
@@ -1068,3 +864,4 @@ nav.open ul {
 </script>
 </body>
 </html>
+
