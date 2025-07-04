@@ -600,7 +600,7 @@ nav.open ul {
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUp 1s ease forwards;
-  animation-play-state: paused;
+  /* REMOVIDO animation-play-state: paused; para rodar normalmente */
   background: none;
   box-shadow: none;
   padding: 0;
@@ -661,7 +661,7 @@ nav.open ul {
   line-height: 1.6;
   text-shadow: 0 0 6px #000000;
   animation: fadeInText 1.2s ease forwards;
-  animation-play-state: paused;
+  /* REMOVIDO animation-play-state: paused */
   opacity: 0;
   background: none;
   box-shadow: none;
@@ -691,11 +691,11 @@ nav.open ul {
   .gallery-item {
     flex-direction: column !important;
     text-align: center;
-    animation: fadeUp 1s ease forwards !important;
+    /* só mantenha a animação normalmente, sem !important */
   }
 
   .gallery-text {
-    animation: fadeInText 1.2s ease forwards !important;
+    /* animação continua igual */
   }
 
   .gallery-image,
@@ -707,6 +707,7 @@ nav.open ul {
     font-size: 1.6rem;
   }
 }
+
 
 
   </style>
@@ -1014,7 +1015,7 @@ nav.open ul {
       });
     });
 
-    // Fecha ao clicar fora
+    // Fecha menu ao clicar fora
     document.addEventListener("click", (event) => {
       const isOpen = nav.classList.contains("open");
       const clickedOutside = !nav.contains(event.target) && !menuToggle.contains(event.target);
@@ -1035,15 +1036,15 @@ nav.open ul {
           const text = target.querySelector(".gallery-text");
 
           if (entry.isIntersecting) {
-            // Reativa animação
+            // Ativa animação
             target.style.animationPlayState = "running";
             if (text) text.style.animationPlayState = "running";
           } else {
-            // Pausa e reseta para poder animar de novo na próxima entrada
+            // Reseta animação para permitir replay
             target.style.animationPlayState = "paused";
-            target.style.animation = 'none';    // reseta animação
-            void target.offsetWidth;            // força reflow para reiniciar a animação
-            target.style.animation = '';        // remove reset
+            target.style.animation = 'none';     
+            void target.offsetWidth;              
+            target.style.animation = '';         
 
             if (text) {
               text.style.animationPlayState = "paused";
@@ -1062,7 +1063,7 @@ nav.open ul {
         observer.observe(item);
       });
     } else {
-      // Em mobile: executa direto
+      // Em mobile, executa animação direto sem IntersectionObserver
       galleryItems.forEach(item => {
         item.style.animationPlayState = "running";
         const text = item.querySelector(".gallery-text");
@@ -1071,5 +1072,6 @@ nav.open ul {
     }
   });
 </script>
+
 </body>
 </html>
