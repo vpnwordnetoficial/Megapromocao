@@ -510,9 +510,9 @@
   nav {
     position: fixed;
     top: 0;
-    right: -280px; /* largura menor para menu móvel */
-    width: 280px; /* ajustar para o mesmo valor da largura */
-    height: 20vh; /* altura do menu */
+    right: -280px;
+    width: 280px;
+    height: 35vh; /* Ajuste a altura aqui como quiser (20vh, 30vh, etc) */
     background-color: #1e1e24;
     box-shadow: -3px 0 15px #0088ff88;
     padding-top: 70px;
@@ -520,34 +520,41 @@
     flex-direction: column;
     transition: right 0.3s ease;
     z-index: 1050;
-    overflow: hidden; /* impede que o conteúdo ultrapasse a altura */
+    overflow: hidden; /* impede crescimento além da altura */
+    position: fixed;
   }
 
   nav.open {
-    right: 0; /* Abre o menu */
+    right: 0;
+  }
+
+  nav img {
+    width: 100%;
+    height: auto;
+    max-height: 80px; /* Limita altura da imagem */
+    object-fit: cover;
+    opacity: 0.3; /* Transparência */
+    border-radius: 0;
+    margin-bottom: 0.5rem;
+    display: block;
   }
 
   nav ul {
     flex-direction: column;
-    gap: 1rem; /* reduz o espaço entre os itens */
+    gap: 1rem;
     padding-left: 1rem;
     margin: 0;
-    z-index: 1; /* acima da imagem, se houver */
+    overflow-y: auto; /* rolagem se passar da altura */
   }
 
   nav ul li a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  /* Esconde menu padrão */
-  nav ul {
-    list-style: none;
-  }
-
-  /* Mostrar botão hamburger */
   .menu-toggle {
     display: block;
   }
+}
 
   /* Imagem de fundo no menu */
   nav .menu-bg {
