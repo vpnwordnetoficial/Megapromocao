@@ -586,7 +586,7 @@ nav.open ul {
   max-width: 1100px;
   margin: 3rem auto;
   padding: 2rem;
-  background-color: transparent; /* agora pega o fundo principal do site */
+  background-color: transparent;
   user-select: none;
 }
 
@@ -599,17 +599,17 @@ nav.open ul {
   position: relative;
   opacity: 0;
   transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
-  /* REMOVIDO animation-play-state: paused; para rodar normalmente */
   background: none;
   box-shadow: none;
   padding: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: var(--delay, 0s);
 }
 
-.gallery-item:nth-child(1) { animation-delay: 0.2s; }
-.gallery-item:nth-child(2) { animation-delay: 0.4s; }
-.gallery-item:nth-child(3) { animation-delay: 0.6s; }
-.gallery-item:nth-child(4) { animation-delay: 0.8s; }
+.gallery-item.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 @keyframes fadeUp {
   to {
@@ -660,12 +660,16 @@ nav.open ul {
   font-size: 1.1rem;
   line-height: 1.6;
   text-shadow: 0 0 6px #000000;
-  animation: fadeInText 1.2s ease forwards;
-  /* REMOVIDO animation-play-state: paused */
   opacity: 0;
   background: none;
   box-shadow: none;
   padding: 0;
+  animation: fadeInText 1.2s ease forwards;
+  animation-delay: var(--delay-text, 0s);
+}
+
+.gallery-text.animate {
+  opacity: 1;
 }
 
 @keyframes fadeInText {
@@ -689,13 +693,8 @@ nav.open ul {
 
 @media (max-width: 768px) {
   .gallery-item {
-    flex-direction: column !important;
+    flex-direction: column;
     text-align: center;
-    /* só mantenha a animação normalmente, sem !important */
-  }
-
-  .gallery-text {
-    /* animação continua igual */
   }
 
   .gallery-image,
@@ -707,6 +706,7 @@ nav.open ul {
     font-size: 1.6rem;
   }
 }
+
 
 
 
@@ -952,7 +952,7 @@ nav.open ul {
       document.getElementById("apps"),
       document.getElementById("install"),
       document.getElementById("faq"),
-      document.getElementById("galeria") // ✅ corrigido para "galeria"
+      document.getElementById("galeria")
     ];
     const menuLinks = document.querySelectorAll("nav ul li a");
 
@@ -961,7 +961,6 @@ nav.open ul {
       button.addEventListener("click", () => {
         const expanded = button.getAttribute("aria-expanded") === "true";
         button.setAttribute("aria-expanded", !expanded);
-
         const answer = button.nextElementSibling;
         answer.classList.toggle("open");
       });
@@ -1025,53 +1024,42 @@ nav.open ul {
       }
     });
 
-    // GALERIA: ativa animações com IntersectionObserver e permite repetir animação ao entrar na tela
+    // GALERIA: animação com IntersectionObserver
     const galleryItems = document.querySelectorAll(".gallery-item");
-    const isMobile = window.innerWidth <= 768;
 
-    if ('IntersectionObserver' in window && !isMobile) {
+    // Adiciona delay dinâmico via CSS variável
+    galleryItems.forEach((item, index) => {
+      const text = item.querySelector(".gallery-text");
+      const delay = 0.2 + index * 0.2;
+      item.style.setProperty("--delay", `${delay}s`);
+      if (text) text.style.setProperty("--delay-text", `${delay + 0.1}s`);
+    });
+
+    if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          const target = entry.target;
-          const text = target.querySelector(".gallery-text");
-
           if (entry.isIntersecting) {
-            // Ativa animação
-            target.style.animationPlayState = "running";
-            if (text) text.style.animationPlayState = "running";
-          } else {
-            // Reseta animação para permitir replay
-            target.style.animationPlayState = "paused";
-            target.style.animation = 'none';     
-            void target.offsetWidth;              
-            target.style.animation = '';         
-
-            if (text) {
-              text.style.animationPlayState = "paused";
-              text.style.animation = 'none';
-              void text.offsetWidth;
-              text.style.animation = '';
-            }
+            entry.target.classList.add("animate");
+            const text = entry.target.querySelector(".gallery-text");
+            if (text) text.classList.add("animate");
           }
         });
       }, { threshold: 0.1 });
 
       galleryItems.forEach(item => {
-        item.style.animationPlayState = "paused";
-        const text = item.querySelector(".gallery-text");
-        if (text) text.style.animationPlayState = "paused";
         observer.observe(item);
       });
     } else {
-      // Em mobile, executa animação direto sem IntersectionObserver
+      // fallback se não suportar
       galleryItems.forEach(item => {
-        item.style.animationPlayState = "running";
+        item.classList.add("animate");
         const text = item.querySelector(".gallery-text");
-        if (text) text.style.animationPlayState = "running";
+        if (text) text.classList.add("animate");
       });
     }
   });
 </script>
+
 
 </body>
 </html>
